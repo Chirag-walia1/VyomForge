@@ -2,6 +2,9 @@
 
 import { useEffect, useState } from "react";
 import dynamic from "next/dynamic";
+import BeautifulWeather from "./components/BeautifulWeather";
+import { ForecastDisaster, TrendChart } from "./components/RaincloudFeatures";
+import DynamicBackground from "./components/DynamicBackground";
 import Link from "next/link";
 const AITerminal = dynamic(() => import("./components/AITerminal"), { ssr: false });
 
@@ -19,7 +22,7 @@ import {
 const RiskMap = dynamic(() => import("./components/RiskMap"), {
   ssr: false,
   loading: () => (
-    <div className="flex h-[500px] items-center justify-center bg-white shadow-sm text-slate-500">
+    <div className="flex h-[500px] items-center justify-center bg-black/40 backdrop-blur-md border-white/10 text-white shadow-sm text-white/70">
       Loading Himachal Risk Map...
     </div>
   ),
@@ -526,16 +529,16 @@ export default function Home() {
   ========================================== */
 
   return (
-    <main className="min-h-screen bg-slate-50 text-slate-900 font-sans selection:bg-cyan-500/30">
+    <main className="min-h-screen bg-slate-50 text-white font-sans selection:bg-cyan-500/30">
 
       {/* ======================================
           HEADER
       ====================================== */}
 
-      <header className="border-b border-slate-200 bg-white/80 backdrop-blur-md ">
+      <header className="border-b border-slate-200 bg-black/40 backdrop-blur-md border-white/10 text-white/80 backdrop-blur-md ">
         <div className="mx-auto flex max-w-7xl flex-col md:flex-row items-start md:items-center justify-between px-6 py-4 gap-4">
           <div>
-            <h1 className="text-3xl font-extrabold text-slate-900 tracking-tight">
+            <h1 className="text-3xl font-extrabold text-white tracking-tight">
               HimAlert
             </h1>
             <p className="mt-1 text-xs text-blue-600 uppercase tracking-widest font-semibold">
@@ -572,7 +575,7 @@ export default function Home() {
             Himachal Pradesh Risk Monitor
           </h2>
 
-          <p className="mt-3 max-w-2xl text-slate-500">
+          <p className="mt-3 max-w-2xl text-white/70">
             AI-powered prediction of flash floods,
             landslides and extreme rainfall using
             weather, terrain, soil and hydrological
@@ -587,8 +590,8 @@ export default function Home() {
 
         <section className="grid gap-5 md:grid-cols-4">
 
-          <div className="rounded-2xl border border-slate-200 bg-white shadow-sm p-6">
-            <p className="text-sm text-slate-500">
+          <div className="rounded-2xl border border-slate-200 bg-black/40 backdrop-blur-md border-white/10 text-white shadow-sm p-6">
+            <p className="text-sm text-white/70">
               Flash Flood Risk
             </p>
 
@@ -598,13 +601,13 @@ export default function Home() {
                 : `${risk.flash_flood}%`}
             </p>
 
-            <p className="mt-2 text-sm text-slate-500">
+            <p className="mt-2 text-sm text-white/70">
               Live weather assessment
             </p>
           </div>
 
-          <div className="rounded-2xl border border-slate-200 bg-white shadow-sm p-6">
-            <p className="text-sm text-slate-500">
+          <div className="rounded-2xl border border-slate-200 bg-black/40 backdrop-blur-md border-white/10 text-white shadow-sm p-6">
+            <p className="text-sm text-white/70">
               Landslide Risk
             </p>
 
@@ -614,13 +617,13 @@ export default function Home() {
                 : `${risk.landslide}%`}
             </p>
 
-            <p className="mt-2 text-sm text-slate-500">
+            <p className="mt-2 text-sm text-white/70">
               Live weather assessment
             </p>
           </div>
 
-          <div className="rounded-2xl border border-slate-200 bg-white shadow-sm p-6">
-            <p className="text-sm text-slate-500">
+          <div className="rounded-2xl border border-slate-200 bg-black/40 backdrop-blur-md border-white/10 text-white shadow-sm p-6">
+            <p className="text-sm text-white/70">
               Extreme Rainfall
             </p>
 
@@ -630,13 +633,13 @@ export default function Home() {
                 : `${risk.extreme_rainfall}%`}
             </p>
 
-            <p className="mt-2 text-sm text-slate-500">
+            <p className="mt-2 text-sm text-white/70">
               Live weather assessment
             </p>
           </div>
 
-          <div className="rounded-2xl border border-slate-200 bg-white shadow-sm p-6">
-            <p className="text-sm text-slate-500">
+          <div className="rounded-2xl border border-slate-200 bg-black/40 backdrop-blur-md border-white/10 text-white shadow-sm p-6">
+            <p className="text-sm text-white/70">
               Overall Threat
             </p>
 
@@ -646,7 +649,7 @@ export default function Home() {
                 : risk.overall}
             </p>
 
-            <p className="mt-2 text-sm text-slate-500">
+            <p className="mt-2 text-sm text-white/70">
               Based on current weather inputs
             </p>
           </div>
@@ -666,7 +669,7 @@ export default function Home() {
                  Live Disaster Alerts
               </h3>
 
-              <p className="text-sm text-slate-500">
+              <p className="text-sm text-white/70">
                 Automatically generated from current risk conditions
               </p>
             </div>
@@ -686,7 +689,7 @@ export default function Home() {
 
           {alertsLoading ? (
 
-            <div className="rounded-2xl border border-slate-200 bg-white shadow-sm p-8 text-center text-slate-500">
+            <div className="rounded-2xl border border-slate-200 bg-black/40 backdrop-blur-md border-white/10 text-white shadow-sm p-8 text-center text-white/70">
               Loading live alerts...
             </div>
 
@@ -702,7 +705,7 @@ export default function Home() {
                 No Active Disaster Alerts
               </h4>
 
-              <p className="mt-2 text-sm text-slate-500">
+              <p className="mt-2 text-sm text-white/70">
                 Current monitored conditions are below
                 alert thresholds.
               </p>
@@ -755,7 +758,7 @@ export default function Home() {
                               {alert.message}
                             </p>
 
-                            <div className="mt-3 flex flex-wrap gap-4 text-xs text-slate-500">
+                            <div className="mt-3 flex flex-wrap gap-4 text-xs text-white/70">
 
                               <span>
                                  {alert.location}
@@ -790,7 +793,7 @@ export default function Home() {
 
                         <div className="shrink-0">
 
-                          <p className="text-right text-xs text-slate-500">
+                          <p className="text-right text-xs text-white/70">
                             Risk
                           </p>
 
@@ -819,254 +822,16 @@ export default function Home() {
 
         </section>
 
+        
         {/* ====================================
-            WEATHER
+            WEATHER & TRENDS
         ==================================== */}
-
-        <section className="mt-8">
-
-          <div className="mb-4 flex items-center justify-between">
-
-            <div>
-              <h3 className="text-xl font-semibold">
-                Live Weather Intelligence
-              </h3>
-
-              <p className="text-sm text-slate-500">
-                Dharamshala / Kangra region
-              </p>
-            </div>
-
-            <span className="rounded-full bg-cyan-500/10 px-3 py-1 text-xs text-blue-600">
-              {weather?.source || "Open-Meteo"}
-            </span>
-
-          </div>
-
-          {weatherLoading ? (
-
-            <div className="rounded-2xl border border-slate-200 bg-white shadow-sm p-8 text-slate-500">
-              Loading live weather...
-            </div>
-
-          ) : weather ? (
-
-            <>
-
-              <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-
-                <div className="rounded-2xl border border-slate-200 bg-white shadow-sm p-6">
-                  <p className="text-sm text-slate-500">
-                     Temperature
-                  </p>
-
-                  <p className="mt-3 text-3xl font-bold">
-                    {weather.current.temperature}C
-                  </p>
-
-                  <p className="mt-2 text-sm text-slate-500">
-                    Current temperature
-                  </p>
-                </div>
-
-                <div className="rounded-2xl border border-slate-200 bg-white shadow-sm p-6">
-                  <p className="text-sm text-slate-500">
-                     Humidity
-                  </p>
-
-                  <p className="mt-3 text-3xl font-bold">
-                    {weather.current.humidity}%
-                  </p>
-
-                  <p className="mt-2 text-sm text-slate-500">
-                    Relative humidity
-                  </p>
-                </div>
-
-                <div className="rounded-2xl border border-slate-200 bg-white shadow-sm p-6">
-                  <p className="text-sm text-slate-500">
-                     Current Rain
-                  </p>
-
-                  <p className="mt-3 text-3xl font-bold">
-                    {weather.current.rain} mm
-                  </p>
-
-                  <p className="mt-2 text-sm text-slate-500">
-                    Current rainfall
-                  </p>
-                </div>
-
-                <div className="rounded-2xl border border-slate-200 bg-white shadow-sm p-6">
-                  <p className="text-sm text-slate-500">
-                     Wind Speed
-                  </p>
-
-                  <p className="mt-3 text-3xl font-bold">
-                    {weather.current.wind_speed} km/h
-                  </p>
-
-                  <p className="mt-2 text-sm text-slate-500">
-                    Current wind
-                  </p>
-                </div>
-
-                <div className="rounded-2xl border border-slate-200 bg-white shadow-sm p-6">
-                  <p className="text-sm text-slate-500">
-                     Next 24h Rainfall
-                  </p>
-
-                  <p className="mt-3 text-3xl font-bold">
-                    {weather.forecast.rainfall_next_24h} mm
-                  </p>
-
-                  <p className="mt-2 text-sm text-slate-500">
-                    Forecast accumulation
-                  </p>
-                </div>
-
-                <div className="rounded-2xl border border-slate-200 bg-white shadow-sm p-6">
-
-                  <p className="text-sm text-slate-500">
-                     Government Rainfall
-                  </p>
-
-                  <p className="mt-3 text-3xl font-bold">
-                    {locations.find(
-                      (location) =>
-                        location.name === "Dharamshala"
-                    )?.government_rainfall ??
-                      "N/A"}{" "}
-                    mm
-                  </p>
-
-                  <p className="mt-2 text-sm text-slate-500">
-                    NWIC / Himachal Pradesh Government
-                  </p>
-
-                  <p className="mt-1 text-xs text-slate-600">
-                    Station:{" "}
-                    {locations.find(
-                      (location) =>
-                        location.name === "Dharamshala"
-                    )?.rainfall_station ??
-                      "N/A"}
-                  </p>
-
-                  <p className="mt-1 text-xs text-slate-600">
-                    Updated:{" "}
-                    {locations.find(
-                      (location) =>
-                        location.name === "Dharamshala"
-                    )?.rainfall_updated ??
-                      "N/A"}
-                  </p>
-
-                  <p className="mt-1 text-xs text-slate-600">
-                    Status:{" "}
-                    {locations.find(
-                      (location) =>
-                        location.name === "Dharamshala"
-                    )?.rainfall_status ??
-                      "UNAVAILABLE"}
-                  </p>
-
-                </div>
-
-                <div className="rounded-2xl border border-slate-200 bg-white shadow-sm p-6">
-                  <p className="text-sm text-slate-500">
-                     Rain Probability
-                  </p>
-
-                  <p className="mt-3 text-3xl font-bold">
-                    {weather.forecast.max_rain_probability}%
-                  </p>
-
-                  <p className="mt-2 text-sm text-slate-500">
-                    Maximum hourly probability
-                  </p>
-                </div>
-
-              </div>
-
-              {/* 24 Hour Forecast */}
-
-              <div className="mt-6 rounded-2xl border border-slate-200 bg-white shadow-sm p-6">
-
-                <div className="flex items-center justify-between">
-
-                  <div>
-                    <h3 className="text-lg font-semibold">
-                      24-Hour Rainfall Forecast
-                    </h3>
-
-                    <p className="text-sm text-slate-500">
-                      Hourly precipitation prediction
-                    </p>
-                  </div>
-
-                  <span className="text-xs text-blue-600">
-                    LIVE FORECAST
-                  </span>
-
-                </div>
-
-                <div className="mt-5 overflow-x-auto">
-
-                  <div className="flex min-w-max gap-3">
-
-                    {weather.forecast.hours.map(
-                      (hour, index) => (
-
-                        <div
-                          key={index}
-                          className="w-28 rounded-xl border border-slate-200 bg-slate-100 p-3"
-                        >
-
-                          <p className="text-xs text-slate-500">
-                            {new Date(
-                              hour.time
-                            ).toLocaleTimeString(
-                              "en-IN",
-                              {
-                                hour: "2-digit",
-                                minute: "2-digit",
-                              }
-                            )}
-                          </p>
-
-                          <p className="mt-3 text-lg font-semibold">
-                            {hour.precipitation} mm
-                          </p>
-
-                          <p className="mt-1 text-xs text-blue-600">
-                            {hour.precipitation_probability}%
-                            chance
-                          </p>
-
-                        </div>
-                      )
-                    )}
-
-                  </div>
-
-                </div>
-
-              </div>
-
-            </>
-
-          ) : (
-
-            <div className="rounded-2xl border border-red-500/20 bg-red-500/5 p-6 text-red-400">
-              Unable to load weather data.
-            </div>
-
-          )}
-
-        </section>
-
-        {/* ====================================
+        <div className="max-w-4xl mx-auto">
+          <BeautifulWeather weather={weather} weatherLoading={weatherLoading} locationName="Himachal Pradesh (Regional Avg)" />
+          <ForecastDisaster risk={risk} loading={loading} />
+          <TrendChart weather={weather} />
+        </div>
+{/* ====================================
             RISK TREND
         ==================================== */}
 
@@ -1079,7 +844,7 @@ export default function Home() {
                  Risk Trend
               </h3>
 
-              <p className="text-sm text-slate-500">
+              <p className="text-sm text-white/70">
                 Historical disaster-risk progression
               </p>
             </div>
@@ -1091,7 +856,7 @@ export default function Home() {
                   event.target.value
                 )
               }
-              className="rounded-xl border border-slate-300 bg-white shadow-sm px-4 py-2 text-sm text-slate-900 outline-none focus:border-cyan-500"
+              className="rounded-xl border border-slate-300 bg-black/40 backdrop-blur-md border-white/10 text-white shadow-sm px-4 py-2 text-sm text-white outline-none focus:border-cyan-500"
             >
               <option value="Dharamshala">
                 Dharamshala
@@ -1108,17 +873,17 @@ export default function Home() {
 
           </div>
 
-          <div className="rounded-2xl border border-slate-200 bg-white shadow-sm p-6">
+          <div className="rounded-2xl border border-slate-200 bg-black/40 backdrop-blur-md border-white/10 text-white shadow-sm p-6">
 
             {historyLoading ? (
 
-              <div className="flex h-[350px] items-center justify-center text-slate-500">
+              <div className="flex h-[350px] items-center justify-center text-white/70">
                 Loading risk history...
               </div>
 
             ) : riskHistory.length === 0 ? (
 
-              <div className="flex h-[350px] items-center justify-center text-slate-500">
+              <div className="flex h-[350px] items-center justify-center text-white/70">
                 No historical risk data available yet.
               </div>
 
@@ -1238,17 +1003,17 @@ export default function Home() {
       <HydrologicalIntelligence />
 
       {userLocation && (
-        <section className="mt-8 bg-white border border-slate-200 rounded-3xl p-6 shadow-md">
-          <h2 className="text-2xl font-bold text-slate-900 mb-4"> Real-Time Safe Zones (OpenStreetMap Live)</h2>
+        <section className="mt-8 bg-black/40 backdrop-blur-md border-white/10 text-white border border-slate-200 rounded-3xl p-6 shadow-md">
+          <h2 className="text-2xl font-bold text-white mb-4"> Real-Time Safe Zones (OpenStreetMap Live)</h2>
           <p className="text-slate-600 mb-4">Detected live emergency points within 3km of your exact GPS location.</p>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             {safePoints.length > 0 ? safePoints.map((sp, i) => (
               <div key={i} className="bg-slate-50 border border-slate-200 p-4 rounded-xl">
                 <div className="font-bold text-blue-700 text-lg">{sp.name}</div>
-                <div className="text-slate-500 text-sm mt-1 uppercase tracking-widest">{sp.type}</div>
+                <div className="text-white/70 text-sm mt-1 uppercase tracking-widest">{sp.type}</div>
               </div>
             )) : (
-              <div className="text-slate-500">No designated safe zones found within 3km. Maintain high ground.</div>
+              <div className="text-white/70">No designated safe zones found within 3km. Maintain high ground.</div>
             )}
           </div>
         </section>
@@ -1266,14 +1031,14 @@ export default function Home() {
 
           {/* RISK MAP */}
           <div
-            className="min-w-0 self-start overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm"
+            className="min-w-0 self-start overflow-hidden rounded-2xl border border-slate-200 bg-black/40 backdrop-blur-md border-white/10 text-white shadow-sm"
           >
             <RiskMap />
           </div>
 
           {/* DANGER ZONES */}
           <aside
-            className="min-w-0 self-start overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm lg:h-[560px]"
+            className="min-w-0 self-start overflow-hidden rounded-2xl border border-slate-200 bg-black/40 backdrop-blur-md border-white/10 text-white shadow-sm lg:h-[560px]"
           >
 
             <div className="flex items-center justify-between border-b border-slate-200 px-5 py-5">
@@ -1281,7 +1046,7 @@ export default function Home() {
                 <h3 className="text-xl font-semibold">
                   Danger Zones
                 </h3>
-                <p className="mt-1 text-xs text-slate-500">
+                <p className="mt-1 text-xs text-white/70">
                   Live location-wise disaster risk
                 </p>
               </div>
@@ -1347,7 +1112,7 @@ export default function Home() {
                       >
                         <div className="flex items-center justify-between gap-3">
                           <div>
-                            <p className="font-semibold text-slate-900">
+                            <p className="font-semibold text-white">
                               {location.name}
                             </p>
                             <p className={`mt-1 text-xs font-semibold ${riskColor}`}>
@@ -1359,7 +1124,7 @@ export default function Home() {
                             <p className={`text-2xl font-bold ${riskColor}`}>
                               {riskValue}%
                             </p>
-                            <p className="text-[10px] text-slate-500">
+                            <p className="text-[10px] text-white/70">
                               OVERALL
                             </p>
                           </div>
@@ -1367,51 +1132,51 @@ export default function Home() {
 
                         <div className="mt-4 grid grid-cols-3 gap-2">
                           <div className="rounded-lg bg-slate-100 p-2">
-                            <p className="text-[10px] text-slate-500"> FLOOD</p>
-                            <p className="mt-1 font-semibold text-slate-900">
+                            <p className="text-[10px] text-white/70"> FLOOD</p>
+                            <p className="mt-1 font-semibold text-white">
                               {location.flash_flood}%
                             </p>
                           </div>
                           <div className="rounded-lg bg-slate-100 p-2">
-                            <p className="text-[10px] text-slate-500"> LANDSLIDE</p>
-                            <p className="mt-1 font-semibold text-slate-900">
+                            <p className="text-[10px] text-white/70"> LANDSLIDE</p>
+                            <p className="mt-1 font-semibold text-white">
                               {location.landslide}%
                             </p>
                           </div>
                           <div className="rounded-lg bg-slate-100 p-2">
-                            <p className="text-[10px] text-slate-500"> RAIN</p>
-                            <p className="mt-1 font-semibold text-slate-900">
+                            <p className="text-[10px] text-white/70"> RAIN</p>
+                            <p className="mt-1 font-semibold text-white">
                               {location.extreme_rainfall}%
                             </p>
                           </div>
                         </div>
 
                         <div className="mt-4 space-y-2 border-t border-slate-200 pt-3">
-                          <p className="text-xs font-semibold text-slate-500">
+                          <p className="text-xs font-semibold text-white/70">
                             LIVE TELEMETRY
                           </p>
 
                           <div className="grid grid-cols-2 gap-x-4 gap-y-2 text-xs">
                             <div>
-                              <span className="text-slate-500"> Gov Rain</span>
+                              <span className="text-white/70"> Gov Rain</span>
                               <p className="font-medium text-slate-700">
                                 {location.government_rainfall ?? "N/A"} mm
                               </p>
                             </div>
                             <div>
-                              <span className="text-slate-500"> Probability</span>
+                              <span className="text-white/70"> Probability</span>
                               <p className="font-medium text-slate-700">
                                 {location.inputs?.rain_probability ?? 0}%
                               </p>
                             </div>
                             <div>
-                              <span className="text-slate-500"> Humidity</span>
+                              <span className="text-white/70"> Humidity</span>
                               <p className="font-medium text-slate-700">
                                 {location.inputs?.humidity ?? 0}%
                               </p>
                             </div>
                             <div>
-                              <span className="text-slate-500"> Soil</span>
+                              <span className="text-white/70"> Soil</span>
                               <p className="font-medium text-slate-700">
                                 {location.inputs?.soil_moisture ?? 0}
                               </p>
@@ -1437,11 +1202,11 @@ export default function Home() {
                             </div>
                           )}
 
-                          <div className="mt-3 text-[11px] text-slate-500">
-                             Station: <span className="text-slate-500">{location.rainfall_station ?? "N/A"}</span>
+                          <div className="mt-3 text-[11px] text-white/70">
+                             Station: <span className="text-white/70">{location.rainfall_station ?? "N/A"}</span>
                           </div>
-                          <div className="text-[11px] text-slate-500">
-                             Updated: <span className="text-slate-500">{location.rainfall_updated ?? "N/A"}</span>
+                          <div className="text-[11px] text-white/70">
+                             Updated: <span className="text-white/70">{location.rainfall_updated ?? "N/A"}</span>
                           </div>
                         </div>
                       </div>
@@ -1459,7 +1224,7 @@ export default function Home() {
             FOOTER
         ==================================== */}
 
-        <footer className="mt-10 border-t border-slate-200 py-6 text-center text-sm text-slate-500">
+        <footer className="mt-10 border-t border-slate-200 py-6 text-center text-sm text-white/70">
 
           HimAlert  AI-powered Himalayan Disaster Intelligence
 

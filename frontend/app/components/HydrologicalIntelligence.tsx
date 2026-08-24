@@ -122,7 +122,7 @@ export default function HydrologicalIntelligence() {
   const selectedStyles = getRiskClass(selectedRiver.status);
 
   return (
-    <section className="mt-8 overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-md shadow-2xl">
+    <section className="mt-8 overflow-hidden rounded-3xl border border-slate-200 bg-black/40 backdrop-blur-md border border-white/10 text-white shadow-md shadow-2xl">
 
       {/* =====================================================
           HEADER
@@ -138,7 +138,7 @@ export default function HydrologicalIntelligence() {
               Hydrological Intelligence
             </p>
 
-            <h2 className="mt-2 text-2xl font-bold tracking-tight text-slate-900 md:text-3xl">
+            <h2 className="mt-2 text-2xl font-bold tracking-tight text-white md:text-3xl">
               Live River Network & 48-Hour Flow Outlook
             </h2>
 
@@ -191,7 +191,7 @@ export default function HydrologicalIntelligence() {
 
           <div className="flex items-center justify-between">
 
-            <h3 className="font-semibold text-slate-900">
+            <h3 className="font-semibold text-white">
               Highest Model River Risk
             </h3>
 
@@ -208,11 +208,11 @@ export default function HydrologicalIntelligence() {
 
               <div>
 
-                <p className="text-2xl font-bold text-slate-900">
+                <p className="text-2xl font-bold text-white">
                   🌊 {highestRiskRiver.name}
                 </p>
 
-                <p className="mt-1 text-sm text-slate-500">
+                <p className="mt-1 text-sm text-white/70">
                   {highestRiskRiver.basin}
                 </p>
 
@@ -237,7 +237,7 @@ export default function HydrologicalIntelligence() {
 
               <div className="mb-2 flex justify-between text-xs">
 
-                <span className="text-slate-500">
+                <span className="text-white/70">
                   Flood risk
                 </span>
 
@@ -265,11 +265,11 @@ export default function HydrologicalIntelligence() {
 
               <div className="rounded-xl bg-slate-50 p-3">
 
-                <p className="text-xs text-slate-500">
+                <p className="text-xs text-white/70">
                   Flow
                 </p>
 
-                <p className="mt-1 font-semibold text-slate-900">
+                <p className="mt-1 font-semibold text-white">
                   {highestRiskRiver.flow}%
                 </p>
 
@@ -278,7 +278,7 @@ export default function HydrologicalIntelligence() {
 
               <div className="rounded-xl bg-slate-50 p-3">
 
-                <p className="text-xs text-slate-500">
+                <p className="text-xs text-white/70">
                   Trend
                 </p>
 
@@ -291,7 +291,7 @@ export default function HydrologicalIntelligence() {
 
               <div className="rounded-xl bg-slate-50 p-3">
 
-                <p className="text-xs text-slate-500">
+                <p className="text-xs text-white/70">
                   Rainfall
                 </p>
 
@@ -304,11 +304,11 @@ export default function HydrologicalIntelligence() {
 
               <div className="rounded-xl bg-slate-50 p-3">
 
-                <p className="text-xs text-slate-500">
+                <p className="text-xs text-white/70">
                   Catchment
                 </p>
 
-                <p className="mt-1 font-semibold text-slate-900">
+                <p className="mt-1 font-semibold text-white">
                   {highestRiskRiver.saturation}%
                 </p>
 
@@ -331,11 +331,11 @@ export default function HydrologicalIntelligence() {
 
             <div>
 
-              <h3 className="font-semibold text-slate-900">
+              <h3 className="font-semibold text-white">
                 48-Hour River Risk Outlook
               </h3>
 
-              <p className="mt-1 text-xs text-slate-500">
+              <p className="mt-1 text-xs text-white/70">
                 {selectedRiver.name} River model forecast
               </p>
 
@@ -437,11 +437,11 @@ export default function HydrologicalIntelligence() {
 
           <div>
 
-            <h3 className="text-xl font-semibold text-slate-900">
+            <h3 className="text-xl font-semibold text-white">
               Major River Systems
             </h3>
 
-            <p className="mt-1 text-sm text-slate-500">
+            <p className="mt-1 text-sm text-white/70">
               Current model assessment across monitored basins
             </p>
 
@@ -464,18 +464,18 @@ export default function HydrologicalIntelligence() {
 
               <div
                 key={river.name}
-                className={`rounded-2xl border ${styles.border} bg-white shadow-sm p-5 transition hover:-translate-y-1 hover:bg-white shadow-sm`}
+                className={`rounded-2xl border ${styles.border} bg-black/40 backdrop-blur-md border border-white/10 text-white shadow-sm p-5 transition hover:-translate-y-1 hover:bg-black/40 backdrop-blur-md border border-white/10 text-white shadow-sm`}
               >
 
                 <div className="flex items-start justify-between">
 
                   <div>
 
-                    <p className="text-lg font-bold text-slate-900">
+                    <p className="text-lg font-bold text-white">
                       🌊 {river.name}
                     </p>
 
-                    <p className="mt-1 text-xs text-slate-500">
+                    <p className="mt-1 text-xs text-white/70">
                       {river.basin}
                     </p>
 
@@ -496,7 +496,7 @@ export default function HydrologicalIntelligence() {
 
                   <div className="mb-2 flex justify-between text-xs">
 
-                    <span className="text-slate-500">
+                    <span className="text-white/70">
                       Risk
                     </span>
 
@@ -524,7 +524,7 @@ export default function HydrologicalIntelligence() {
 
                   <div className="flex justify-between">
 
-                    <span className="text-slate-500">
+                    <span className="text-white/70">
                       Flow
                     </span>
 
@@ -537,7 +537,7 @@ export default function HydrologicalIntelligence() {
 
                   <div className="flex justify-between">
 
-                    <span className="text-slate-500">
+                    <span className="text-white/70">
                       Rainfall
                     </span>
 
@@ -550,7 +550,7 @@ export default function HydrologicalIntelligence() {
 
                   <div className="flex justify-between">
 
-                    <span className="text-slate-500">
+                    <span className="text-white/70">
                       Catchment
                     </span>
 
@@ -563,7 +563,7 @@ export default function HydrologicalIntelligence() {
 
                   <div className="flex justify-between">
 
-                    <span className="text-slate-500">
+                    <span className="text-white/70">
                       Trend
                     </span>
 
@@ -632,7 +632,7 @@ export default function HydrologicalIntelligence() {
 
               </p>
 
-              <p className="mt-3 text-xs leading-5 text-slate-500">
+              <p className="mt-3 text-xs leading-5 text-white/70">
 
                  This initial dashboard layer uses demonstration
                 hydrological values. The next stage will connect

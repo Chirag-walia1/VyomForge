@@ -39,7 +39,7 @@ export default function AITerminal() {
   }, [messageIndex]);
 
   return (
-    <div className="w-full bg-white border border-blue-100 rounded-xl p-4 shadow-sm text-sm">
+    <div className="w-full bg-black/40 backdrop-blur-md border border-white/10 text-white border border-blue-100 rounded-xl p-4 shadow-sm text-sm">
       <div className="flex items-center gap-2 mb-2">
         <div className="w-3 h-3 rounded-full bg-red-500 animate-pulse"></div>
         <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
