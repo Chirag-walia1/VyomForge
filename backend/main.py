@@ -12,8 +12,8 @@ from services.water_level import (
     get_water_level,
     get_all_water_levels,
 )
-from services.rainfall import (
 from services.safe_points import get_safe_points
+from services.rainfall import (
     get_government_rainfall,
     get_all_government_rainfall,
 )
@@ -514,6 +514,7 @@ def get_alerts():
 @app.get("/api/safe-points")
 def safe_points(lat: float, lon: float):
     return {"safe_points": get_safe_points(lat, lon)}
+
 
 
 

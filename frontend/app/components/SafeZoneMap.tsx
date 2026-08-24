@@ -24,11 +24,11 @@ export default function SafeZoneMap({ userLocation, safePoints }: { userLocation
   if (!userLocation) return null;
 
   return (
-    <div className="w-full h-full rounded-2xl overflow-hidden relative" style={{ minHeight: '400px' }}>
+    <div className="w-full h-full rounded-2xl overflow-hidden relative" style={{ minHeight: "100%" }}>
       <MapContainer 
         center={[userLocation.lat, userLocation.lon]} 
         zoom={14} 
-        style={{ height: '100%', width: '100%', minHeight: '400px' }}
+        style={{ height: '100%', width: '100%', minHeight: "100%" }}
         zoomControl={false}
       >
         <TileLayer

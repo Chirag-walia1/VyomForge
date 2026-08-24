@@ -516,7 +516,7 @@ export default function Home() {
         <div className="max-w-[90rem] mx-auto space-y-8">
           {/* PREMIUM HEADER */}
           <HideOnScrollHeader>
-          <header className="flex flex-col md:flex-row md:items-center justify-between gap-6 bg-black/40 backdrop-blur-xl border border-white/10 p-4 px-6 rounded-full shadow-2xl">
+          <header className="flex flex-col md:flex-row md:items-center justify-between gap-6 bg-black/40 backdrop-blur-xl border border-white/10 p-6 rounded-[2rem] shadow-2xl">
             <div className="flex items-center gap-6">
               <div>
                 <h1 className="text-2xl font-black tracking-tighter text-white drop-shadow-md">

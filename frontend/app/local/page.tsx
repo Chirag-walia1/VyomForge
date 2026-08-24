@@ -106,7 +106,7 @@ export default function LocalDashboard() {
         <div className="max-w-[90rem] mx-auto space-y-8">
           {/* PREMIUM HEADER */}
           <HideOnScrollHeader>
-          <header className="flex flex-col md:flex-row md:items-center justify-between gap-6 bg-black/40 backdrop-blur-xl border border-white/10 p-4 px-6 rounded-full shadow-2xl">
+          <header className="flex flex-col md:flex-row md:items-center justify-between gap-6 bg-black/40 backdrop-blur-xl border border-white/10 p-6 rounded-[2rem] shadow-2xl">
             <div className="flex items-center gap-6">
               <div>
                 <h1 className="text-2xl font-black tracking-tighter text-white drop-shadow-md">
@@ -145,7 +145,7 @@ export default function LocalDashboard() {
             <div className="xl:col-span-7 space-y-8">
               
               {/* SAFE ZONES */}
-              <section className="bg-gradient-to-b from-blue-950/60 to-black/60 backdrop-blur-xl border border-blue-500/30 rounded-[2.5rem] p-8 shadow-2xl flex flex-col h-full min-h-[500px]">
+              <section className="bg-gradient-to-b from-blue-950/60 to-black/60 backdrop-blur-xl border border-blue-500/30 rounded-[2.5rem] p-8 shadow-2xl flex flex-col">
                 <div className="flex items-center justify-between mb-6">
                   <div>
                     <h2 className="text-2xl font-bold text-white tracking-tight">Real-Time Safe Zones</h2>
@@ -153,7 +153,7 @@ export default function LocalDashboard() {
                   </div>
                 </div>
                 
-                <div className="flex-1 w-full rounded-2xl overflow-hidden border border-white/10 relative">
+                <div className="h-[440px] sm:h-[500px] w-full rounded-2xl overflow-hidden border border-white/10 relative">
                   {!userLocation ? (
                     <div className="h-full w-full flex items-center justify-center font-medium text-blue-200/50 animate-pulse bg-black/40">
                       Acquiring GPS coordinates...
