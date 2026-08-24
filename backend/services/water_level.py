@@ -1,58 +1,58 @@
+import requests
 from datetime import datetime
 
+# ============================================
+# Real Water-Level Data via Open-Meteo
+# ============================================
 
-# ============================================
-# Real Water-Level Data Status
-# ============================================
+LOCATIONS = {
+    "Dharamshala": {"lat": 32.2190, "lon": 76.3234},
+    "Kangra": {"lat": 32.0998, "lon": 76.2691},
+    "Mandi": {"lat": 31.7080, "lon": 76.9320},
+}
 
 def get_water_level(location: str = "Dharamshala"):
     """
-    Return water-level information for a location.
-
-    IMPORTANT:
-    No simulated or random water-level values are used.
-
-    Until a verified real-time CWC/NWIC observation
-    is connected for the location, the API explicitly
-    reports the water-level data as unavailable.
+    Fetch real-time river discharge (water level indicator) from Open-Meteo Flood API
     """
-
-    return {
-        "location": location,
-
-        "water_level": None,
-
-        "unit": "m",
-
-        "status": "UNAVAILABLE",
-
-        "sensor": "CWC/NWIC",
-
-        "data_available": False,
-
-        "timestamp": datetime.now().isoformat(),
+    coords = LOCATIONS.get(location, LOCATIONS["Dharamshala"])
+    
+    url = "https://flood-api.open-meteo.com/v1/flood"
+    params = {
+        "latitude": coords["lat"],
+        "longitude": coords["lon"],
+        "daily": "river_discharge",
+        "forecast_days": 1
     }
-
-
-# ============================================
-# Get All Water Levels
-# ============================================
+    
+    try:
+        res = requests.get(url, params=params, timeout=10)
+        res.raise_for_status()
+        data = res.json()
+        discharge = data.get("daily", {}).get("river_discharge", [None])[0]
+        
+        return {
+            "location": location,
+            "water_level": discharge if discharge is not None else 0.0,
+            "unit": "m³/s",
+            "status": "AVAILABLE" if discharge is not None else "UNAVAILABLE",
+            "sensor": "Open-Meteo Flood API",
+            "data_available": discharge is not None,
+            "timestamp": datetime.now().isoformat(),
+        }
+    except Exception as e:
+        return {
+            "location": location,
+            "water_level": None,
+            "unit": "m³/s",
+            "status": "UNAVAILABLE",
+            "sensor": "Open-Meteo Flood API",
+            "data_available": False,
+            "timestamp": datetime.now().isoformat(),
+        }
 
 def get_all_water_levels():
-    """
-    Return water-level status for all monitored
-    Himachal locations.
-
-    No fake values are generated.
-    """
-
-    locations = [
-        "Dharamshala",
-        "Kangra",
-        "Mandi",
-    ]
-
-    return {
-        location: get_water_level(location)
-        for location in locations
-    }
+    results = {}
+    for loc in LOCATIONS:
+        results[loc] = get_water_level(loc)
+    return results

@@ -531,7 +531,7 @@ export default function Home() {
           HEADER
       ====================================== */}
 
-      <header className="border-b border-cyan-900/50 bg-black/40 backdrop-blur-md sticky top-0 z-50">
+      <header className="border-b border-cyan-900/50 bg-black/40 backdrop-blur-md ">
         <div className="mx-auto flex max-w-7xl flex-col md:flex-row items-start md:items-center justify-between px-6 py-4 gap-4">
           <div>
             <h1 className="text-3xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-600 tracking-tight drop-shadow-[0_0_15px_rgba(6,182,212,0.3)]">
@@ -1446,6 +1446,7 @@ export default function Home() {
     </main>
   );
 }
+
 
 
 
