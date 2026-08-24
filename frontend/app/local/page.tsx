@@ -184,7 +184,7 @@ export default function Home() {
     const fetchRisk = async () => {
       try {
         const response = await fetch(
-          `${process.env.NEXT_PUBLIC_API_URL || "https://HimAlert : My Location.onrender.com"}/api/risk${userLocation ? `?lat=${userLocation.lat}&lon=${userLocation.lon}` : ""}`,
+          `${process.env.NEXT_PUBLIC_API_URL || "https://himalert.onrender.com"}/api/risk${userLocation ? `?lat=${userLocation.lat}&lon=${userLocation.lon}` : ""}`,
           {
             cache: "no-store",
           }
@@ -236,7 +236,7 @@ export default function Home() {
         setWeatherLoading(true);
 
         const response = await fetch(
-          `${process.env.NEXT_PUBLIC_API_URL || "https://HimAlert : My Location.onrender.com"}/api/weather${userLocation ? `?lat=${userLocation.lat}&lon=${userLocation.lon}` : ""}`,
+          `${process.env.NEXT_PUBLIC_API_URL || "https://himalert.onrender.com"}/api/weather${userLocation ? `?lat=${userLocation.lat}&lon=${userLocation.lon}` : ""}`,
           {
             cache: "no-store",
           }
@@ -284,7 +284,7 @@ export default function Home() {
         setLocationsLoading(true);
 
         const response = await fetch(
-          `${process.env.NEXT_PUBLIC_API_URL || "https://HimAlert : My Location.onrender.com"}/api/locations-risk`,
+          `${process.env.NEXT_PUBLIC_API_URL || "https://himalert.onrender.com"}/api/locations-risk`,
           {
             cache: "no-store",
           }
@@ -334,7 +334,7 @@ export default function Home() {
         setHistoryLoading(true);
 
         const response = await fetch(
-          `https://HimAlert : My Location.onrender.com/api/risk-history?location=${encodeURIComponent(
+          `https://himalert.onrender.com/api/risk-history?location=${encodeURIComponent(
             historyLocation
           )}`,
           {
@@ -386,7 +386,7 @@ export default function Home() {
         setAlertsLoading(true);
 
         const response = await fetch(
-          `${process.env.NEXT_PUBLIC_API_URL || "https://HimAlert : My Location.onrender.com"}/api/alerts`,
+          `${process.env.NEXT_PUBLIC_API_URL || "https://himalert.onrender.com"}/api/alerts`,
           {
             cache: "no-store",
           }
@@ -1470,6 +1470,7 @@ export default function Home() {
     </main>
   );
 }
+
 
 
 
