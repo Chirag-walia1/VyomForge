@@ -1,16 +1,8 @@
-"use client";
+﻿"use client";
 
 import { useEffect, useState } from "react";
 
-import {
-  MapContainer,
-  TileLayer,
-  ZoomControl,
-  GeoJSON,
-  CircleMarker,
-  Circle,
-  useMap,
-} from "react-leaflet";
+import { MapContainer, TileLayer, ZoomControl, GeoJSON, CircleMarker, Circle, useMap, Marker, Popup } from "react-leaflet";
 
 import "leaflet/dist/leaflet.css";
 
@@ -1477,3 +1469,4 @@ export default function RiskMap() {
     </div>
   );
 }
+

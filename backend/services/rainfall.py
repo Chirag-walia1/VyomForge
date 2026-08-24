@@ -14,12 +14,12 @@ LOCATIONS = {
     "Mandi": {"lat": 31.7080, "lon": 76.9320},
 }
 
-def get_government_rainfall(location_name: str, latitude: float, longitude: float):
+def get_government_rainfall(location_name: str, latitude: float = None, longitude: float = None):
     """
     Since the NWIC Govt API is offline/stale, we dynamically fetch real-time 
     precipitation from Open-Meteo for 100% reliable live working data.
     """
-    coords = LOCATIONS.get(location_name, {"lat": latitude, "lon": longitude})
+    coords = {"lat": latitude, "lon": longitude} if latitude else LOCATIONS.get(location_name, LOCATIONS.get("Dharamshala"))
     
     url = "https://api.open-meteo.com/v1/forecast"
     params = {

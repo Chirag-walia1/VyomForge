@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import dynamic from "next/dynamic";
+import Link from "next/link";
 const AITerminal = dynamic(() => import("./components/AITerminal"), { ssr: false });
 
 import {
@@ -183,7 +184,7 @@ export default function Home() {
     const fetchRisk = async () => {
       try {
         const response = await fetch(
-          `${process.env.NEXT_PUBLIC_API_URL || "https://himalert.onrender.com"}/api/risk${userLocation ? `?lat=${userLocation.lat}&lon=${userLocation.lon}` : ""}`,
+          `${process.env.NEXT_PUBLIC_API_URL || "https://HimAlert : My Location.onrender.com"}/api/risk${userLocation ? `?lat=${userLocation.lat}&lon=${userLocation.lon}` : ""}`,
           {
             cache: "no-store",
           }
@@ -235,7 +236,7 @@ export default function Home() {
         setWeatherLoading(true);
 
         const response = await fetch(
-          `${process.env.NEXT_PUBLIC_API_URL || "https://himalert.onrender.com"}/api/weather${userLocation ? `?lat=${userLocation.lat}&lon=${userLocation.lon}` : ""}`,
+          `${process.env.NEXT_PUBLIC_API_URL || "https://HimAlert : My Location.onrender.com"}/api/weather${userLocation ? `?lat=${userLocation.lat}&lon=${userLocation.lon}` : ""}`,
           {
             cache: "no-store",
           }
@@ -283,7 +284,7 @@ export default function Home() {
         setLocationsLoading(true);
 
         const response = await fetch(
-          `${process.env.NEXT_PUBLIC_API_URL || "https://himalert.onrender.com"}/api/locations-risk`,
+          `${process.env.NEXT_PUBLIC_API_URL || "https://HimAlert : My Location.onrender.com"}/api/locations-risk`,
           {
             cache: "no-store",
           }
@@ -333,7 +334,7 @@ export default function Home() {
         setHistoryLoading(true);
 
         const response = await fetch(
-          `https://himalert.onrender.com/api/risk-history?location=${encodeURIComponent(
+          `https://HimAlert : My Location.onrender.com/api/risk-history?location=${encodeURIComponent(
             historyLocation
           )}`,
           {
@@ -385,7 +386,7 @@ export default function Home() {
         setAlertsLoading(true);
 
         const response = await fetch(
-          `${process.env.NEXT_PUBLIC_API_URL || "https://himalert.onrender.com"}/api/alerts`,
+          `${process.env.NEXT_PUBLIC_API_URL || "https://HimAlert : My Location.onrender.com"}/api/alerts`,
           {
             cache: "no-store",
           }
@@ -535,16 +536,16 @@ export default function Home() {
         <div className="mx-auto flex max-w-7xl flex-col md:flex-row items-start md:items-center justify-between px-6 py-4 gap-4">
           <div>
             <h1 className="text-3xl font-extrabold text-slate-900 tracking-tight">
-              HimAlert
+              HimAlert : My Location
             </h1>
             <p className="mt-1 text-xs text-blue-600 uppercase tracking-widest font-semibold">
               VyomForge Hydrological Intelligence Network
             </p>
           </div>
-          <a href="/local" className="mb-4 w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded-xl shadow-md transition-all flex justify-center items-center gap-2">📍 Go to My Exact Live Location Dashboard</a>
+          <button onClick={locateUser} className="mb-4 w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded-xl shadow-md transition-all flex justify-center items-center gap-2">?? Use My Exact Live Location</button>
           
           <div className="w-full md:w-[500px]">
-            <a href="/local" className="mb-4 w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded-xl shadow-md transition-all flex justify-center items-center gap-2">📍 Go to My Exact Live Location Dashboard</a>
+            <button onClick={locateUser} className="mb-4 w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded-xl shadow-md transition-all flex justify-center items-center gap-2">📍 Use My Exact Live Location</button>
             <AITerminal />
 
           </div>
@@ -1308,7 +1309,7 @@ export default function Home() {
                   <div className="rounded-xl border border-yellow-500/20 bg-yellow-500/5 p-4 text-sm text-yellow-400">
                     ⚠️ Location risk data unavailable.
                     <p className="mt-1 text-xs text-yellow-500/70">
-                      Check that the HimAlert backend is running.
+                      Check that the HimAlert : My Location backend is running.
                     </p>
                   </div>
                 ) : (
@@ -1460,7 +1461,7 @@ export default function Home() {
 
         <footer className="mt-10 border-t border-slate-200 py-6 text-center text-sm text-slate-500">
 
-          HimAlert • AI-powered Himalayan Disaster Intelligence
+          HimAlert : My Location • AI-powered Himalayan Disaster Intelligence
 
         </footer>
 
@@ -1469,6 +1470,7 @@ export default function Home() {
     </main>
   );
 }
+
 
 
 

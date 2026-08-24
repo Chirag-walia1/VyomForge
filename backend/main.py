@@ -13,6 +13,7 @@ from services.water_level import (
     get_all_water_levels,
 )
 from services.rainfall import (
+from services.safe_points import get_safe_points
     get_government_rainfall,
     get_all_government_rainfall,
 )
@@ -73,11 +74,10 @@ def root():
 # ============================================================
 
 @app.get("/api/risk")
-def get_risk():
+def get_risk(lat: float = None, lon: float = None):
 
-    location_name = "Dharamshala"
-
-    location = LOCATIONS[location_name]
+    location_name = "Dharamshala" if not lat else "My Location"
+    location = LOCATIONS[location_name] if not lat else {"latitude": lat, "longitude": lon}
 
     # --------------------------------------------------------
     # Weather
@@ -92,17 +92,13 @@ def get_risk():
     # Water level
     # --------------------------------------------------------
 
-    water_level = get_water_level(
-        location_name
-    )
+    water_level = get_water_level(location_name, lat=lat, lon=lon)
 
     # --------------------------------------------------------
     # Government rainfall
     # --------------------------------------------------------
 
-    government_rainfall = get_government_rainfall(
-        location_name
-    )
+    government_rainfall = get_government_rainfall(location_name, latitude=lat, longitude=lon)
 
     # --------------------------------------------------------
     # Risk calculation
@@ -134,14 +130,8 @@ def get_risk():
 # ============================================================
 
 @app.get("/api/weather")
-def weather():
-
-    location = LOCATIONS["Dharamshala"]
-
-    return get_weather(
-        latitude=location["latitude"],
-        longitude=location["longitude"],
-    )
+def weather(lat: float = None, lon: float = None):
+    return get_weather(latitude=lat if lat else LOCATIONS["Dharamshala"]["latitude"], longitude=lon if lon else LOCATIONS["Dharamshala"]["longitude"])
 
 
 # ============================================================
@@ -149,7 +139,7 @@ def weather():
 # ============================================================
 
 @app.get("/api/rainfall")
-def rainfall():
+def rainfall(lat: float = None, lon: float = None):
 
     return get_all_government_rainfall()
 
@@ -159,7 +149,7 @@ def rainfall():
 # ============================================================
 
 @app.get("/api/water-level")
-def water_level():
+def water_level(lat: float = None, lon: float = None):
 
     return get_water_level(
         "Dharamshala"
@@ -501,3 +491,13 @@ def get_alerts():
         "alerts": alerts,
 
     }
+# ============================================================
+# SAFE POINTS
+# ============================================================
+@app.get("/api/safe-points")
+def safe_points(lat: float, lon: float):
+    return {"safe_points": get_safe_points(lat, lon)}
+
+
+
+

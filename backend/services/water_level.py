@@ -11,11 +11,11 @@ LOCATIONS = {
     "Mandi": {"lat": 31.7080, "lon": 76.9320},
 }
 
-def get_water_level(location: str = "Dharamshala"):
+def get_water_level(location: str = "Dharamshala", lat: float = None, lon: float = None):
     """
     Fetch real-time river discharge (water level indicator) from Open-Meteo Flood API
     """
-    coords = LOCATIONS.get(location, LOCATIONS["Dharamshala"])
+    coords = {"lat": lat, "lon": lon} if lat else LOCATIONS.get(location, LOCATIONS["Dharamshala"])
     
     url = "https://flood-api.open-meteo.com/v1/flood"
     params = {
