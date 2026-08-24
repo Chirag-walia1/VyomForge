@@ -8,10 +8,10 @@ export default function AITerminal() {
 
   const messages = [
     "[SYSTEM INITIALIZED] Hydrological Risk Engine Online.",
-    "[SCANNING] Analyzing soil moisture in Mandi region...",
+    "[TELEMETRY] Establishing secure uplink with NWIC Government Sensors...",
     "⚠️ [ALERT] High saturation detected. Flash flood probability 85%.",
     "✅ [UPDATE] Weather API sync complete. Next 24h rainfall: 42mm.",
-    "[PREDICTION] Evacuation of low-lying areas recommended within 12 hours.",
+    "? [AI ENGINE] Continuous risk evaluation running for Himachal Pradesh.",
   ];
 
   const [messageIndex, setMessageIndex] = useState(0);
@@ -54,3 +54,4 @@ export default function AITerminal() {
     </div>
   );
 }
+
