@@ -1,96 +1,14 @@
-﻿"use client";
+const fs = require('fs');
+let page = fs.readFileSync('frontend/app/local/page.tsx', 'utf8');
 
-import React, { useEffect, useState } from "react";
-import dynamic from "next/dynamic";
-import BeautifulWeather from "../components/BeautifulWeather";
-import { ForecastDisaster, TrendChart } from "../components/RaincloudFeatures";
-import DynamicBackground from "../components/DynamicBackground";
-import HideOnScrollHeader from "../components/HideOnScrollHeader";
-import Link from "next/link";
+const mainReturnRegex = /return \(\s*<DynamicBackground condition=\{condition\}>[\s\S]*/;
 
-const HydrologicalIntelligence = dynamic(() => import("../components/HydrologicalIntelligence"), { ssr: false });
-const RiskMap = dynamic(() => import("../components/RiskMap"), { ssr: false });
-const AITerminal = dynamic(() => import("../components/AITerminal"), { ssr: false });
-
-export default function LocalDashboard() {
-  const [userLocation, setUserLocation] = useState<{lat: number, lon: number} | null>(null);
-  const [safePoints, setSafePoints] = useState<any[]>([]);
-  
-  const [weather, setWeather] = useState<any>(null);
-  const [weatherLoading, setWeatherLoading] = useState(true);
-  
-  const [risk, setRisk] = useState<any>(null);
-  const [riskLoading, setRiskLoading] = useState(true);
-
-  const fetchSafePoints = async (lat: number, lon: number) => {
-    try {
-      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL || "https://himalert.onrender.com"}/api/safe-points?lat=${lat}&lon=${lon}`);
-      const data = await res.json();
-      setSafePoints(data.safe_points || []);
-    } catch(e) {}
-  };
-
-  useEffect(() => {
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition((pos) => {
-        setUserLocation({lat: pos.coords.latitude, lon: pos.coords.longitude});
-        fetchSafePoints(pos.coords.latitude, pos.coords.longitude);
-      });
-    } else {
-      // Fallback
-      setUserLocation({lat: 32.219, lon: 76.3234});
-    }
-  }, []);
-
-  useEffect(() => {
-    if (!userLocation) return;
-    
-    const fetchWeather = async () => {
-      try {
-        setWeatherLoading(true);
-        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL || "https://himalert.onrender.com"}/api/weather?lat=${userLocation.lat}&lon=${userLocation.lon}`);
-        const data = await res.json();
-        setWeather(data);
-      } catch (e) {
-        setWeather(null);
-      } finally {
-        setWeatherLoading(false);
-      }
-    };
-
-    const fetchRisk = async () => {
-      try {
-        setRiskLoading(true);
-        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL || "https://himalert.onrender.com"}/api/risk?lat=${userLocation.lat}&lon=${userLocation.lon}`);
-        const data = await res.json();
-        setRisk(data);
-      } catch(e) {
-        setRisk(null);
-      } finally {
-        setRiskLoading(false);
-      }
-    };
-
-    fetchWeather();
-    fetchRisk();
-    
-    const interval = setInterval(() => {
-      fetchWeather();
-      fetchRisk();
-    }, 5 * 60 * 1000);
-    
-    return () => clearInterval(interval);
-  }, [userLocation]);
-
-  const condition = weather?.current?.cloud_cover > 50 ? "Cloudy" : weather?.current?.rain > 0 ? "Rain" : "Sunny";
-
-  return (
+const premiumRender = `return (
     <DynamicBackground condition={condition}>
       <div className="min-h-screen text-white font-sans selection:bg-cyan-500/30 pb-20 pt-8 px-4 sm:px-8">
         
         <div className="max-w-[90rem] mx-auto space-y-8">
           {/* PREMIUM HEADER */}
-          <HideOnScrollHeader>
           <header className="flex flex-col md:flex-row md:items-center justify-between gap-6 bg-black/40 backdrop-blur-xl border border-white/10 p-6 rounded-[2rem] shadow-2xl">
             <div>
               <Link href="/" className="group text-white/50 hover:text-white transition-colors text-sm font-semibold tracking-wider uppercase flex items-center gap-2 mb-3 inline-block">
@@ -112,7 +30,6 @@ export default function LocalDashboard() {
                <AITerminal />
             </div>
           </header>
-          </HideOnScrollHeader>
 
           {/* MAIN GRID */}
           <div className="grid grid-cols-1 xl:grid-cols-12 gap-8">
@@ -168,4 +85,8 @@ export default function LocalDashboard() {
     </DynamicBackground>
   );
 }
+`;
 
+page = page.replace(mainReturnRegex, premiumRender);
+fs.writeFileSync('frontend/app/local/page.tsx', page, 'utf8');
+console.log("Rewrote local/page.tsx to ultra premium layout!");

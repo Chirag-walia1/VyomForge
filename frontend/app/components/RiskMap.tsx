@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useEffect, useState } from "react";
 
@@ -150,7 +150,7 @@ export default function RiskMap() {
     const fetchLocationRisk = async () => {
       try {
         const response = await fetch(
-          "http://127.0.0.1:8000/api/locations-risk",
+          `${process.env.NEXT_PUBLIC_API_URL || "https://himalert.onrender.com"}/api/locations-risk`,
           {
             cache: "no-store",
           }
@@ -1469,4 +1469,5 @@ export default function RiskMap() {
     </div>
   );
 }
+
 

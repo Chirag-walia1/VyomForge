@@ -5,6 +5,7 @@ import dynamic from "next/dynamic";
 import BeautifulWeather from "./components/BeautifulWeather";
 import { ForecastDisaster, TrendChart } from "./components/RaincloudFeatures";
 import DynamicBackground from "./components/DynamicBackground";
+import HideOnScrollHeader from "./components/HideOnScrollHeader";
 import Link from "next/link";
 const AITerminal = dynamic(() => import("./components/AITerminal"), { ssr: false });
 
@@ -496,6 +497,7 @@ export default function Home() {
         
         <div className="max-w-[90rem] mx-auto space-y-8">
           {/* PREMIUM HEADER */}
+          <HideOnScrollHeader>
           <header className="flex flex-col md:flex-row md:items-center justify-between gap-6 bg-black/40 backdrop-blur-xl border border-white/10 p-6 rounded-[2rem] shadow-2xl">
             <div>
               <div className="flex items-center gap-3 mb-2">
@@ -524,6 +526,7 @@ export default function Home() {
               </div>
             </div>
           </header>
+          </HideOnScrollHeader>
 
           {/* MAIN GRID */}
           <div className="grid grid-cols-1 xl:grid-cols-12 gap-8">
@@ -617,5 +620,6 @@ export default function Home() {
     </DynamicBackground>
   );
 }
+
 
 

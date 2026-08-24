@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useEffect, useState } from "react";
 
@@ -19,7 +19,7 @@ export default function WaterLevel() {
     const fetchWaterLevel = async () => {
       try {
         const response = await fetch(
-          "http://127.0.0.1:8000/api/water-level",
+          `${process.env.NEXT_PUBLIC_API_URL || "https://himalert.onrender.com"}/api/water-level`,
           {
             cache: "no-store",
           }
