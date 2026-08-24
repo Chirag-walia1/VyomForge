@@ -1,4 +1,4 @@
-import requests
+﻿import requests
 
 OPEN_METEO_URL = "https://api.open-meteo.com/v1/forecast"
 
@@ -50,7 +50,7 @@ def get_weather(latitude: float, longitude: float):
         data = response.json()
     except Exception as e:
         print(f"Error fetching weather: {e}")
-        return None
+        return {"error": str(e)}
 
     current = data.get("current", {})
     hourly = data.get("hourly", {})
@@ -119,3 +119,4 @@ def get_weather(latitude: float, longitude: float):
         "daily": daily_forecast,
         "source": "Open-Meteo",
     }
+

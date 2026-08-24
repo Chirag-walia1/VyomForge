@@ -1,4 +1,4 @@
-import requests
+﻿import requests
 from datetime import datetime
 
 # ============================================================
@@ -26,7 +26,7 @@ def get_government_rainfall(location_name: str, latitude: float = None, longitud
         "latitude": coords["lat"],
         "longitude": coords["lon"],
         "current": "precipitation",
-        "timezone": "auto"
+        "timezone": "Asia/Kolkata"
     }
     
     try:
@@ -66,3 +66,4 @@ def get_all_government_rainfall():
     for loc, coords in LOCATIONS.items():
         results[loc] = get_government_rainfall(loc, coords["lat"], coords["lon"])
     return results
+
