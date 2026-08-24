@@ -1,4 +1,4 @@
-def clamp(value, minimum=0, maximum=100):
+﻿def clamp(value, minimum=0, maximum=100):
     return max(minimum, min(maximum, value))
 
 
@@ -24,6 +24,7 @@ def calculate_risk(
     a real 0 cm reading.
     """
 
+    if not weather: return {"flash_flood": 0, "landslide": 0, "extreme_rainfall": 0, "overall": "MINIMAL", "inputs": {}}
     current = weather.get("current", {})
     forecast = weather.get("forecast", {})
 
