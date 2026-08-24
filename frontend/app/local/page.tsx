@@ -1,8 +1,8 @@
-﻿"use client";
+"use client";
 
 import { useEffect, useState } from "react";
 import dynamic from "next/dynamic";
-import Link from "next/link";
+
 const AITerminal = dynamic(() => import("./components/AITerminal"), { ssr: false });
 
 import {
@@ -488,7 +488,7 @@ export default function Home() {
           "border-red-500/40 bg-red-500/10",
         badge:
           "bg-red-500/20 text-red-300",
-        icon: "🔴",
+        icon: "??",
       };
     }
 
@@ -498,7 +498,7 @@ export default function Home() {
           "border-orange-500/30 bg-orange-500/5",
         badge:
           "bg-orange-500/20 text-orange-300",
-        icon: "🟠",
+        icon: "??",
       };
     }
 
@@ -508,7 +508,7 @@ export default function Home() {
           "border-yellow-500/30 bg-yellow-500/5",
         badge:
           "bg-yellow-500/20 text-yellow-300",
-        icon: "🟡",
+        icon: "??",
       };
     }
 
@@ -517,7 +517,7 @@ export default function Home() {
         "border-emerald-500/20 bg-emerald-500/5",
       badge:
         "bg-emerald-500/20 text-emerald-300",
-      icon: "🟢",
+      icon: "??",
     };
   };
 
@@ -542,10 +542,8 @@ export default function Home() {
               VyomForge Hydrological Intelligence Network
             </p>
           </div>
-          <button onClick={locateUser} className="mb-4 w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded-xl shadow-md transition-all flex justify-center items-center gap-2">?? Use My Exact Live Location</button>
-          
           <div className="w-full md:w-[500px]">
-            <button onClick={locateUser} className="mb-4 w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded-xl shadow-md transition-all flex justify-center items-center gap-2">📍 Use My Exact Live Location</button>
+            <button onClick={locateUser} className="mb-4 w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded-xl shadow-md transition-all flex justify-center items-center gap-2">?? Use My Exact Live Location</button>
             <AITerminal />
 
           </div>
@@ -663,7 +661,7 @@ export default function Home() {
 
             <div>
               <h3 className="text-xl font-semibold">
-                🚨 Live Disaster Alerts
+                ?? Live Disaster Alerts
               </h3>
 
               <p className="text-sm text-slate-500">
@@ -695,7 +693,7 @@ export default function Home() {
             <div className="rounded-2xl border border-emerald-500/20 bg-emerald-500/5 p-8 text-center">
 
               <div className="text-4xl">
-                🟢
+                ??
               </div>
 
               <h4 className="mt-3 text-lg font-semibold text-emerald-400">
@@ -758,11 +756,11 @@ export default function Home() {
                             <div className="mt-3 flex flex-wrap gap-4 text-xs text-slate-500">
 
                               <span>
-                                📍 {alert.location}
+                                ?? {alert.location}
                               </span>
 
                               <span>
-                                ⚠️{" "}
+                                ??{" "}
                                 {alert.type.replace(
                                   /_/g,
                                   " "
@@ -770,7 +768,7 @@ export default function Home() {
                               </span>
 
                               <span>
-                                🕐{" "}
+                                ??{" "}
                                 {new Date(
                                   alert.timestamp
                                 ).toLocaleTimeString(
@@ -857,11 +855,11 @@ export default function Home() {
 
                 <div className="rounded-2xl border border-slate-200 bg-white shadow-sm p-6">
                   <p className="text-sm text-slate-500">
-                    🌡️ Temperature
+                    ??? Temperature
                   </p>
 
                   <p className="mt-3 text-3xl font-bold">
-                    {weather.current.temperature}°C
+                    {weather.current.temperature}�C
                   </p>
 
                   <p className="mt-2 text-sm text-slate-500">
@@ -871,7 +869,7 @@ export default function Home() {
 
                 <div className="rounded-2xl border border-slate-200 bg-white shadow-sm p-6">
                   <p className="text-sm text-slate-500">
-                    💧 Humidity
+                    ?? Humidity
                   </p>
 
                   <p className="mt-3 text-3xl font-bold">
@@ -885,7 +883,7 @@ export default function Home() {
 
                 <div className="rounded-2xl border border-slate-200 bg-white shadow-sm p-6">
                   <p className="text-sm text-slate-500">
-                    🌧️ Current Rain
+                    ??? Current Rain
                   </p>
 
                   <p className="mt-3 text-3xl font-bold">
@@ -899,7 +897,7 @@ export default function Home() {
 
                 <div className="rounded-2xl border border-slate-200 bg-white shadow-sm p-6">
                   <p className="text-sm text-slate-500">
-                    💨 Wind Speed
+                    ?? Wind Speed
                   </p>
 
                   <p className="mt-3 text-3xl font-bold">
@@ -913,7 +911,7 @@ export default function Home() {
 
                 <div className="rounded-2xl border border-slate-200 bg-white shadow-sm p-6">
                   <p className="text-sm text-slate-500">
-                    🌧️ Next 24h Rainfall
+                    ??? Next 24h Rainfall
                   </p>
 
                   <p className="mt-3 text-3xl font-bold">
@@ -928,7 +926,7 @@ export default function Home() {
                 <div className="rounded-2xl border border-slate-200 bg-white shadow-sm p-6">
 
                   <p className="text-sm text-slate-500">
-                    🏛️ Government Rainfall
+                    ??? Government Rainfall
                   </p>
 
                   <p className="mt-3 text-3xl font-bold">
@@ -975,7 +973,7 @@ export default function Home() {
 
                 <div className="rounded-2xl border border-slate-200 bg-white shadow-sm p-6">
                   <p className="text-sm text-slate-500">
-                    ☔ Rain Probability
+                    ? Rain Probability
                   </p>
 
                   <p className="mt-3 text-3xl font-bold">
@@ -1076,7 +1074,7 @@ export default function Home() {
 
             <div>
               <h3 className="text-xl font-semibold">
-                📈 Risk Trend
+                ?? Risk Trend
               </h3>
 
               <p className="text-sm text-slate-500">
@@ -1239,7 +1237,7 @@ export default function Home() {
 
       {userLocation && (
         <section className="mt-8 bg-white border border-slate-200 rounded-3xl p-6 shadow-md">
-          <h2 className="text-2xl font-bold text-slate-900 mb-4">🛡️ Real-Time Safe Zones (OpenStreetMap Live)</h2>
+          <h2 className="text-2xl font-bold text-slate-900 mb-4">??? Real-Time Safe Zones (OpenStreetMap Live)</h2>
           <p className="text-slate-600 mb-4">Detected live emergency points within 3km of your exact GPS location.</p>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             {safePoints.length > 0 ? safePoints.map((sp, i) => (
@@ -1307,7 +1305,7 @@ export default function Home() {
                   </div>
                 ) : locations.length === 0 ? (
                   <div className="rounded-xl border border-yellow-500/20 bg-yellow-500/5 p-4 text-sm text-yellow-400">
-                    ⚠️ Location risk data unavailable.
+                    ?? Location risk data unavailable.
                     <p className="mt-1 text-xs text-yellow-500/70">
                       Check that the HimAlert : My Location backend is running.
                     </p>
@@ -1367,19 +1365,19 @@ export default function Home() {
 
                         <div className="mt-4 grid grid-cols-3 gap-2">
                           <div className="rounded-lg bg-slate-100 p-2">
-                            <p className="text-[10px] text-slate-500">🌊 FLOOD</p>
+                            <p className="text-[10px] text-slate-500">?? FLOOD</p>
                             <p className="mt-1 font-semibold text-slate-900">
                               {location.flash_flood}%
                             </p>
                           </div>
                           <div className="rounded-lg bg-slate-100 p-2">
-                            <p className="text-[10px] text-slate-500">⛰️ LANDSLIDE</p>
+                            <p className="text-[10px] text-slate-500">?? LANDSLIDE</p>
                             <p className="mt-1 font-semibold text-slate-900">
                               {location.landslide}%
                             </p>
                           </div>
                           <div className="rounded-lg bg-slate-100 p-2">
-                            <p className="text-[10px] text-slate-500">🌧️ RAIN</p>
+                            <p className="text-[10px] text-slate-500">??? RAIN</p>
                             <p className="mt-1 font-semibold text-slate-900">
                               {location.extreme_rainfall}%
                             </p>
@@ -1393,25 +1391,25 @@ export default function Home() {
 
                           <div className="grid grid-cols-2 gap-x-4 gap-y-2 text-xs">
                             <div>
-                              <span className="text-slate-500">🏛️ Gov Rain</span>
+                              <span className="text-slate-500">??? Gov Rain</span>
                               <p className="font-medium text-slate-700">
                                 {location.government_rainfall ?? "N/A"} mm
                               </p>
                             </div>
                             <div>
-                              <span className="text-slate-500">☔ Probability</span>
+                              <span className="text-slate-500">? Probability</span>
                               <p className="font-medium text-slate-700">
                                 {location.inputs?.rain_probability ?? 0}%
                               </p>
                             </div>
                             <div>
-                              <span className="text-slate-500">💧 Humidity</span>
+                              <span className="text-slate-500">?? Humidity</span>
                               <p className="font-medium text-slate-700">
                                 {location.inputs?.humidity ?? 0}%
                               </p>
                             </div>
                             <div>
-                              <span className="text-slate-500">🌱 Soil</span>
+                              <span className="text-slate-500">?? Soil</span>
                               <p className="font-medium text-slate-700">
                                 {location.inputs?.soil_moisture ?? 0}
                               </p>
@@ -1421,7 +1419,7 @@ export default function Home() {
                           {location.rainfall_status === "STALE" && (
                             <div className="mt-3 rounded-lg border border-yellow-500/20 bg-yellow-500/5 px-3 py-2">
                               <p className="text-xs font-semibold text-yellow-400">
-                                ⚠️ Government rainfall data is stale
+                                ?? Government rainfall data is stale
                               </p>
                               <p className="mt-1 text-[11px] text-yellow-500/70">
                                 {location.rainfall_age_hours != null
@@ -1433,15 +1431,15 @@ export default function Home() {
 
                           {location.rainfall_status === "AVAILABLE" && (
                             <div className="mt-3 text-xs font-medium text-emerald-400">
-                              ✓ Government rainfall data available
+                              ? Government rainfall data available
                             </div>
                           )}
 
                           <div className="mt-3 text-[11px] text-slate-500">
-                            📍 Station: <span className="text-slate-500">{location.rainfall_station ?? "N/A"}</span>
+                            ?? Station: <span className="text-slate-500">{location.rainfall_station ?? "N/A"}</span>
                           </div>
                           <div className="text-[11px] text-slate-500">
-                            🕐 Updated: <span className="text-slate-500">{location.rainfall_updated ?? "N/A"}</span>
+                            ?? Updated: <span className="text-slate-500">{location.rainfall_updated ?? "N/A"}</span>
                           </div>
                         </div>
                       </div>
@@ -1461,7 +1459,7 @@ export default function Home() {
 
         <footer className="mt-10 border-t border-slate-200 py-6 text-center text-sm text-slate-500">
 
-          HimAlert : My Location • AI-powered Himalayan Disaster Intelligence
+          HimAlert : My Location � AI-powered Himalayan Disaster Intelligence
 
         </footer>
 
@@ -1470,6 +1468,7 @@ export default function Home() {
     </main>
   );
 }
+
 
 
 

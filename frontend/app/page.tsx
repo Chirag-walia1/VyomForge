@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import dynamic from "next/dynamic";
+import Link from "next/link";
 const AITerminal = dynamic(() => import("./components/AITerminal"), { ssr: false });
 
 import {
@@ -183,7 +184,7 @@ export default function Home() {
     const fetchRisk = async () => {
       try {
         const response = await fetch(
-          `${process.env.NEXT_PUBLIC_API_URL || "https://himalert.onrender.com"}/api/risk${userLocation ? `?lat=${userLocation.lat}&lon=${userLocation.lon}` : ""}`,
+          `${process.env.NEXT_PUBLIC_API_URL || "https://himalert.onrender.com"}/api/risk`,
           {
             cache: "no-store",
           }
@@ -223,7 +224,7 @@ export default function Home() {
     );
 
     return () => clearInterval(interval);
-  }, [userLocation]);
+  }, []);
 
   /* ==========================================
      WEATHER API
@@ -235,7 +236,7 @@ export default function Home() {
         setWeatherLoading(true);
 
         const response = await fetch(
-          `${process.env.NEXT_PUBLIC_API_URL || "https://himalert.onrender.com"}/api/weather${userLocation ? `?lat=${userLocation.lat}&lon=${userLocation.lon}` : ""}`,
+          `${process.env.NEXT_PUBLIC_API_URL || "https://himalert.onrender.com"}/api/weather`,
           {
             cache: "no-store",
           }
@@ -271,7 +272,7 @@ export default function Home() {
     );
 
     return () => clearInterval(interval);
-  }, [userLocation]);
+  }, []);
 
   /* ==========================================
      LOCATION RISK API
@@ -321,7 +322,7 @@ export default function Home() {
     );
 
     return () => clearInterval(interval);
-  }, [userLocation]);
+  }, []);
 
   /* ==========================================
      RISK HISTORY API
@@ -428,7 +429,7 @@ export default function Home() {
     );
 
     return () => clearInterval(interval);
-  }, [userLocation]);
+  }, []);
 
   /* ==========================================
      RISK COLOR
@@ -541,10 +542,10 @@ export default function Home() {
               VyomForge Hydrological Intelligence Network
             </p>
           </div>
-          <a href="/local" className="mb-4 w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded-xl shadow-md transition-all flex justify-center items-center gap-2">📍 Go to My Exact Live Location Dashboard</a>
+          <Link href="/local" className="mb-4 w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded-xl shadow-md transition-all flex justify-center items-center gap-2">📍 Go to My Exact Live Location Dashboard</Link>
           
           <div className="w-full md:w-[500px]">
-            <a href="/local" className="mb-4 w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded-xl shadow-md transition-all flex justify-center items-center gap-2">📍 Go to My Exact Live Location Dashboard</a>
+            <Link href="/local" className="mb-4 w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded-xl shadow-md transition-all flex justify-center items-center gap-2">📍 Go to My Exact Live Location Dashboard</Link>
             <AITerminal />
 
           </div>
