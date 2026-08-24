@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import dynamic from "next/dynamic";
+const AITerminal = dynamic(() => import("./components/AITerminal"), { ssr: false });
 
 import {
   LineChart,
@@ -182,7 +183,7 @@ export default function Home() {
     const fetchRisk = async () => {
       try {
         const response = await fetch(
-          "http://127.0.0.1:8000/api/risk",
+          `${process.env.NEXT_PUBLIC_API_URL || "https://himalert.onrender.com"}/api/risk`,
           {
             cache: "no-store",
           }
@@ -234,7 +235,7 @@ export default function Home() {
         setWeatherLoading(true);
 
         const response = await fetch(
-          "http://127.0.0.1:8000/api/weather",
+          `${process.env.NEXT_PUBLIC_API_URL || "https://himalert.onrender.com"}/api/weather`,
           {
             cache: "no-store",
           }
@@ -282,7 +283,7 @@ export default function Home() {
         setLocationsLoading(true);
 
         const response = await fetch(
-          "http://127.0.0.1:8000/api/locations-risk",
+          `${process.env.NEXT_PUBLIC_API_URL || "https://himalert.onrender.com"}/api/locations-risk`,
           {
             cache: "no-store",
           }
@@ -332,7 +333,7 @@ export default function Home() {
         setHistoryLoading(true);
 
         const response = await fetch(
-          `http://127.0.0.1:8000/api/risk-history?location=${encodeURIComponent(
+          `https://himalert.onrender.com/api/risk-history?location=${encodeURIComponent(
             historyLocation
           )}`,
           {
@@ -384,7 +385,7 @@ export default function Home() {
         setAlertsLoading(true);
 
         const response = await fetch(
-          "http://127.0.0.1:8000/api/alerts",
+          `${process.env.NEXT_PUBLIC_API_URL || "https://himalert.onrender.com"}/api/alerts`,
           {
             cache: "no-store",
           }
@@ -524,37 +525,25 @@ export default function Home() {
   ========================================== */
 
   return (
-    <main className="min-h-screen bg-slate-950 text-white">
+    <main className="min-h-screen bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-slate-900 via-[#0a0f1c] to-black text-slate-200 font-sans selection:bg-cyan-500/30">
 
       {/* ======================================
           HEADER
       ====================================== */}
 
-      <header className="border-b border-slate-800">
-        <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-5">
-
+      <header className="border-b border-cyan-900/50 bg-black/40 backdrop-blur-md sticky top-0 z-50">
+        <div className="mx-auto flex max-w-7xl flex-col md:flex-row items-start md:items-center justify-between px-6 py-4 gap-4">
           <div>
-            <h1 className="text-2xl font-bold tracking-tight">
-               HimAlert
+            <h1 className="text-3xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-600 tracking-tight drop-shadow-[0_0_15px_rgba(6,182,212,0.3)]">
+              HimAlert
             </h1>
-
-            <p className="text-sm text-slate-400">
-              Himachal Pradesh Multi-Hazard Early Warning System
+            <p className="mt-1 text-xs text-cyan-500/70 uppercase tracking-widest font-semibold">
+              VyomForge Hydrological Intelligence Network
             </p>
           </div>
-
-          <div
-            className={`rounded-full border px-4 py-2 text-sm ${apiOnline
-                ? "border-emerald-500/30 bg-emerald-500/10 text-emerald-400"
-                : "border-yellow-500/30 bg-yellow-500/10 text-yellow-400"
-              }`}
-          >
-            ●{" "}
-            {apiOnline
-              ? "System Online"
-              : "API Offline"}
+          <div className="w-full md:w-[500px]">
+            <AITerminal />
           </div>
-
         </div>
       </header>
 
@@ -1457,3 +1446,7 @@ export default function Home() {
     </main>
   );
 }
+
+
+
+
