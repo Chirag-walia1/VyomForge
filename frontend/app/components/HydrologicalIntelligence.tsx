@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import {
   Area,
@@ -145,7 +145,7 @@ export default function HydrologicalIntelligence({ locationName }: { locationNam
       <section className="mt-8 overflow-hidden bg-black/40 backdrop-blur-xl border border-white/10 rounded-[2.5rem] shadow-2xl p-8 flex items-center justify-center min-h-[300px]">
         <div className="text-center">
           <h2 className="text-2xl font-bold text-white tracking-tight mb-2">Hydrological Intelligence</h2>
-          <p className="text-white/50">Safe from rivers within a 10km radius./p>
+          <p className="text-white/50">Safe from rivers within a 10km radius.</p>
         </div>
       </section>
     );
@@ -277,3 +277,4 @@ export default function HydrologicalIntelligence({ locationName }: { locationNam
     </section>
   );
 }
+
