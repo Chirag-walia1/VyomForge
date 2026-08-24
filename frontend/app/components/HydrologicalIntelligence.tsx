@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import {
   Area,
@@ -122,13 +122,13 @@ export default function HydrologicalIntelligence() {
   const selectedStyles = getRiskClass(selectedRiver.status);
 
   return (
-    <section className="mt-8 overflow-hidden rounded-3xl border border-slate-200 bg-black/40 backdrop-blur-md border border-white/10 text-white shadow-md shadow-2xl">
+    <section className="mt-8 overflow-hidden rounded-3xl border border-white/10 bg-black/40 backdrop-blur-md border border-white/10 text-white shadow-md shadow-2xl">
 
       {/* =====================================================
           HEADER
       ====================================================== */}
 
-      <div className="border-b border-slate-200 p-6 md:p-8">
+      <div className="border-b border-white/10 p-6 md:p-8">
 
         <div className="flex flex-col gap-4 md:flex-row md:items-start md:justify-between">
 
@@ -162,7 +162,7 @@ export default function HydrologicalIntelligence() {
 
         {/* Status strip */}
 
-        <div className="mt-6 flex flex-col gap-2 rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-xs md:flex-row md:items-center md:justify-between">
+        <div className="mt-6 flex flex-col gap-2 rounded-xl border border-white/10 bg-slate-50 px-4 py-3 text-xs md:flex-row md:items-center md:justify-between">
 
           <span className="text-slate-600">
              River network monitoring active
@@ -187,7 +187,7 @@ export default function HydrologicalIntelligence() {
             HIGHEST RISK
         ==================================================== */}
 
-        <div className="rounded-2xl border border-slate-200 bg-slate-50 p-5">
+        <div className="rounded-2xl border border-white/10 bg-slate-50 p-5">
 
           <div className="flex items-center justify-between">
 
@@ -247,7 +247,7 @@ export default function HydrologicalIntelligence() {
 
               </div>
 
-              <div className="h-3 overflow-hidden rounded-full bg-slate-200">
+              <div className="h-3 overflow-hidden rounded-full bg-white/10">
 
                 <div
                   className={`h-full rounded-full transition-all ${selectedStyles.bar}`}
@@ -325,7 +325,7 @@ export default function HydrologicalIntelligence() {
             48 HOUR CHART
         ==================================================== */}
 
-        <div className="rounded-2xl border border-slate-200 bg-slate-50 p-5 lg:col-span-2">
+        <div className="rounded-2xl border border-white/10 bg-slate-50 p-5 lg:col-span-2">
 
           <div className="flex items-center justify-between">
 
@@ -431,7 +431,7 @@ export default function HydrologicalIntelligence() {
           RIVER CARDS
       ====================================================== */}
 
-      <div className="border-t border-slate-200 p-6 md:p-8">
+      <div className="border-t border-white/10 p-6 md:p-8">
 
         <div className="mb-5 flex items-center justify-between">
 
@@ -506,7 +506,7 @@ export default function HydrologicalIntelligence() {
 
                   </div>
 
-                  <div className="h-2 overflow-hidden rounded-full bg-slate-200">
+                  <div className="h-2 overflow-hidden rounded-full bg-white/10">
 
                     <div
                       className={`h-full rounded-full ${styles.bar}`}
@@ -528,7 +528,7 @@ export default function HydrologicalIntelligence() {
                       Flow
                     </span>
 
-                    <span className="text-slate-800">
+                    <span className="text-white/90">
                       {river.flow}%
                     </span>
 
@@ -554,7 +554,7 @@ export default function HydrologicalIntelligence() {
                       Catchment
                     </span>
 
-                    <span className="text-slate-800">
+                    <span className="text-white/90">
                       {river.saturation}%
                     </span>
 
@@ -573,7 +573,7 @@ export default function HydrologicalIntelligence() {
                           ? "text-orange-400"
                           : river.trend === "FALLING"
                           ? "text-emerald-400"
-                          : "text-slate-800"
+                          : "text-white/90"
                       }
                     >
                       {river.trend === "RISING"
@@ -602,7 +602,7 @@ export default function HydrologicalIntelligence() {
           AI INTERPRETATION
       ====================================================== */}
 
-      <div className="border-t border-slate-200 p-6 md:p-8">
+      <div className="border-t border-white/10 p-6 md:p-8">
 
         <div className="rounded-2xl border border-cyan-500/20 bg-cyan-500/5 p-5">
 
@@ -618,7 +618,7 @@ export default function HydrologicalIntelligence() {
                 Hydrological Risk Assessment
               </p>
 
-              <p className="mt-2 text-sm leading-6 text-slate-800">
+              <p className="mt-2 text-sm leading-6 text-white/90">
 
                 {selectedRiver.name} River is currently showing a{" "}
                 <strong className={selectedStyles.text}>
@@ -651,4 +651,5 @@ export default function HydrologicalIntelligence() {
     </section>
   );
 }
+
 

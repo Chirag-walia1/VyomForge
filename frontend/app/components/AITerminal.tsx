@@ -1,17 +1,18 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { Terminal, Cpu } from "lucide-react";
 
 export default function AITerminal() {
   const [text, setText] = useState("");
   const [isTyping, setIsTyping] = useState(true);
 
   const messages = [
-    "[SYSTEM INITIALIZED] Hydrological Risk Engine Online.",
-    "[TELEMETRY] Establishing secure uplink with NWIC Government Sensors...",
-    " [ALERT] High saturation detected. Flash flood probability 85%.",
-    " [UPDATE] Weather API sync complete. Next 24h rainfall: 42mm.",
-    "? [AI ENGINE] Continuous risk evaluation running for Himachal Pradesh.",
+    "Hydrological Risk Engine Online.",
+    "Establishing secure uplink with NWIC Government Sensors...",
+    "High saturation detected. Flash flood probability 85%.",
+    "Weather API sync complete. Next 24h rainfall: 42mm.",
+    "Continuous risk evaluation running for Himachal Pradesh.",
   ];
 
   const [messageIndex, setMessageIndex] = useState(0);
@@ -31,7 +32,7 @@ export default function AITerminal() {
         setIsTyping(false);
         setTimeout(() => {
           setMessageIndex((prev) => (prev + 1) % messages.length);
-        }, 3000); // wait 3s before next message
+        }, 3000);
       }
     }, 40);
 
@@ -39,20 +40,28 @@ export default function AITerminal() {
   }, [messageIndex]);
 
   return (
-    <div className="w-full bg-black/40 backdrop-blur-md border border-white/10 text-white border border-blue-100 rounded-xl p-4 shadow-sm text-sm">
-      <div className="flex items-center gap-2 mb-2">
-        <div className="w-3 h-3 rounded-full bg-red-500 animate-pulse"></div>
-        <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
-        <div className="w-3 h-3 rounded-full bg-green-500"></div>
-        <span className="text-blue-700 font-bold ml-2">Live AI Assistant</span>
+    <div className="w-full bg-black/60 backdrop-blur-xl border border-blue-500/30 rounded-2xl p-4 shadow-[0_0_20px_rgba(59,130,246,0.15)] relative overflow-hidden group">
+      <div className="absolute inset-0 bg-gradient-to-r from-blue-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+      
+      <div className="flex items-center justify-between mb-3 relative z-10">
+        <div className="flex items-center gap-2">
+          <Cpu size={16} className="text-blue-400" />
+          <span className="text-blue-400 text-xs font-bold tracking-widest uppercase">VyomForge Core</span>
+        </div>
+        <div className="flex gap-1.5">
+          <div className="w-2.5 h-2.5 rounded-full bg-red-500/80 hover:bg-red-500 transition-colors"></div>
+          <div className="w-2.5 h-2.5 rounded-full bg-yellow-500/80 hover:bg-yellow-500 transition-colors"></div>
+          <div className="w-2.5 h-2.5 rounded-full bg-green-500/80 hover:bg-green-500 transition-colors"></div>
+        </div>
       </div>
-      <div className="text-slate-700 min-h-[40px] flex items-center">
-        <span className="mr-2">&gt;</span>
-        <span>{text}</span>
-        {isTyping && <span className="w-2 h-4 bg-blue-500 ml-1 animate-pulse"></span>}
+      
+      <div className="font-mono text-sm min-h-[40px] flex items-start text-blue-100/90 relative z-10 leading-relaxed">
+        <Terminal size={14} className="mt-1 mr-2 text-blue-500 shrink-0" />
+        <span className="flex-1">
+          {text}
+          {isTyping && <span className="inline-block w-2 h-4 bg-blue-400 ml-1 translate-y-0.5 animate-pulse"></span>}
+        </span>
       </div>
     </div>
   );
 }
-
-

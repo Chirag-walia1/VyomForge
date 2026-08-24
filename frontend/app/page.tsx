@@ -538,7 +538,7 @@ export default function Home() {
               <TrendChart weather={weather} />
               
               {/* ALERTS (Glass) */}
-              <section className="bg-gradient-to-b from-red-950/60 to-black/60 backdrop-blur-xl border border-red-500/30 rounded-[2rem] p-8 shadow-2xl flex-1">
+              <section className="bg-gradient-to-b from-red-950/60 to-black/60 backdrop-blur-xl border border-red-500/30 rounded-[2.5rem] p-8 shadow-2xl flex-1">
                 <h2 className="text-2xl font-bold text-red-100 flex items-center gap-2 mb-6">
                   <span className="text-red-500 animate-pulse">⚠</span> Active Emergency Alerts
                 </h2>
@@ -620,6 +620,7 @@ export default function Home() {
     </DynamicBackground>
   );
 }
+
 
 
 
