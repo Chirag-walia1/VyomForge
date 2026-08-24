@@ -71,7 +71,6 @@ function ResetViewButton() {
   };
 
   return (
-    <>
     <button
       onClick={resetMap}
       className="
@@ -316,9 +315,7 @@ export default function RiskMap() {
     <div
       className="
         relative
-        h-[440px]
-        sm:h-[500px]
-        lg:h-[560px]
+        flex flex-col h-auto min-h-[440px] sm:min-h-[500px] lg:min-h-[560px] pb-4
         w-full
         min-w-0
         overflow-hidden
@@ -331,7 +328,7 @@ export default function RiskMap() {
           MAP
       ====================================================== */}
 
-      <MapContainer
+      <div className="flex-1 min-h-[400px] relative"><MapContainer
         center={[31.8, 77.2]}
         zoom={8}
         minZoom={7}
@@ -493,22 +490,19 @@ export default function RiskMap() {
           <ResetViewButton />
         </div>
 
-      </MapContainer>
+      </MapContainer></div>
       {/* ======================================================
           MAP LEGEND
       ====================================================== */}
       <div
         className="
-          absolute
-          bottom-8
-          left-4
-          z-[1000]
+          relative w-full mx-auto mb-2 mt-4 z-[1000]
           rounded-2xl
           bg-black/60 backdrop-blur-xl border border-white/10
           p-4
           text-white
           shadow-2xl
-          flex flex-col gap-2
+          flex flex-row flex-wrap justify-center gap-4
           text-xs font-medium tracking-wide
         "
       >
@@ -723,10 +717,7 @@ export default function RiskMap() {
 
       <div
         className="
-          absolute
-          bottom-4
-          left-4
-          z-[1000]
+          relative w-full mx-auto mb-2 mt-4 z-[1000]
           rounded-2xl
           border border-slate-200
           bg-black/40 backdrop-blur-md border border-white/10 text-white/90 shadow-sm

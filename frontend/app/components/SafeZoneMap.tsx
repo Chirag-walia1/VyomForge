@@ -25,7 +25,55 @@ export default function SafeZoneMap({ userLocation, safePoints }: { userLocation
   if (!userLocation) return null;
 
   return (
-    <>
+    <div className="w-full h-full rounded-2xl overflow-hidden relative flex flex-col pb-2" style={{ minHeight: "100%" }}>
+      <div className="flex-1 min-h-[400px] relative w-full"><MapContainer 
+        center={[userLocation.lat, userLocation.lon]} 
+        zoom={14} 
+        style={{ height: '100%', width: '100%', minHeight: "100%" }}
+        zoomControl={false}
+      >
+        <TileLayer
+          url="https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png"
+          attribution='&copy; <a href="https://carto.com/">CARTO</a>'
+        />
+        <FlyToLocation lat={userLocation.lat} lon={userLocation.lon} />
+
+        {/* User Location */}
+        <CircleMarker 
+          center={[userLocation.lat, userLocation.lon]}
+          radius={8}
+          pathOptions={{ color: '#3b82f6', fillColor: '#60a5fa', fillOpacity: 0.8 }}
+        >
+          <Popup className="bg-black/80 text-white border-0">
+            <strong>My Exact Location</strong>
+          </Popup>
+        </CircleMarker>
+
+        {/* Safe Points */}
+        {safePoints.map((sp, idx) => (
+          <Marker key={idx} position={[sp.latitude || userLocation.lat + (Math.random() - 0.5) * 0.02, sp.longitude || userLocation.lon + (Math.random() - 0.5) * 0.02]}>
+            <Popup>
+              <div className="font-bold">{sp.name}</div>
+              <div className="text-xs uppercase text-blue-600">{sp.type}</div>
+            </Popup>
+          </Marker>
+        ))}
+      </MapContainer></div>
+      <div
+        className="
+          relative w-full mx-auto mb-2 mt-4 z-[1000]
+          rounded-xl
+          bg-black/60 backdrop-blur-xl border border-white/10
+          p-3
+          text-white
+          shadow-2xl
+          flex flex-row justify-center gap-6
+          text-xs font-medium tracking-wide
+        "
+      >
+        <div className="flex items-center gap-2"><div className="w-3 h-3 rounded-full bg-blue-500 shadow-[0_0_8px_rgba(59,130,246,0.8)]"></div> You Are Here</div>
+        <div className="flex items-center gap-2"><div className="w-3 h-4 rounded-t-full bg-blue-100 shadow-[0_0_8px_rgba(255,255,255,0.8)] border border-blue-500"></div> Safe Shelter</div>
+      </div>
     </div>
   );
 }
