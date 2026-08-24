@@ -44,9 +44,7 @@ def calculate_risk(
         current.get("wind_speed", 0) or 0
     )
 
-    rainfall_24h = float(
-        forecast.get("rainfall_next_24h", 0) or 0
-    )
+    rainfall_24h = sum(forecast.get("precipitation", [])[:24]) if "precipitation" in forecast else 0.0
 
     rain_probability = float(
         forecast.get("max_rain_probability", 0) or 0
@@ -400,4 +398,5 @@ def calculate_risk(
             ),
         },
     }
+
 
