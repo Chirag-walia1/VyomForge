@@ -28,10 +28,7 @@ app = FastAPI(title="HimAlert API")
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=[
-        "http://localhost:3000",
-        "http://127.0.0.1:3000",
-    ],
+    allow_origins=["*"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -514,6 +511,7 @@ def get_alerts():
 @app.get("/api/safe-points")
 def safe_points(lat: float, lon: float):
     return {"safe_points": get_safe_points(lat, lon)}
+
 
 
 
