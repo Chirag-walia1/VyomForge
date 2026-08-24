@@ -1002,22 +1002,7 @@ export default function Home() {
           
       <HydrologicalIntelligence />
 
-      {userLocation && (
-        <section className="mt-8 bg-black/40 backdrop-blur-md border-white/10 text-white border border-slate-200 rounded-3xl p-6 shadow-md">
-          <h2 className="text-2xl font-bold text-white mb-4"> Real-Time Safe Zones (OpenStreetMap Live)</h2>
-          <p className="text-slate-600 mb-4">Detected live emergency points within 3km of your exact GPS location.</p>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            {safePoints.length > 0 ? safePoints.map((sp, i) => (
-              <div key={i} className="bg-slate-50 border border-slate-200 p-4 rounded-xl">
-                <div className="font-bold text-blue-700 text-lg">{sp.name}</div>
-                <div className="text-white/70 text-sm mt-1 uppercase tracking-widest">{sp.type}</div>
-              </div>
-            )) : (
-              <div className="text-white/70">No designated safe zones found within 3km. Maintain high ground.</div>
-            )}
-          </div>
-        </section>
-      )}
+      
 
         </section>
 
