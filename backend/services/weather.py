@@ -1,7 +1,9 @@
-﻿import requests
+from cachetools import cached, TTLCache
+import requests
 
-OPEN_METEO_URL = "https://api.open-meteo.com/v1/forecast"
+OPEN_METEO_URL = "https://vyom-forge.vercel.app/api/proxy-weather"
 
+@cached(cache=TTLCache(maxsize=10, ttl=600))
 def get_weather(latitude: float, longitude: float):
     """
     Fetch current, hourly, and daily weather data from Open-Meteo.
@@ -9,35 +11,8 @@ def get_weather(latitude: float, longitude: float):
     """
 
     params = {
-        "latitude": latitude,
-        "longitude": longitude,
-        "current": (
-            "temperature_2m,"
-            "relative_humidity_2m,"
-            "precipitation,"
-            "rain,"
-            "showers,"
-            "wind_speed_10m,"
-            "surface_pressure,"
-            "visibility"
-        ),
-        "hourly": (
-            "temperature_2m,"
-            "relative_humidity_2m,"
-            "precipitation,"
-            "rain,"
-            "showers,"
-            "precipitation_probability,"
-            "soil_moisture_0_to_7cm"
-        ),
-        "daily": (
-            "weather_code,"
-            "temperature_2m_max,"
-            "temperature_2m_min,"
-            "precipitation_probability_max"
-        ),
-        "forecast_days": 8, # Fetch 8 days to ensure we get a full 7-day forecast relative to today
-        "timezone": "Asia/Kolkata",
+        "lat": latitude,
+        "lon": longitude
     }
 
     try:
@@ -119,4 +94,5 @@ def get_weather(latitude: float, longitude: float):
         "daily": daily_forecast,
         "source": "Open-Meteo",
     }
+
 

@@ -1,3 +1,4 @@
+﻿from cachetools import cached, TTLCache
 import requests
 from datetime import datetime
 
@@ -56,3 +57,4 @@ def get_all_water_levels():
     for loc in LOCATIONS:
         results[loc] = get_water_level(loc)
     return results
+

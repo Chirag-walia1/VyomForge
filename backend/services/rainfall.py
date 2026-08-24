@@ -1,4 +1,5 @@
-﻿import requests
+from cachetools import cached, TTLCache
+import requests
 from datetime import datetime
 
 # ============================================================
@@ -14,6 +15,7 @@ LOCATIONS = {
     "Mandi": {"lat": 31.7080, "lon": 76.9320},
 }
 
+@cached(cache=TTLCache(maxsize=10, ttl=600))
 def get_government_rainfall(location_name: str, latitude: float = None, longitude: float = None):
     """
     Since the NWIC Govt API is offline/stale, we dynamically fetch real-time 
@@ -21,12 +23,10 @@ def get_government_rainfall(location_name: str, latitude: float = None, longitud
     """
     coords = {"lat": latitude, "lon": longitude} if latitude else LOCATIONS.get(location_name, LOCATIONS.get("Dharamshala"))
     
-    url = "https://api.open-meteo.com/v1/forecast"
+    url = "https://vyom-forge.vercel.app/api/proxy-weather"
     params = {
-        "latitude": coords["lat"],
-        "longitude": coords["lon"],
-        "current": "precipitation",
-        "timezone": "Asia/Kolkata"
+        "lat": coords["lat"],
+        "lon": coords["lon"]
     }
     
     try:
@@ -66,4 +66,5 @@ def get_all_government_rainfall():
     for loc, coords in LOCATIONS.items():
         results[loc] = get_government_rainfall(loc, coords["lat"], coords["lon"])
     return results
+
 
