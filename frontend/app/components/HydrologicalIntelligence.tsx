@@ -1,4 +1,4 @@
-﻿import { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 "use client";
 
 import {
@@ -189,7 +189,33 @@ export default function HydrologicalIntelligence({ locationName, weather }: { lo
       liveStatus = liveFlow > 80 ? "CRITICAL" : (liveFlow > 50 ? "HIGH" : "MODERATE");
     }
   }
-  const chartData = selectedRiver.forecast.map((val, idx) => ({
+  let liveRainfall = selectedRiver.rainfall;
+  let liveSaturation = selectedRiver.saturation;
+  let liveForecast = selectedRiver.forecast;
+
+  if (weather && weather.current) {
+      liveRainfall = weather.current.precipitation || weather.current.rain || 0;
+  }
+  if (weather && weather.hourly && weather.hourly.soil_moisture_0_to_7cm) {
+      const sm = weather.hourly.soil_moisture_0_to_7cm[0];
+      if (sm !== undefined && sm !== null) {
+          liveSaturation = Math.min(100, Math.round(sm * 100));
+      }
+  }
+  if (weather && weather.hourly && weather.hourly.precipitation) {
+      const precips = weather.hourly.precipitation;
+      if (precips.length >= 5) {
+          liveForecast = [
+              Math.min(100, Math.round((precips[0] || 0) * 15 + liveFlow)),
+              Math.min(100, Math.round((precips[3] || 0) * 15 + liveFlow)),
+              Math.min(100, Math.round((precips[6] || 0) * 15 + liveFlow)),
+              Math.min(100, Math.round((precips[9] || 0) * 15 + liveFlow)),
+              Math.min(100, Math.round((precips[12] || 0) * 15 + liveFlow))
+          ];
+      }
+  }
+
+  const chartData = liveForecast.map((val: number, idx: number) => ({
     time: `T+${(idx + 1) * 3}h`,
     risk: val,
   }));
