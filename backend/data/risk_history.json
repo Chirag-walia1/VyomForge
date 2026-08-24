@@ -1,0 +1,2258 @@
+[
+  {
+    "timestamp": "2026-08-23T23:33:32.760020",
+    "location": "Dharamshala",
+    "flash_flood": 47,
+    "landslide": 47,
+    "extreme_rainfall": 54,
+    "overall": "MODERATE"
+  },
+  {
+    "timestamp": "2026-08-23T23:33:34.505198",
+    "location": "Kangra",
+    "flash_flood": 29,
+    "landslide": 33,
+    "extreme_rainfall": 30,
+    "overall": "LOW"
+  },
+  {
+    "timestamp": "2026-08-23T23:33:35.041107",
+    "location": "Kangra",
+    "flash_flood": 29,
+    "landslide": 33,
+    "extreme_rainfall": 30,
+    "overall": "LOW"
+  },
+  {
+    "timestamp": "2026-08-23T23:33:37.070491",
+    "location": "Mandi",
+    "flash_flood": 36,
+    "landslide": 37,
+    "extreme_rainfall": 37,
+    "overall": "LOW"
+  },
+  {
+    "timestamp": "2026-08-23T23:33:38.129245",
+    "location": "Dharamshala",
+    "flash_flood": 47,
+    "landslide": 47,
+    "extreme_rainfall": 54,
+    "overall": "MODERATE"
+  },
+  {
+    "timestamp": "2026-08-23T23:33:43.005446",
+    "location": "Dharamshala",
+    "flash_flood": 47,
+    "landslide": 47,
+    "extreme_rainfall": 54,
+    "overall": "MODERATE"
+  },
+  {
+    "timestamp": "2026-08-23T23:33:43.445357",
+    "location": "Mandi",
+    "flash_flood": 36,
+    "landslide": 37,
+    "extreme_rainfall": 37,
+    "overall": "LOW"
+  },
+  {
+    "timestamp": "2026-08-23T23:33:44.380546",
+    "location": "Mandi",
+    "flash_flood": 36,
+    "landslide": 37,
+    "extreme_rainfall": 37,
+    "overall": "LOW"
+  },
+  {
+    "timestamp": "2026-08-23T23:33:44.441901",
+    "location": "Kangra",
+    "flash_flood": 29,
+    "landslide": 33,
+    "extreme_rainfall": 30,
+    "overall": "LOW"
+  },
+  {
+    "timestamp": "2026-08-23T23:33:44.592763",
+    "location": "Kangra",
+    "flash_flood": 29,
+    "landslide": 33,
+    "extreme_rainfall": 30,
+    "overall": "LOW"
+  },
+  {
+    "timestamp": "2026-08-23T23:33:46.077182",
+    "location": "Dharamshala",
+    "flash_flood": 47,
+    "landslide": 47,
+    "extreme_rainfall": 54,
+    "overall": "MODERATE"
+  },
+  {
+    "timestamp": "2026-08-23T23:33:50.774613",
+    "location": "Dharamshala",
+    "flash_flood": 47,
+    "landslide": 47,
+    "extreme_rainfall": 54,
+    "overall": "MODERATE"
+  },
+  {
+    "timestamp": "2026-08-23T23:33:52.762848",
+    "location": "Kangra",
+    "flash_flood": 29,
+    "landslide": 33,
+    "extreme_rainfall": 30,
+    "overall": "LOW"
+  },
+  {
+    "timestamp": "2026-08-23T23:33:52.823289",
+    "location": "Dharamshala",
+    "flash_flood": 47,
+    "landslide": 47,
+    "extreme_rainfall": 54,
+    "overall": "MODERATE"
+  },
+  {
+    "timestamp": "2026-08-23T23:33:53.531334",
+    "location": "Mandi",
+    "flash_flood": 36,
+    "landslide": 37,
+    "extreme_rainfall": 37,
+    "overall": "LOW"
+  },
+  {
+    "timestamp": "2026-08-23T23:33:55.262706",
+    "location": "Mandi",
+    "flash_flood": 36,
+    "landslide": 37,
+    "extreme_rainfall": 37,
+    "overall": "LOW"
+  },
+  {
+    "timestamp": "2026-08-23T23:33:56.607698",
+    "location": "Kangra",
+    "flash_flood": 29,
+    "landslide": 33,
+    "extreme_rainfall": 30,
+    "overall": "LOW"
+  },
+  {
+    "timestamp": "2026-08-23T23:33:59.639923",
+    "location": "Kangra",
+    "flash_flood": 29,
+    "landslide": 33,
+    "extreme_rainfall": 30,
+    "overall": "LOW"
+  },
+  {
+    "timestamp": "2026-08-23T23:34:00.146622",
+    "location": "Mandi",
+    "flash_flood": 36,
+    "landslide": 37,
+    "extreme_rainfall": 37,
+    "overall": "LOW"
+  },
+  {
+    "timestamp": "2026-08-23T23:34:01.674957",
+    "location": "Mandi",
+    "flash_flood": 36,
+    "landslide": 37,
+    "extreme_rainfall": 37,
+    "overall": "LOW"
+  },
+  {
+    "timestamp": "2026-08-23T23:34:06.101502",
+    "location": "Mandi",
+    "flash_flood": 36,
+    "landslide": 37,
+    "extreme_rainfall": 37,
+    "overall": "LOW"
+  },
+  {
+    "timestamp": "2026-08-23T23:38:37.908549",
+    "location": "Dharamshala",
+    "flash_flood": 47,
+    "landslide": 47,
+    "extreme_rainfall": 54,
+    "overall": "MODERATE"
+  },
+  {
+    "timestamp": "2026-08-23T23:38:38.476616",
+    "location": "Dharamshala",
+    "flash_flood": 47,
+    "landslide": 47,
+    "extreme_rainfall": 54,
+    "overall": "MODERATE"
+  },
+  {
+    "timestamp": "2026-08-23T23:38:39.044644",
+    "location": "Dharamshala",
+    "flash_flood": 47,
+    "landslide": 47,
+    "extreme_rainfall": 54,
+    "overall": "MODERATE"
+  },
+  {
+    "timestamp": "2026-08-23T23:38:41.366411",
+    "location": "Kangra",
+    "flash_flood": 29,
+    "landslide": 33,
+    "extreme_rainfall": 30,
+    "overall": "LOW"
+  },
+  {
+    "timestamp": "2026-08-23T23:38:42.740415",
+    "location": "Kangra",
+    "flash_flood": 29,
+    "landslide": 33,
+    "extreme_rainfall": 30,
+    "overall": "LOW"
+  },
+  {
+    "timestamp": "2026-08-23T23:38:45.546570",
+    "location": "Mandi",
+    "flash_flood": 36,
+    "landslide": 37,
+    "extreme_rainfall": 37,
+    "overall": "LOW"
+  },
+  {
+    "timestamp": "2026-08-23T23:38:45.961249",
+    "location": "Mandi",
+    "flash_flood": 36,
+    "landslide": 37,
+    "extreme_rainfall": 37,
+    "overall": "LOW"
+  },
+  {
+    "timestamp": "2026-08-23T23:41:22.334147",
+    "location": "Dharamshala",
+    "flash_flood": 47,
+    "landslide": 47,
+    "extreme_rainfall": 54,
+    "overall": "MODERATE"
+  },
+  {
+    "timestamp": "2026-08-23T23:41:24.146708",
+    "location": "Dharamshala",
+    "flash_flood": 47,
+    "landslide": 47,
+    "extreme_rainfall": 54,
+    "overall": "MODERATE"
+  },
+  {
+    "timestamp": "2026-08-23T23:41:27.971876",
+    "location": "Dharamshala",
+    "flash_flood": 47,
+    "landslide": 47,
+    "extreme_rainfall": 54,
+    "overall": "MODERATE"
+  },
+  {
+    "timestamp": "2026-08-23T23:41:28.893726",
+    "location": "Dharamshala",
+    "flash_flood": 47,
+    "landslide": 47,
+    "extreme_rainfall": 54,
+    "overall": "MODERATE"
+  },
+  {
+    "timestamp": "2026-08-23T23:41:30.466550",
+    "location": "Dharamshala",
+    "flash_flood": 47,
+    "landslide": 47,
+    "extreme_rainfall": 54,
+    "overall": "MODERATE"
+  },
+  {
+    "timestamp": "2026-08-23T23:41:32.808679",
+    "location": "Kangra",
+    "flash_flood": 29,
+    "landslide": 33,
+    "extreme_rainfall": 30,
+    "overall": "LOW"
+  },
+  {
+    "timestamp": "2026-08-23T23:41:34.598125",
+    "location": "Kangra",
+    "flash_flood": 29,
+    "landslide": 33,
+    "extreme_rainfall": 30,
+    "overall": "LOW"
+  },
+  {
+    "timestamp": "2026-08-23T23:41:37.090944",
+    "location": "Dharamshala",
+    "flash_flood": 47,
+    "landslide": 47,
+    "extreme_rainfall": 54,
+    "overall": "MODERATE"
+  },
+  {
+    "timestamp": "2026-08-23T23:41:37.757714",
+    "location": "Dharamshala",
+    "flash_flood": 47,
+    "landslide": 47,
+    "extreme_rainfall": 54,
+    "overall": "MODERATE"
+  },
+  {
+    "timestamp": "2026-08-23T23:41:38.498142",
+    "location": "Dharamshala",
+    "flash_flood": 47,
+    "landslide": 47,
+    "extreme_rainfall": 54,
+    "overall": "MODERATE"
+  },
+  {
+    "timestamp": "2026-08-23T23:41:39.419582",
+    "location": "Dharamshala",
+    "flash_flood": 47,
+    "landslide": 47,
+    "extreme_rainfall": 54,
+    "overall": "MODERATE"
+  },
+  {
+    "timestamp": "2026-08-23T23:41:40.163780",
+    "location": "Dharamshala",
+    "flash_flood": 47,
+    "landslide": 47,
+    "extreme_rainfall": 54,
+    "overall": "MODERATE"
+  },
+  {
+    "timestamp": "2026-08-23T23:41:44.523211",
+    "location": "Dharamshala",
+    "flash_flood": 47,
+    "landslide": 47,
+    "extreme_rainfall": 54,
+    "overall": "MODERATE"
+  },
+  {
+    "timestamp": "2026-08-23T23:41:45.602687",
+    "location": "Dharamshala",
+    "flash_flood": 47,
+    "landslide": 47,
+    "extreme_rainfall": 54,
+    "overall": "MODERATE"
+  },
+  {
+    "timestamp": "2026-08-23T23:41:46.277791",
+    "location": "Mandi",
+    "flash_flood": 36,
+    "landslide": 37,
+    "extreme_rainfall": 37,
+    "overall": "LOW"
+  },
+  {
+    "timestamp": "2026-08-23T23:41:47.553318",
+    "location": "Dharamshala",
+    "flash_flood": 47,
+    "landslide": 47,
+    "extreme_rainfall": 54,
+    "overall": "MODERATE"
+  },
+  {
+    "timestamp": "2026-08-23T23:41:48.445379",
+    "location": "Mandi",
+    "flash_flood": 36,
+    "landslide": 37,
+    "extreme_rainfall": 37,
+    "overall": "LOW"
+  },
+  {
+    "timestamp": "2026-08-23T23:41:50.271486",
+    "location": "Kangra",
+    "flash_flood": 29,
+    "landslide": 33,
+    "extreme_rainfall": 30,
+    "overall": "LOW"
+  },
+  {
+    "timestamp": "2026-08-23T23:41:50.647125",
+    "location": "Dharamshala",
+    "flash_flood": 47,
+    "landslide": 47,
+    "extreme_rainfall": 54,
+    "overall": "MODERATE"
+  },
+  {
+    "timestamp": "2026-08-23T23:41:54.387752",
+    "location": "Kangra",
+    "flash_flood": 29,
+    "landslide": 33,
+    "extreme_rainfall": 30,
+    "overall": "LOW"
+  },
+  {
+    "timestamp": "2026-08-23T23:41:54.446733",
+    "location": "Dharamshala",
+    "flash_flood": 47,
+    "landslide": 47,
+    "extreme_rainfall": 54,
+    "overall": "MODERATE"
+  },
+  {
+    "timestamp": "2026-08-23T23:41:55.161102",
+    "location": "Kangra",
+    "flash_flood": 29,
+    "landslide": 33,
+    "extreme_rainfall": 30,
+    "overall": "LOW"
+  },
+  {
+    "timestamp": "2026-08-23T23:41:56.170357",
+    "location": "Dharamshala",
+    "flash_flood": 47,
+    "landslide": 47,
+    "extreme_rainfall": 54,
+    "overall": "MODERATE"
+  },
+  {
+    "timestamp": "2026-08-23T23:41:57.814661",
+    "location": "Dharamshala",
+    "flash_flood": 47,
+    "landslide": 47,
+    "extreme_rainfall": 54,
+    "overall": "MODERATE"
+  },
+  {
+    "timestamp": "2026-08-23T23:41:58.363226",
+    "location": "Dharamshala",
+    "flash_flood": 47,
+    "landslide": 47,
+    "extreme_rainfall": 54,
+    "overall": "MODERATE"
+  },
+  {
+    "timestamp": "2026-08-23T23:41:59.735535",
+    "location": "Kangra",
+    "flash_flood": 29,
+    "landslide": 33,
+    "extreme_rainfall": 30,
+    "overall": "LOW"
+  },
+  {
+    "timestamp": "2026-08-23T23:42:00.875683",
+    "location": "Kangra",
+    "flash_flood": 29,
+    "landslide": 33,
+    "extreme_rainfall": 30,
+    "overall": "LOW"
+  },
+  {
+    "timestamp": "2026-08-23T23:42:04.109857",
+    "location": "Mandi",
+    "flash_flood": 36,
+    "landslide": 37,
+    "extreme_rainfall": 37,
+    "overall": "LOW"
+  },
+  {
+    "timestamp": "2026-08-23T23:42:05.293368",
+    "location": "Kangra",
+    "flash_flood": 29,
+    "landslide": 33,
+    "extreme_rainfall": 30,
+    "overall": "LOW"
+  },
+  {
+    "timestamp": "2026-08-23T23:42:11.588213",
+    "location": "Mandi",
+    "flash_flood": 36,
+    "landslide": 37,
+    "extreme_rainfall": 37,
+    "overall": "LOW"
+  },
+  {
+    "timestamp": "2026-08-23T23:42:12.648768",
+    "location": "Mandi",
+    "flash_flood": 36,
+    "landslide": 37,
+    "extreme_rainfall": 37,
+    "overall": "LOW"
+  },
+  {
+    "timestamp": "2026-08-23T23:42:13.096483",
+    "location": "Kangra",
+    "flash_flood": 29,
+    "landslide": 33,
+    "extreme_rainfall": 30,
+    "overall": "LOW"
+  },
+  {
+    "timestamp": "2026-08-23T23:42:13.154430",
+    "location": "Dharamshala",
+    "flash_flood": 47,
+    "landslide": 47,
+    "extreme_rainfall": 54,
+    "overall": "MODERATE"
+  },
+  {
+    "timestamp": "2026-08-23T23:42:14.416329",
+    "location": "Dharamshala",
+    "flash_flood": 47,
+    "landslide": 47,
+    "extreme_rainfall": 54,
+    "overall": "MODERATE"
+  },
+  {
+    "timestamp": "2026-08-23T23:42:14.829150",
+    "location": "Kangra",
+    "flash_flood": 29,
+    "landslide": 33,
+    "extreme_rainfall": 30,
+    "overall": "LOW"
+  },
+  {
+    "timestamp": "2026-08-23T23:42:21.541510",
+    "location": "Mandi",
+    "flash_flood": 36,
+    "landslide": 37,
+    "extreme_rainfall": 37,
+    "overall": "LOW"
+  },
+  {
+    "timestamp": "2026-08-23T23:42:22.870159",
+    "location": "Mandi",
+    "flash_flood": 36,
+    "landslide": 37,
+    "extreme_rainfall": 37,
+    "overall": "LOW"
+  },
+  {
+    "timestamp": "2026-08-23T23:42:23.053123",
+    "location": "Mandi",
+    "flash_flood": 36,
+    "landslide": 37,
+    "extreme_rainfall": 37,
+    "overall": "LOW"
+  },
+  {
+    "timestamp": "2026-08-23T23:42:25.348219",
+    "location": "Mandi",
+    "flash_flood": 36,
+    "landslide": 37,
+    "extreme_rainfall": 37,
+    "overall": "LOW"
+  },
+  {
+    "timestamp": "2026-08-23T23:42:26.133135",
+    "location": "Mandi",
+    "flash_flood": 36,
+    "landslide": 37,
+    "extreme_rainfall": 37,
+    "overall": "LOW"
+  },
+  {
+    "timestamp": "2026-08-23T23:42:28.479668",
+    "location": "Kangra",
+    "flash_flood": 29,
+    "landslide": 33,
+    "extreme_rainfall": 30,
+    "overall": "LOW"
+  },
+  {
+    "timestamp": "2026-08-23T23:42:28.782722",
+    "location": "Kangra",
+    "flash_flood": 29,
+    "landslide": 33,
+    "extreme_rainfall": 30,
+    "overall": "LOW"
+  },
+  {
+    "timestamp": "2026-08-23T23:42:32.412210",
+    "location": "Mandi",
+    "flash_flood": 36,
+    "landslide": 37,
+    "extreme_rainfall": 37,
+    "overall": "LOW"
+  },
+  {
+    "timestamp": "2026-08-23T23:42:32.579051",
+    "location": "Mandi",
+    "flash_flood": 36,
+    "landslide": 37,
+    "extreme_rainfall": 37,
+    "overall": "LOW"
+  },
+  {
+    "timestamp": "2026-08-23T23:46:44.246828",
+    "location": "Dharamshala",
+    "flash_flood": 47,
+    "landslide": 46,
+    "extreme_rainfall": 54,
+    "overall": "MODERATE"
+  },
+  {
+    "timestamp": "2026-08-23T23:46:46.134442",
+    "location": "Dharamshala",
+    "flash_flood": 47,
+    "landslide": 46,
+    "extreme_rainfall": 54,
+    "overall": "MODERATE"
+  },
+  {
+    "timestamp": "2026-08-23T23:46:46.394145",
+    "location": "Dharamshala",
+    "flash_flood": 47,
+    "landslide": 46,
+    "extreme_rainfall": 54,
+    "overall": "MODERATE"
+  },
+  {
+    "timestamp": "2026-08-23T23:46:49.152966",
+    "location": "Kangra",
+    "flash_flood": 29,
+    "landslide": 33,
+    "extreme_rainfall": 30,
+    "overall": "LOW"
+  },
+  {
+    "timestamp": "2026-08-23T23:46:52.167431",
+    "location": "Kangra",
+    "flash_flood": 29,
+    "landslide": 33,
+    "extreme_rainfall": 30,
+    "overall": "LOW"
+  },
+  {
+    "timestamp": "2026-08-23T23:46:53.719758",
+    "location": "Mandi",
+    "flash_flood": 36,
+    "landslide": 37,
+    "extreme_rainfall": 37,
+    "overall": "LOW"
+  },
+  {
+    "timestamp": "2026-08-23T23:46:56.807061",
+    "location": "Mandi",
+    "flash_flood": 36,
+    "landslide": 37,
+    "extreme_rainfall": 37,
+    "overall": "LOW"
+  },
+  {
+    "timestamp": "2026-08-23T23:49:30.208489",
+    "location": "Dharamshala",
+    "flash_flood": 47,
+    "landslide": 46,
+    "extreme_rainfall": 54,
+    "overall": "MODERATE"
+  },
+  {
+    "timestamp": "2026-08-23T23:49:34.459373",
+    "location": "Dharamshala",
+    "flash_flood": 47,
+    "landslide": 46,
+    "extreme_rainfall": 54,
+    "overall": "MODERATE"
+  },
+  {
+    "timestamp": "2026-08-23T23:49:34.513891",
+    "location": "Dharamshala",
+    "flash_flood": 47,
+    "landslide": 46,
+    "extreme_rainfall": 54,
+    "overall": "MODERATE"
+  },
+  {
+    "timestamp": "2026-08-23T23:49:38.457024",
+    "location": "Dharamshala",
+    "flash_flood": 47,
+    "landslide": 46,
+    "extreme_rainfall": 54,
+    "overall": "MODERATE"
+  },
+  {
+    "timestamp": "2026-08-23T23:49:39.732704",
+    "location": "Kangra",
+    "flash_flood": 29,
+    "landslide": 33,
+    "extreme_rainfall": 30,
+    "overall": "LOW"
+  },
+  {
+    "timestamp": "2026-08-23T23:49:40.114829",
+    "location": "Kangra",
+    "flash_flood": 29,
+    "landslide": 33,
+    "extreme_rainfall": 30,
+    "overall": "LOW"
+  },
+  {
+    "timestamp": "2026-08-23T23:49:40.824151",
+    "location": "Kangra",
+    "flash_flood": 29,
+    "landslide": 33,
+    "extreme_rainfall": 30,
+    "overall": "LOW"
+  },
+  {
+    "timestamp": "2026-08-23T23:49:40.824688",
+    "location": "Dharamshala",
+    "flash_flood": 47,
+    "landslide": 46,
+    "extreme_rainfall": 54,
+    "overall": "MODERATE"
+  },
+  {
+    "timestamp": "2026-08-23T23:49:43.789318",
+    "location": "Dharamshala",
+    "flash_flood": 47,
+    "landslide": 46,
+    "extreme_rainfall": 54,
+    "overall": "MODERATE"
+  },
+  {
+    "timestamp": "2026-08-23T23:49:44.587800",
+    "location": "Mandi",
+    "flash_flood": 36,
+    "landslide": 37,
+    "extreme_rainfall": 37,
+    "overall": "LOW"
+  },
+  {
+    "timestamp": "2026-08-23T23:49:47.573754",
+    "location": "Kangra",
+    "flash_flood": 29,
+    "landslide": 33,
+    "extreme_rainfall": 30,
+    "overall": "LOW"
+  },
+  {
+    "timestamp": "2026-08-23T23:49:48.892149",
+    "location": "Mandi",
+    "flash_flood": 36,
+    "landslide": 37,
+    "extreme_rainfall": 37,
+    "overall": "LOW"
+  },
+  {
+    "timestamp": "2026-08-23T23:49:50.321174",
+    "location": "Dharamshala",
+    "flash_flood": 47,
+    "landslide": 46,
+    "extreme_rainfall": 54,
+    "overall": "MODERATE"
+  },
+  {
+    "timestamp": "2026-08-23T23:49:51.289744",
+    "location": "Mandi",
+    "flash_flood": 36,
+    "landslide": 37,
+    "extreme_rainfall": 37,
+    "overall": "LOW"
+  },
+  {
+    "timestamp": "2026-08-23T23:49:51.593910",
+    "location": "Mandi",
+    "flash_flood": 36,
+    "landslide": 37,
+    "extreme_rainfall": 37,
+    "overall": "LOW"
+  },
+  {
+    "timestamp": "2026-08-23T23:49:55.492862",
+    "location": "Kangra",
+    "flash_flood": 29,
+    "landslide": 33,
+    "extreme_rainfall": 30,
+    "overall": "LOW"
+  },
+  {
+    "timestamp": "2026-08-23T23:49:59.213143",
+    "location": "Mandi",
+    "flash_flood": 36,
+    "landslide": 37,
+    "extreme_rainfall": 37,
+    "overall": "LOW"
+  },
+  {
+    "timestamp": "2026-08-23T23:54:27.420845",
+    "location": "Dharamshala",
+    "flash_flood": 47,
+    "landslide": 46,
+    "extreme_rainfall": 54,
+    "overall": "MODERATE"
+  },
+  {
+    "timestamp": "2026-08-23T23:54:28.680454",
+    "location": "Dharamshala",
+    "flash_flood": 47,
+    "landslide": 46,
+    "extreme_rainfall": 54,
+    "overall": "MODERATE"
+  },
+  {
+    "timestamp": "2026-08-23T23:54:33.524728",
+    "location": "Dharamshala",
+    "flash_flood": 47,
+    "landslide": 46,
+    "extreme_rainfall": 54,
+    "overall": "MODERATE"
+  },
+  {
+    "timestamp": "2026-08-23T23:54:39.509325",
+    "location": "Kangra",
+    "flash_flood": 29,
+    "landslide": 33,
+    "extreme_rainfall": 30,
+    "overall": "LOW"
+  },
+  {
+    "timestamp": "2026-08-23T23:54:40.293486",
+    "location": "Kangra",
+    "flash_flood": 29,
+    "landslide": 33,
+    "extreme_rainfall": 30,
+    "overall": "LOW"
+  },
+  {
+    "timestamp": "2026-08-23T23:54:40.505149",
+    "location": "Dharamshala",
+    "flash_flood": 47,
+    "landslide": 46,
+    "extreme_rainfall": 54,
+    "overall": "MODERATE"
+  },
+  {
+    "timestamp": "2026-08-23T23:54:41.386295",
+    "location": "Kangra",
+    "flash_flood": 29,
+    "landslide": 33,
+    "extreme_rainfall": 30,
+    "overall": "LOW"
+  },
+  {
+    "timestamp": "2026-08-23T23:54:43.909858",
+    "location": "Mandi",
+    "flash_flood": 36,
+    "landslide": 37,
+    "extreme_rainfall": 37,
+    "overall": "LOW"
+  },
+  {
+    "timestamp": "2026-08-23T23:54:44.858669",
+    "location": "Mandi",
+    "flash_flood": 36,
+    "landslide": 37,
+    "extreme_rainfall": 37,
+    "overall": "LOW"
+  },
+  {
+    "timestamp": "2026-08-23T23:54:46.947491",
+    "location": "Mandi",
+    "flash_flood": 36,
+    "landslide": 37,
+    "extreme_rainfall": 37,
+    "overall": "LOW"
+  },
+  {
+    "timestamp": "2026-08-23T23:55:00.989434",
+    "location": "Dharamshala",
+    "flash_flood": 47,
+    "landslide": 46,
+    "extreme_rainfall": 54,
+    "overall": "MODERATE"
+  },
+  {
+    "timestamp": "2026-08-23T23:55:03.106153",
+    "location": "Dharamshala",
+    "flash_flood": 47,
+    "landslide": 46,
+    "extreme_rainfall": 54,
+    "overall": "MODERATE"
+  },
+  {
+    "timestamp": "2026-08-23T23:55:04.080353",
+    "location": "Dharamshala",
+    "flash_flood": 47,
+    "landslide": 46,
+    "extreme_rainfall": 54,
+    "overall": "MODERATE"
+  },
+  {
+    "timestamp": "2026-08-23T23:55:06.073250",
+    "location": "Dharamshala",
+    "flash_flood": 47,
+    "landslide": 46,
+    "extreme_rainfall": 54,
+    "overall": "MODERATE"
+  },
+  {
+    "timestamp": "2026-08-23T23:55:11.438164",
+    "location": "Dharamshala",
+    "flash_flood": 47,
+    "landslide": 46,
+    "extreme_rainfall": 54,
+    "overall": "MODERATE"
+  },
+  {
+    "timestamp": "2026-08-23T23:55:11.625029",
+    "location": "Kangra",
+    "flash_flood": 29,
+    "landslide": 33,
+    "extreme_rainfall": 30,
+    "overall": "LOW"
+  },
+  {
+    "timestamp": "2026-08-23T23:55:14.413093",
+    "location": "Dharamshala",
+    "flash_flood": 47,
+    "landslide": 46,
+    "extreme_rainfall": 54,
+    "overall": "MODERATE"
+  },
+  {
+    "timestamp": "2026-08-23T23:55:16.137584",
+    "location": "Kangra",
+    "flash_flood": 29,
+    "landslide": 33,
+    "extreme_rainfall": 30,
+    "overall": "LOW"
+  },
+  {
+    "timestamp": "2026-08-23T23:55:17.180794",
+    "location": "Kangra",
+    "flash_flood": 29,
+    "landslide": 33,
+    "extreme_rainfall": 30,
+    "overall": "LOW"
+  },
+  {
+    "timestamp": "2026-08-23T23:55:17.998837",
+    "location": "Mandi",
+    "flash_flood": 36,
+    "landslide": 37,
+    "extreme_rainfall": 37,
+    "overall": "LOW"
+  },
+  {
+    "timestamp": "2026-08-23T23:55:19.421668",
+    "location": "Kangra",
+    "flash_flood": 29,
+    "landslide": 33,
+    "extreme_rainfall": 30,
+    "overall": "LOW"
+  },
+  {
+    "timestamp": "2026-08-24T00:05:12.515864",
+    "location": "Dharamshala",
+    "flash_flood": 47,
+    "landslide": 46,
+    "extreme_rainfall": 54,
+    "overall": "MODERATE"
+  },
+  {
+    "timestamp": "2026-08-24T00:05:13.175194",
+    "location": "Dharamshala",
+    "flash_flood": 47,
+    "landslide": 46,
+    "extreme_rainfall": 54,
+    "overall": "MODERATE"
+  },
+  {
+    "timestamp": "2026-08-24T00:05:13.356202",
+    "location": "Dharamshala",
+    "flash_flood": 47,
+    "landslide": 46,
+    "extreme_rainfall": 54,
+    "overall": "MODERATE"
+  },
+  {
+    "timestamp": "2026-08-24T00:05:15.451031",
+    "location": "Dharamshala",
+    "flash_flood": 47,
+    "landslide": 46,
+    "extreme_rainfall": 54,
+    "overall": "MODERATE"
+  },
+  {
+    "timestamp": "2026-08-24T00:05:15.602939",
+    "location": "Dharamshala",
+    "flash_flood": 47,
+    "landslide": 46,
+    "extreme_rainfall": 54,
+    "overall": "MODERATE"
+  },
+  {
+    "timestamp": "2026-08-24T00:05:17.800925",
+    "location": "Kangra",
+    "flash_flood": 29,
+    "landslide": 33,
+    "extreme_rainfall": 30,
+    "overall": "LOW"
+  },
+  {
+    "timestamp": "2026-08-24T00:05:19.016008",
+    "location": "Kangra",
+    "flash_flood": 29,
+    "landslide": 33,
+    "extreme_rainfall": 30,
+    "overall": "LOW"
+  },
+  {
+    "timestamp": "2026-08-24T00:05:21.806577",
+    "location": "Dharamshala",
+    "flash_flood": 47,
+    "landslide": 46,
+    "extreme_rainfall": 54,
+    "overall": "MODERATE"
+  },
+  {
+    "timestamp": "2026-08-24T00:05:22.429464",
+    "location": "Mandi",
+    "flash_flood": 36,
+    "landslide": 37,
+    "extreme_rainfall": 37,
+    "overall": "LOW"
+  },
+  {
+    "timestamp": "2026-08-24T00:05:24.237975",
+    "location": "Mandi",
+    "flash_flood": 36,
+    "landslide": 37,
+    "extreme_rainfall": 37,
+    "overall": "LOW"
+  },
+  {
+    "timestamp": "2026-08-24T00:05:24.714052",
+    "location": "Kangra",
+    "flash_flood": 29,
+    "landslide": 33,
+    "extreme_rainfall": 30,
+    "overall": "LOW"
+  },
+  {
+    "timestamp": "2026-08-24T00:05:26.447402",
+    "location": "Kangra",
+    "flash_flood": 29,
+    "landslide": 33,
+    "extreme_rainfall": 30,
+    "overall": "LOW"
+  },
+  {
+    "timestamp": "2026-08-24T00:05:29.791236",
+    "location": "Mandi",
+    "flash_flood": 36,
+    "landslide": 37,
+    "extreme_rainfall": 37,
+    "overall": "LOW"
+  },
+  {
+    "timestamp": "2026-08-24T00:05:30.875050",
+    "location": "Mandi",
+    "flash_flood": 36,
+    "landslide": 37,
+    "extreme_rainfall": 37,
+    "overall": "LOW"
+  },
+  {
+    "timestamp": "2026-08-24T00:14:19.110221",
+    "location": "Dharamshala",
+    "flash_flood": 48,
+    "landslide": 48,
+    "extreme_rainfall": 55,
+    "overall": "MODERATE"
+  },
+  {
+    "timestamp": "2026-08-24T00:14:19.357267",
+    "location": "Dharamshala",
+    "flash_flood": 48,
+    "landslide": 48,
+    "extreme_rainfall": 55,
+    "overall": "MODERATE"
+  },
+  {
+    "timestamp": "2026-08-24T00:14:20.457466",
+    "location": "Dharamshala",
+    "flash_flood": 48,
+    "landslide": 48,
+    "extreme_rainfall": 55,
+    "overall": "MODERATE"
+  },
+  {
+    "timestamp": "2026-08-24T00:14:21.459576",
+    "location": "Dharamshala",
+    "flash_flood": 48,
+    "landslide": 48,
+    "extreme_rainfall": 55,
+    "overall": "MODERATE"
+  },
+  {
+    "timestamp": "2026-08-24T00:14:22.095991",
+    "location": "Dharamshala",
+    "flash_flood": 48,
+    "landslide": 48,
+    "extreme_rainfall": 55,
+    "overall": "MODERATE"
+  },
+  {
+    "timestamp": "2026-08-24T00:14:24.288512",
+    "location": "Kangra",
+    "flash_flood": 30,
+    "landslide": 33,
+    "extreme_rainfall": 30,
+    "overall": "LOW"
+  },
+  {
+    "timestamp": "2026-08-24T00:14:25.832959",
+    "location": "Dharamshala",
+    "flash_flood": 48,
+    "landslide": 48,
+    "extreme_rainfall": 55,
+    "overall": "MODERATE"
+  },
+  {
+    "timestamp": "2026-08-24T00:14:26.747171",
+    "location": "Kangra",
+    "flash_flood": 30,
+    "landslide": 33,
+    "extreme_rainfall": 30,
+    "overall": "LOW"
+  },
+  {
+    "timestamp": "2026-08-24T00:14:26.751964",
+    "location": "Kangra",
+    "flash_flood": 30,
+    "landslide": 33,
+    "extreme_rainfall": 30,
+    "overall": "LOW"
+  },
+  {
+    "timestamp": "2026-08-24T00:14:28.485508",
+    "location": "Kangra",
+    "flash_flood": 30,
+    "landslide": 33,
+    "extreme_rainfall": 30,
+    "overall": "LOW"
+  },
+  {
+    "timestamp": "2026-08-24T00:14:29.167635",
+    "location": "Mandi",
+    "flash_flood": 37,
+    "landslide": 38,
+    "extreme_rainfall": 37,
+    "overall": "LOW"
+  },
+  {
+    "timestamp": "2026-08-24T00:14:29.278410",
+    "location": "Mandi",
+    "flash_flood": 37,
+    "landslide": 38,
+    "extreme_rainfall": 37,
+    "overall": "LOW"
+  },
+  {
+    "timestamp": "2026-08-24T00:14:32.288793",
+    "location": "Mandi",
+    "flash_flood": 37,
+    "landslide": 38,
+    "extreme_rainfall": 37,
+    "overall": "LOW"
+  },
+  {
+    "timestamp": "2026-08-24T00:14:32.741282",
+    "location": "Mandi",
+    "flash_flood": 37,
+    "landslide": 38,
+    "extreme_rainfall": 37,
+    "overall": "LOW"
+  },
+  {
+    "timestamp": "2026-08-24T00:19:16.514522",
+    "location": "Dharamshala",
+    "flash_flood": 48,
+    "landslide": 47,
+    "extreme_rainfall": 55,
+    "overall": "MODERATE"
+  },
+  {
+    "timestamp": "2026-08-24T00:19:17.505458",
+    "location": "Dharamshala",
+    "flash_flood": 48,
+    "landslide": 47,
+    "extreme_rainfall": 55,
+    "overall": "MODERATE"
+  },
+  {
+    "timestamp": "2026-08-24T00:19:20.802524",
+    "location": "Kangra",
+    "flash_flood": 30,
+    "landslide": 33,
+    "extreme_rainfall": 30,
+    "overall": "LOW"
+  },
+  {
+    "timestamp": "2026-08-24T00:19:20.884817",
+    "location": "Dharamshala",
+    "flash_flood": 48,
+    "landslide": 47,
+    "extreme_rainfall": 55,
+    "overall": "MODERATE"
+  },
+  {
+    "timestamp": "2026-08-24T00:19:21.164576",
+    "location": "Dharamshala",
+    "flash_flood": 48,
+    "landslide": 47,
+    "extreme_rainfall": 55,
+    "overall": "MODERATE"
+  },
+  {
+    "timestamp": "2026-08-24T00:19:22.777163",
+    "location": "Kangra",
+    "flash_flood": 30,
+    "landslide": 33,
+    "extreme_rainfall": 30,
+    "overall": "LOW"
+  },
+  {
+    "timestamp": "2026-08-24T00:19:24.048715",
+    "location": "Kangra",
+    "flash_flood": 30,
+    "landslide": 33,
+    "extreme_rainfall": 30,
+    "overall": "LOW"
+  },
+  {
+    "timestamp": "2026-08-24T00:19:26.053202",
+    "location": "Kangra",
+    "flash_flood": 30,
+    "landslide": 33,
+    "extreme_rainfall": 30,
+    "overall": "LOW"
+  },
+  {
+    "timestamp": "2026-08-24T00:19:28.333573",
+    "location": "Mandi",
+    "flash_flood": 37,
+    "landslide": 38,
+    "extreme_rainfall": 37,
+    "overall": "LOW"
+  },
+  {
+    "timestamp": "2026-08-24T00:19:29.475884",
+    "location": "Mandi",
+    "flash_flood": 37,
+    "landslide": 38,
+    "extreme_rainfall": 37,
+    "overall": "LOW"
+  },
+  {
+    "timestamp": "2026-08-24T00:19:31.979135",
+    "location": "Mandi",
+    "flash_flood": 37,
+    "landslide": 38,
+    "extreme_rainfall": 37,
+    "overall": "LOW"
+  },
+  {
+    "timestamp": "2026-08-24T08:18:50.686359",
+    "location": "Dharamshala",
+    "flash_flood": 36,
+    "landslide": 38,
+    "extreme_rainfall": 38,
+    "overall": "LOW"
+  },
+  {
+    "timestamp": "2026-08-24T08:18:52.909176",
+    "location": "Dharamshala",
+    "flash_flood": 36,
+    "landslide": 38,
+    "extreme_rainfall": 38,
+    "overall": "LOW"
+  },
+  {
+    "timestamp": "2026-08-24T08:18:54.803837",
+    "location": "Dharamshala",
+    "flash_flood": 36,
+    "landslide": 38,
+    "extreme_rainfall": 38,
+    "overall": "LOW"
+  },
+  {
+    "timestamp": "2026-08-24T08:18:58.792397",
+    "location": "Dharamshala",
+    "flash_flood": 36,
+    "landslide": 38,
+    "extreme_rainfall": 38,
+    "overall": "LOW"
+  },
+  {
+    "timestamp": "2026-08-24T08:19:19.341032",
+    "location": "Kangra",
+    "flash_flood": 25,
+    "landslide": 33,
+    "extreme_rainfall": 23,
+    "overall": "LOW"
+  },
+  {
+    "timestamp": "2026-08-24T08:19:19.561462",
+    "location": "Dharamshala",
+    "flash_flood": 36,
+    "landslide": 38,
+    "extreme_rainfall": 38,
+    "overall": "LOW"
+  },
+  {
+    "timestamp": "2026-08-24T08:19:23.540338",
+    "location": "Dharamshala",
+    "flash_flood": 36,
+    "landslide": 38,
+    "extreme_rainfall": 38,
+    "overall": "LOW"
+  },
+  {
+    "timestamp": "2026-08-24T08:19:37.597501",
+    "location": "Kangra",
+    "flash_flood": 25,
+    "landslide": 33,
+    "extreme_rainfall": 23,
+    "overall": "LOW"
+  },
+  {
+    "timestamp": "2026-08-24T08:19:50.485312",
+    "location": "Mandi",
+    "flash_flood": 34,
+    "landslide": 31,
+    "extreme_rainfall": 37,
+    "overall": "LOW"
+  },
+  {
+    "timestamp": "2026-08-24T08:19:51.346282",
+    "location": "Kangra",
+    "flash_flood": 25,
+    "landslide": 33,
+    "extreme_rainfall": 23,
+    "overall": "LOW"
+  },
+  {
+    "timestamp": "2026-08-24T08:19:56.523885",
+    "location": "Kangra",
+    "flash_flood": 25,
+    "landslide": 33,
+    "extreme_rainfall": 23,
+    "overall": "LOW"
+  },
+  {
+    "timestamp": "2026-08-24T08:20:11.412783",
+    "location": "Mandi",
+    "flash_flood": 34,
+    "landslide": 31,
+    "extreme_rainfall": 37,
+    "overall": "LOW"
+  },
+  {
+    "timestamp": "2026-08-24T08:20:14.445121",
+    "location": "Mandi",
+    "flash_flood": 34,
+    "landslide": 31,
+    "extreme_rainfall": 37,
+    "overall": "LOW"
+  },
+  {
+    "timestamp": "2026-08-24T08:20:21.347949",
+    "location": "Mandi",
+    "flash_flood": 34,
+    "landslide": 31,
+    "extreme_rainfall": 37,
+    "overall": "LOW"
+  },
+  {
+    "timestamp": "2026-08-24T08:23:36.167551",
+    "location": "Dharamshala",
+    "flash_flood": 36,
+    "landslide": 38,
+    "extreme_rainfall": 38,
+    "overall": "LOW"
+  },
+  {
+    "timestamp": "2026-08-24T08:23:46.487057",
+    "location": "Dharamshala",
+    "flash_flood": 36,
+    "landslide": 38,
+    "extreme_rainfall": 38,
+    "overall": "LOW"
+  },
+  {
+    "timestamp": "2026-08-24T08:23:47.074917",
+    "location": "Dharamshala",
+    "flash_flood": 36,
+    "landslide": 38,
+    "extreme_rainfall": 38,
+    "overall": "LOW"
+  },
+  {
+    "timestamp": "2026-08-24T08:23:53.461488",
+    "location": "Kangra",
+    "flash_flood": 25,
+    "landslide": 33,
+    "extreme_rainfall": 23,
+    "overall": "LOW"
+  },
+  {
+    "timestamp": "2026-08-24T08:23:58.280463",
+    "location": "Mandi",
+    "flash_flood": 34,
+    "landslide": 31,
+    "extreme_rainfall": 37,
+    "overall": "LOW"
+  },
+  {
+    "timestamp": "2026-08-24T08:24:04.458403",
+    "location": "Kangra",
+    "flash_flood": 25,
+    "landslide": 33,
+    "extreme_rainfall": 23,
+    "overall": "LOW"
+  },
+  {
+    "timestamp": "2026-08-24T08:24:13.506515",
+    "location": "Mandi",
+    "flash_flood": 34,
+    "landslide": 31,
+    "extreme_rainfall": 37,
+    "overall": "LOW"
+  },
+  {
+    "timestamp": "2026-08-24T08:25:35.506630",
+    "location": "Dharamshala",
+    "flash_flood": 36,
+    "landslide": 38,
+    "extreme_rainfall": 38,
+    "overall": "LOW"
+  },
+  {
+    "timestamp": "2026-08-24T08:25:40.584634",
+    "location": "Dharamshala",
+    "flash_flood": 36,
+    "landslide": 38,
+    "extreme_rainfall": 38,
+    "overall": "LOW"
+  },
+  {
+    "timestamp": "2026-08-24T08:25:42.111007",
+    "location": "Dharamshala",
+    "flash_flood": 36,
+    "landslide": 38,
+    "extreme_rainfall": 38,
+    "overall": "LOW"
+  },
+  {
+    "timestamp": "2026-08-24T08:25:42.294762",
+    "location": "Dharamshala",
+    "flash_flood": 36,
+    "landslide": 38,
+    "extreme_rainfall": 38,
+    "overall": "LOW"
+  },
+  {
+    "timestamp": "2026-08-24T08:25:42.643413",
+    "location": "Dharamshala",
+    "flash_flood": 36,
+    "landslide": 38,
+    "extreme_rainfall": 38,
+    "overall": "LOW"
+  },
+  {
+    "timestamp": "2026-08-24T08:25:46.068750",
+    "location": "Dharamshala",
+    "flash_flood": 36,
+    "landslide": 38,
+    "extreme_rainfall": 38,
+    "overall": "LOW"
+  },
+  {
+    "timestamp": "2026-08-24T08:25:48.531399",
+    "location": "Dharamshala",
+    "flash_flood": 36,
+    "landslide": 38,
+    "extreme_rainfall": 38,
+    "overall": "LOW"
+  },
+  {
+    "timestamp": "2026-08-24T08:25:50.537523",
+    "location": "Dharamshala",
+    "flash_flood": 36,
+    "landslide": 38,
+    "extreme_rainfall": 38,
+    "overall": "LOW"
+  },
+  {
+    "timestamp": "2026-08-24T08:25:50.613212",
+    "location": "Dharamshala",
+    "flash_flood": 36,
+    "landslide": 38,
+    "extreme_rainfall": 38,
+    "overall": "LOW"
+  },
+  {
+    "timestamp": "2026-08-24T08:25:51.041632",
+    "location": "Dharamshala",
+    "flash_flood": 36,
+    "landslide": 38,
+    "extreme_rainfall": 38,
+    "overall": "LOW"
+  },
+  {
+    "timestamp": "2026-08-24T08:25:53.645274",
+    "location": "Dharamshala",
+    "flash_flood": 36,
+    "landslide": 38,
+    "extreme_rainfall": 38,
+    "overall": "LOW"
+  },
+  {
+    "timestamp": "2026-08-24T08:25:55.873262",
+    "location": "Dharamshala",
+    "flash_flood": 36,
+    "landslide": 38,
+    "extreme_rainfall": 38,
+    "overall": "LOW"
+  },
+  {
+    "timestamp": "2026-08-24T08:26:03.324521",
+    "location": "Dharamshala",
+    "flash_flood": 36,
+    "landslide": 38,
+    "extreme_rainfall": 38,
+    "overall": "LOW"
+  },
+  {
+    "timestamp": "2026-08-24T08:26:03.865206",
+    "location": "Dharamshala",
+    "flash_flood": 36,
+    "landslide": 38,
+    "extreme_rainfall": 38,
+    "overall": "LOW"
+  },
+  {
+    "timestamp": "2026-08-24T08:26:04.878885",
+    "location": "Dharamshala",
+    "flash_flood": 36,
+    "landslide": 38,
+    "extreme_rainfall": 38,
+    "overall": "LOW"
+  },
+  {
+    "timestamp": "2026-08-24T08:26:05.211457",
+    "location": "Dharamshala",
+    "flash_flood": 36,
+    "landslide": 38,
+    "extreme_rainfall": 38,
+    "overall": "LOW"
+  },
+  {
+    "timestamp": "2026-08-24T08:26:05.271154",
+    "location": "Dharamshala",
+    "flash_flood": 36,
+    "landslide": 38,
+    "extreme_rainfall": 38,
+    "overall": "LOW"
+  },
+  {
+    "timestamp": "2026-08-24T08:26:05.382096",
+    "location": "Dharamshala",
+    "flash_flood": 36,
+    "landslide": 38,
+    "extreme_rainfall": 38,
+    "overall": "LOW"
+  },
+  {
+    "timestamp": "2026-08-24T08:26:05.453501",
+    "location": "Kangra",
+    "flash_flood": 25,
+    "landslide": 33,
+    "extreme_rainfall": 23,
+    "overall": "LOW"
+  },
+  {
+    "timestamp": "2026-08-24T08:26:05.906504",
+    "location": "Dharamshala",
+    "flash_flood": 36,
+    "landslide": 38,
+    "extreme_rainfall": 38,
+    "overall": "LOW"
+  },
+  {
+    "timestamp": "2026-08-24T08:26:06.654187",
+    "location": "Dharamshala",
+    "flash_flood": 36,
+    "landslide": 38,
+    "extreme_rainfall": 38,
+    "overall": "LOW"
+  },
+  {
+    "timestamp": "2026-08-24T08:26:09.910757",
+    "location": "Dharamshala",
+    "flash_flood": 36,
+    "landslide": 38,
+    "extreme_rainfall": 38,
+    "overall": "LOW"
+  },
+  {
+    "timestamp": "2026-08-24T08:26:09.993875",
+    "location": "Dharamshala",
+    "flash_flood": 36,
+    "landslide": 38,
+    "extreme_rainfall": 38,
+    "overall": "LOW"
+  },
+  {
+    "timestamp": "2026-08-24T08:26:10.412729",
+    "location": "Dharamshala",
+    "flash_flood": 36,
+    "landslide": 38,
+    "extreme_rainfall": 38,
+    "overall": "LOW"
+  },
+  {
+    "timestamp": "2026-08-24T08:26:13.682171",
+    "location": "Kangra",
+    "flash_flood": 25,
+    "landslide": 33,
+    "extreme_rainfall": 23,
+    "overall": "LOW"
+  },
+  {
+    "timestamp": "2026-08-24T08:26:17.758346",
+    "location": "Kangra",
+    "flash_flood": 25,
+    "landslide": 33,
+    "extreme_rainfall": 23,
+    "overall": "LOW"
+  },
+  {
+    "timestamp": "2026-08-24T08:26:20.050327",
+    "location": "Dharamshala",
+    "flash_flood": 36,
+    "landslide": 38,
+    "extreme_rainfall": 38,
+    "overall": "LOW"
+  },
+  {
+    "timestamp": "2026-08-24T08:26:22.888309",
+    "location": "Kangra",
+    "flash_flood": 25,
+    "landslide": 33,
+    "extreme_rainfall": 23,
+    "overall": "LOW"
+  },
+  {
+    "timestamp": "2026-08-24T08:26:25.821893",
+    "location": "Kangra",
+    "flash_flood": 25,
+    "landslide": 33,
+    "extreme_rainfall": 23,
+    "overall": "LOW"
+  },
+  {
+    "timestamp": "2026-08-24T08:26:28.013976",
+    "location": "Kangra",
+    "flash_flood": 25,
+    "landslide": 33,
+    "extreme_rainfall": 23,
+    "overall": "LOW"
+  },
+  {
+    "timestamp": "2026-08-24T08:26:28.250006",
+    "location": "Mandi",
+    "flash_flood": 34,
+    "landslide": 31,
+    "extreme_rainfall": 37,
+    "overall": "LOW"
+  },
+  {
+    "timestamp": "2026-08-24T08:26:28.413694",
+    "location": "Kangra",
+    "flash_flood": 25,
+    "landslide": 33,
+    "extreme_rainfall": 23,
+    "overall": "LOW"
+  },
+  {
+    "timestamp": "2026-08-24T08:26:28.594469",
+    "location": "Kangra",
+    "flash_flood": 25,
+    "landslide": 33,
+    "extreme_rainfall": 23,
+    "overall": "LOW"
+  },
+  {
+    "timestamp": "2026-08-24T08:26:29.437166",
+    "location": "Kangra",
+    "flash_flood": 25,
+    "landslide": 33,
+    "extreme_rainfall": 23,
+    "overall": "LOW"
+  },
+  {
+    "timestamp": "2026-08-24T08:26:29.824413",
+    "location": "Kangra",
+    "flash_flood": 25,
+    "landslide": 33,
+    "extreme_rainfall": 23,
+    "overall": "LOW"
+  },
+  {
+    "timestamp": "2026-08-24T08:26:30.716577",
+    "location": "Kangra",
+    "flash_flood": 25,
+    "landslide": 33,
+    "extreme_rainfall": 23,
+    "overall": "LOW"
+  },
+  {
+    "timestamp": "2026-08-24T08:27:18.961951",
+    "location": "Mandi",
+    "flash_flood": 34,
+    "landslide": 31,
+    "extreme_rainfall": 37,
+    "overall": "LOW"
+  },
+  {
+    "timestamp": "2026-08-24T08:27:31.808492",
+    "location": "Mandi",
+    "flash_flood": 34,
+    "landslide": 31,
+    "extreme_rainfall": 37,
+    "overall": "LOW"
+  },
+  {
+    "timestamp": "2026-08-24T08:27:44.076012",
+    "location": "Mandi",
+    "flash_flood": 34,
+    "landslide": 31,
+    "extreme_rainfall": 37,
+    "overall": "LOW"
+  },
+  {
+    "timestamp": "2026-08-24T08:27:46.476080",
+    "location": "Mandi",
+    "flash_flood": 34,
+    "landslide": 31,
+    "extreme_rainfall": 37,
+    "overall": "LOW"
+  },
+  {
+    "timestamp": "2026-08-24T08:27:47.117597",
+    "location": "Mandi",
+    "flash_flood": 33,
+    "landslide": 31,
+    "extreme_rainfall": 35,
+    "overall": "LOW"
+  },
+  {
+    "timestamp": "2026-08-24T08:27:49.722907",
+    "location": "Mandi",
+    "flash_flood": 33,
+    "landslide": 31,
+    "extreme_rainfall": 35,
+    "overall": "LOW"
+  },
+  {
+    "timestamp": "2026-08-24T08:27:49.897491",
+    "location": "Kangra",
+    "flash_flood": 25,
+    "landslide": 33,
+    "extreme_rainfall": 23,
+    "overall": "LOW"
+  },
+  {
+    "timestamp": "2026-08-24T08:27:49.996039",
+    "location": "Mandi",
+    "flash_flood": 33,
+    "landslide": 31,
+    "extreme_rainfall": 35,
+    "overall": "LOW"
+  },
+  {
+    "timestamp": "2026-08-24T08:27:50.180243",
+    "location": "Mandi",
+    "flash_flood": 33,
+    "landslide": 31,
+    "extreme_rainfall": 35,
+    "overall": "LOW"
+  },
+  {
+    "timestamp": "2026-08-24T08:27:50.217196",
+    "location": "Kangra",
+    "flash_flood": 27,
+    "landslide": 35,
+    "extreme_rainfall": 25,
+    "overall": "LOW"
+  },
+  {
+    "timestamp": "2026-08-24T08:27:50.420417",
+    "location": "Dharamshala",
+    "flash_flood": 39,
+    "landslide": 41,
+    "extreme_rainfall": 42,
+    "overall": "MODERATE"
+  },
+  {
+    "timestamp": "2026-08-24T08:27:50.495421",
+    "location": "Mandi",
+    "flash_flood": 33,
+    "landslide": 31,
+    "extreme_rainfall": 35,
+    "overall": "LOW"
+  },
+  {
+    "timestamp": "2026-08-24T08:27:50.596388",
+    "location": "Mandi",
+    "flash_flood": 33,
+    "landslide": 31,
+    "extreme_rainfall": 35,
+    "overall": "LOW"
+  },
+  {
+    "timestamp": "2026-08-24T08:27:50.836608",
+    "location": "Kangra",
+    "flash_flood": 27,
+    "landslide": 35,
+    "extreme_rainfall": 25,
+    "overall": "LOW"
+  },
+  {
+    "timestamp": "2026-08-24T08:28:02.778051",
+    "location": "Mandi",
+    "flash_flood": 34,
+    "landslide": 31,
+    "extreme_rainfall": 37,
+    "overall": "LOW"
+  },
+  {
+    "timestamp": "2026-08-24T08:28:03.859955",
+    "location": "Mandi",
+    "flash_flood": 34,
+    "landslide": 31,
+    "extreme_rainfall": 37,
+    "overall": "LOW"
+  },
+  {
+    "timestamp": "2026-08-24T08:28:08.486496",
+    "location": "Kangra",
+    "flash_flood": 25,
+    "landslide": 33,
+    "extreme_rainfall": 23,
+    "overall": "LOW"
+  },
+  {
+    "timestamp": "2026-08-24T08:28:10.487328",
+    "location": "Mandi",
+    "flash_flood": 34,
+    "landslide": 31,
+    "extreme_rainfall": 37,
+    "overall": "LOW"
+  },
+  {
+    "timestamp": "2026-08-24T08:28:12.398767",
+    "location": "Dharamshala",
+    "flash_flood": 36,
+    "landslide": 38,
+    "extreme_rainfall": 38,
+    "overall": "LOW"
+  },
+  {
+    "timestamp": "2026-08-24T08:28:15.729137",
+    "location": "Dharamshala",
+    "flash_flood": 36,
+    "landslide": 38,
+    "extreme_rainfall": 38,
+    "overall": "LOW"
+  },
+  {
+    "timestamp": "2026-08-24T08:28:20.002395",
+    "location": "Dharamshala",
+    "flash_flood": 36,
+    "landslide": 38,
+    "extreme_rainfall": 38,
+    "overall": "LOW"
+  },
+  {
+    "timestamp": "2026-08-24T08:28:21.004812",
+    "location": "Dharamshala",
+    "flash_flood": 36,
+    "landslide": 38,
+    "extreme_rainfall": 38,
+    "overall": "LOW"
+  },
+  {
+    "timestamp": "2026-08-24T08:28:27.598431",
+    "location": "Mandi",
+    "flash_flood": 34,
+    "landslide": 31,
+    "extreme_rainfall": 37,
+    "overall": "LOW"
+  },
+  {
+    "timestamp": "2026-08-24T08:28:29.228548",
+    "location": "Dharamshala",
+    "flash_flood": 36,
+    "landslide": 38,
+    "extreme_rainfall": 38,
+    "overall": "LOW"
+  },
+  {
+    "timestamp": "2026-08-24T08:28:30.050004",
+    "location": "Kangra",
+    "flash_flood": 25,
+    "landslide": 33,
+    "extreme_rainfall": 23,
+    "overall": "LOW"
+  },
+  {
+    "timestamp": "2026-08-24T08:28:41.713839",
+    "location": "Kangra",
+    "flash_flood": 25,
+    "landslide": 33,
+    "extreme_rainfall": 23,
+    "overall": "LOW"
+  },
+  {
+    "timestamp": "2026-08-24T08:28:42.380635",
+    "location": "Dharamshala",
+    "flash_flood": 36,
+    "landslide": 38,
+    "extreme_rainfall": 38,
+    "overall": "LOW"
+  },
+  {
+    "timestamp": "2026-08-24T08:28:46.104892",
+    "location": "Kangra",
+    "flash_flood": 25,
+    "landslide": 33,
+    "extreme_rainfall": 23,
+    "overall": "LOW"
+  },
+  {
+    "timestamp": "2026-08-24T08:28:50.376772",
+    "location": "Mandi",
+    "flash_flood": 34,
+    "landslide": 31,
+    "extreme_rainfall": 37,
+    "overall": "LOW"
+  },
+  {
+    "timestamp": "2026-08-24T08:28:54.858006",
+    "location": "Kangra",
+    "flash_flood": 25,
+    "landslide": 33,
+    "extreme_rainfall": 23,
+    "overall": "LOW"
+  },
+  {
+    "timestamp": "2026-08-24T08:29:05.395867",
+    "location": "Mandi",
+    "flash_flood": 34,
+    "landslide": 31,
+    "extreme_rainfall": 37,
+    "overall": "LOW"
+  },
+  {
+    "timestamp": "2026-08-24T08:29:10.447791",
+    "location": "Mandi",
+    "flash_flood": 34,
+    "landslide": 31,
+    "extreme_rainfall": 37,
+    "overall": "LOW"
+  },
+  {
+    "timestamp": "2026-08-24T08:29:10.831979",
+    "location": "Mandi",
+    "flash_flood": 34,
+    "landslide": 31,
+    "extreme_rainfall": 37,
+    "overall": "LOW"
+  },
+  {
+    "timestamp": "2026-08-24T08:33:47.450435",
+    "location": "Dharamshala",
+    "flash_flood": 36,
+    "landslide": 38,
+    "extreme_rainfall": 38,
+    "overall": "LOW"
+  },
+  {
+    "timestamp": "2026-08-24T08:33:50.973340",
+    "location": "Dharamshala",
+    "flash_flood": 36,
+    "landslide": 38,
+    "extreme_rainfall": 38,
+    "overall": "LOW"
+  },
+  {
+    "timestamp": "2026-08-24T08:33:57.913806",
+    "location": "Dharamshala",
+    "flash_flood": 36,
+    "landslide": 38,
+    "extreme_rainfall": 38,
+    "overall": "LOW"
+  },
+  {
+    "timestamp": "2026-08-24T08:34:41.537921",
+    "location": "Kangra",
+    "flash_flood": 25,
+    "landslide": 33,
+    "extreme_rainfall": 23,
+    "overall": "LOW"
+  },
+  {
+    "timestamp": "2026-08-24T08:34:51.360352",
+    "location": "Kangra",
+    "flash_flood": 25,
+    "landslide": 33,
+    "extreme_rainfall": 23,
+    "overall": "LOW"
+  },
+  {
+    "timestamp": "2026-08-24T08:35:48.856001",
+    "location": "Mandi",
+    "flash_flood": 34,
+    "landslide": 31,
+    "extreme_rainfall": 37,
+    "overall": "LOW"
+  },
+  {
+    "timestamp": "2026-08-24T08:36:09.109786",
+    "location": "Mandi",
+    "flash_flood": 34,
+    "landslide": 31,
+    "extreme_rainfall": 37,
+    "overall": "LOW"
+  },
+  {
+    "timestamp": "2026-08-24T08:38:53.032174",
+    "location": "Dharamshala",
+    "flash_flood": 36,
+    "landslide": 38,
+    "extreme_rainfall": 38,
+    "overall": "LOW"
+  },
+  {
+    "timestamp": "2026-08-24T08:38:53.327522",
+    "location": "Dharamshala",
+    "flash_flood": 36,
+    "landslide": 38,
+    "extreme_rainfall": 38,
+    "overall": "LOW"
+  },
+  {
+    "timestamp": "2026-08-24T08:38:53.538596",
+    "location": "Dharamshala",
+    "flash_flood": 36,
+    "landslide": 38,
+    "extreme_rainfall": 38,
+    "overall": "LOW"
+  },
+  {
+    "timestamp": "2026-08-24T08:39:32.186169",
+    "location": "Kangra",
+    "flash_flood": 25,
+    "landslide": 33,
+    "extreme_rainfall": 23,
+    "overall": "LOW"
+  },
+  {
+    "timestamp": "2026-08-24T08:39:38.478845",
+    "location": "Kangra",
+    "flash_flood": 25,
+    "landslide": 33,
+    "extreme_rainfall": 23,
+    "overall": "LOW"
+  },
+  {
+    "timestamp": "2026-08-24T08:41:51.226899",
+    "location": "Mandi",
+    "flash_flood": 33,
+    "landslide": 30,
+    "extreme_rainfall": 35,
+    "overall": "LOW"
+  },
+  {
+    "timestamp": "2026-08-24T08:41:52.833064",
+    "location": "Mandi",
+    "flash_flood": 33,
+    "landslide": 30,
+    "extreme_rainfall": 35,
+    "overall": "LOW"
+  },
+  {
+    "timestamp": "2026-08-24T09:13:29.643024",
+    "location": "Dharamshala",
+    "flash_flood": 39,
+    "landslide": 41,
+    "extreme_rainfall": 42,
+    "overall": "MODERATE"
+  },
+  {
+    "timestamp": "2026-08-24T09:13:29.649026",
+    "location": "Dharamshala",
+    "flash_flood": 39,
+    "landslide": 41,
+    "extreme_rainfall": 42,
+    "overall": "MODERATE"
+  },
+  {
+    "timestamp": "2026-08-24T09:13:29.680793",
+    "location": "Dharamshala",
+    "flash_flood": 39,
+    "landslide": 41,
+    "extreme_rainfall": 42,
+    "overall": "MODERATE"
+  },
+  {
+    "timestamp": "2026-08-24T09:17:23.174696",
+    "location": "Dharamshala",
+    "flash_flood": 36,
+    "landslide": 38,
+    "extreme_rainfall": 38,
+    "overall": "LOW"
+  },
+  {
+    "timestamp": "2026-08-24T09:17:23.691626",
+    "location": "Dharamshala",
+    "flash_flood": 36,
+    "landslide": 38,
+    "extreme_rainfall": 38,
+    "overall": "LOW"
+  },
+  {
+    "timestamp": "2026-08-24T09:17:24.267074",
+    "location": "Dharamshala",
+    "flash_flood": 36,
+    "landslide": 38,
+    "extreme_rainfall": 38,
+    "overall": "LOW"
+  },
+  {
+    "timestamp": "2026-08-24T09:17:27.364583",
+    "location": "Kangra",
+    "flash_flood": 24,
+    "landslide": 32,
+    "extreme_rainfall": 23,
+    "overall": "LOW"
+  },
+  {
+    "timestamp": "2026-08-24T09:17:28.044956",
+    "location": "Kangra",
+    "flash_flood": 24,
+    "landslide": 32,
+    "extreme_rainfall": 23,
+    "overall": "LOW"
+  },
+  {
+    "timestamp": "2026-08-24T09:17:32.368833",
+    "location": "Mandi",
+    "flash_flood": 33,
+    "landslide": 29,
+    "extreme_rainfall": 37,
+    "overall": "LOW"
+  },
+  {
+    "timestamp": "2026-08-24T09:17:32.820840",
+    "location": "Mandi",
+    "flash_flood": 33,
+    "landslide": 29,
+    "extreme_rainfall": 37,
+    "overall": "LOW"
+  },
+  {
+    "timestamp": "2026-08-24T09:22:29.668502",
+    "location": "Dharamshala",
+    "flash_flood": 36,
+    "landslide": 38,
+    "extreme_rainfall": 38,
+    "overall": "LOW"
+  },
+  {
+    "timestamp": "2026-08-24T09:22:30.159530",
+    "location": "Dharamshala",
+    "flash_flood": 36,
+    "landslide": 38,
+    "extreme_rainfall": 38,
+    "overall": "LOW"
+  },
+  {
+    "timestamp": "2026-08-24T09:22:30.907749",
+    "location": "Dharamshala",
+    "flash_flood": 36,
+    "landslide": 38,
+    "extreme_rainfall": 38,
+    "overall": "LOW"
+  },
+  {
+    "timestamp": "2026-08-24T09:22:36.549180",
+    "location": "Kangra",
+    "flash_flood": 24,
+    "landslide": 32,
+    "extreme_rainfall": 23,
+    "overall": "LOW"
+  },
+  {
+    "timestamp": "2026-08-24T09:22:41.081465",
+    "location": "Kangra",
+    "flash_flood": 24,
+    "landslide": 32,
+    "extreme_rainfall": 23,
+    "overall": "LOW"
+  },
+  {
+    "timestamp": "2026-08-24T09:22:44.266078",
+    "location": "Mandi",
+    "flash_flood": 33,
+    "landslide": 29,
+    "extreme_rainfall": 37,
+    "overall": "LOW"
+  },
+  {
+    "timestamp": "2026-08-24T09:22:55.174432",
+    "location": "Mandi",
+    "flash_flood": 33,
+    "landslide": 29,
+    "extreme_rainfall": 37,
+    "overall": "LOW"
+  },
+  {
+    "timestamp": "2026-08-24T09:27:25.321202",
+    "location": "Dharamshala",
+    "flash_flood": 36,
+    "landslide": 38,
+    "extreme_rainfall": 38,
+    "overall": "LOW"
+  },
+  {
+    "timestamp": "2026-08-24T09:27:26.731599",
+    "location": "Dharamshala",
+    "flash_flood": 36,
+    "landslide": 38,
+    "extreme_rainfall": 38,
+    "overall": "LOW"
+  },
+  {
+    "timestamp": "2026-08-24T09:27:27.591439",
+    "location": "Dharamshala",
+    "flash_flood": 36,
+    "landslide": 38,
+    "extreme_rainfall": 38,
+    "overall": "LOW"
+  },
+  {
+    "timestamp": "2026-08-24T09:27:49.827162",
+    "location": "Mandi",
+    "flash_flood": 33,
+    "landslide": 29,
+    "extreme_rainfall": 37,
+    "overall": "LOW"
+  },
+  {
+    "timestamp": "2026-08-24T09:27:52.745340",
+    "location": "Mandi",
+    "flash_flood": 33,
+    "landslide": 29,
+    "extreme_rainfall": 37,
+    "overall": "LOW"
+  }
+]
