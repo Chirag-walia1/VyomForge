@@ -204,8 +204,7 @@ export default function Home() {
     const fetchRisk = async () => {
       try {
         const response = await fetch(
-          `${process.env.NEXT_PUBLIC_API_URL || "https://himalert.onrender.com"}/api/risk`,
-          {
+          `${process.env.NEXT_PUBLIC_API_URL || "https://himalert.onrender.com"}/api/risk?lat=${globalLocation.lat}&lon=${globalLocation.lon}`,
             cache: "no-store",
           }
         );
@@ -238,12 +237,8 @@ export default function Home() {
 
     fetchRisk();
 
-    const interval = setInterval(
-      fetchRisk,
-      5 * 60 * 1000
-    );
-
-    
+    const interval = setInterval(fetchRisk, 5 * 60 * 1000);
+    return () => clearInterval(interval);
   }, [globalLocation]);
 
   /* ==========================================
@@ -256,8 +251,7 @@ export default function Home() {
         setWeatherLoading(true);
 
         const response = await fetch(
-          `${process.env.NEXT_PUBLIC_API_URL || "https://himalert.onrender.com"}/api/weather`,
-          {
+          `${process.env.NEXT_PUBLIC_API_URL || "https://himalert.onrender.com"}/api/weather?lat=${globalLocation.lat}&lon=${globalLocation.lon}`,
             cache: "no-store",
           }
         );
@@ -286,12 +280,8 @@ export default function Home() {
 
     fetchWeather();
 
-    const interval = setInterval(
-      fetchWeather,
-      5 * 60 * 1000
-    );
-
-    
+    const interval = setInterval(fetchWeather, 5 * 60 * 1000);
+    return () => clearInterval(interval);
   }, [globalLocation]);
 
   /* ==========================================
@@ -352,12 +342,8 @@ export default function Home() {
 
     fetchRiskHistory();
 
-    const interval = setInterval(
-      fetchRiskHistory,
-      5 * 60 * 1000
-    );
-
-    
+    const interval = setInterval(fetchRiskHistory, 5 * 60 * 1000);
+    return () => clearInterval(interval);
   }, [historyLocation]);
 
   /* ==========================================
@@ -407,12 +393,8 @@ export default function Home() {
 
     fetchAlerts();
 
-    const interval = setInterval(
-      fetchAlerts,
-      2 * 60 * 1000
-    );
-
-    
+    const interval = setInterval(fetchAlerts, 2 * 60 * 1000);
+    return () => clearInterval(interval);
   }, [globalLocation]);
 
   /* ==========================================
@@ -665,6 +647,8 @@ export default function Home() {
     </DynamicBackground>
   );
 }
+
+
 
 
 

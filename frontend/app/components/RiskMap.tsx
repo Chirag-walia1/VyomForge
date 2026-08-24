@@ -599,10 +599,7 @@ export default function RiskMap() {
 
       <div
         className="
-          absolute
-          right-4
-          top-4
-          z-[1000]
+          hidden sm:block absolute right-4 top-4 z-[1000]
           rounded-2xl
           border border-slate-200
           bg-black/40 backdrop-blur-md border border-white/10 text-white/90 shadow-sm

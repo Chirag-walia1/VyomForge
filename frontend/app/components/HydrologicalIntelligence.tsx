@@ -137,6 +137,10 @@ export default function HydrologicalIntelligence({ locationName }: { locationNam
       displayRivers = ALL_RIVERS.filter(r => r.name === "Sutlej");
     } else if (loc.includes("lahaul")) {
       displayRivers = ALL_RIVERS.filter(r => r.name === "Chenab");
+    } else if (loc.includes("himachal") || loc === "all") {
+      displayRivers = ALL_RIVERS;
+    } else {
+      displayRivers = [];
     }
   }
 
@@ -277,4 +281,6 @@ export default function HydrologicalIntelligence({ locationName }: { locationNam
     </section>
   );
 }
+
+
 
