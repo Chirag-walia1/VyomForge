@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useEffect, useState } from "react";
 import dynamic from "next/dynamic";
@@ -529,7 +529,8 @@ export default function Home() {
   ========================================== */
 
   return (
-    <main className="min-h-screen bg-slate-50 text-white font-sans selection:bg-cyan-500/30">
+    <DynamicBackground condition={weather?.current?.cloud_cover > 50 ? "Cloudy" : weather?.current?.rain > 0 ? "Rain" : "Sunny"}>
+  <main className="min-h-screen text-white font-sans selection:bg-cyan-500/30">
 
       {/* ======================================
           HEADER
@@ -1217,9 +1218,9 @@ export default function Home() {
 
       </div>
 
-    </main>
-  );
+    </main></DynamicBackground>);
 }
+
 
 
 
