@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import { Cloud, Droplets, Wind, Navigation, ThermometerSun, Eye, Gauge } from 'lucide-react';
 
 export default function BeautifulWeather({ weather, weatherLoading, locationName }: { weather: any, weatherLoading: boolean, locationName: string }) {
@@ -31,10 +31,10 @@ export default function BeautifulWeather({ weather, weatherLoading, locationName
         
         <div className="flex justify-between items-start text-white">
           <div>
-            <h1 className="text-8xl font-light tracking-tighter leading-none">
+            <h1 className="text-6xl md:text-8xl font-light tracking-tighter leading-none">
               {Math.round(weather.current.temperature)}&deg;
             </h1>
-            <p className="text-xl font-medium mt-4 tracking-wide text-white/90">
+            <p className="text-lg md:text-xl font-medium mt-2 md:mt-4 tracking-wide text-white/90">
               {weather.current.showers > 0 || weather.current.rain > 0 ? "Rainy" : weather.current.cloud_cover > 50 ? "Overcast Clouds" : "Clear Sky"}
             </p>
             <p className="text-md text-white/70 mt-1">
@@ -100,3 +100,4 @@ export default function BeautifulWeather({ weather, weatherLoading, locationName
     </div>
   );
 }
+

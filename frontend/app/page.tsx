@@ -7,6 +7,7 @@ import { ForecastDisaster, TrendChart } from "./components/RaincloudFeatures";
 import DynamicBackground from "./components/DynamicBackground";
 import HideOnScrollHeader from "./components/HideOnScrollHeader";
 import Link from "next/link";
+import { MapPin } from "lucide-react";
 const AITerminal = dynamic(() => import("./components/AITerminal"), { ssr: false });
 
 import {
@@ -502,13 +503,13 @@ export default function Home() {
             <div>
               <div className="flex items-center gap-3 mb-2">
                 <div className="h-3 w-3 rounded-full bg-red-500 animate-pulse shadow-[0_0_10px_rgba(239,68,68,0.7)]"></div>
-                <span className="text-xs font-bold tracking-[0.25em] text-red-400 uppercase">Live Operations</span>
+                <MapPin size={14} className="text-red-400" /><span className="text-xs font-bold tracking-[0.25em] text-red-400 uppercase">Live Operations</span>
               </div>
               <h1 className="text-4xl font-black tracking-tighter text-white drop-shadow-md">
                 HimAlert <span className="text-blue-400 font-light">Global</span>
               </h1>
               <p className="mt-1 text-sm text-blue-300 uppercase tracking-widest font-semibold drop-shadow">
-                VyomForge Disaster Intelligence
+                Advanced Disaster Intelligence
               </p>
             </div>
             
@@ -620,6 +621,9 @@ export default function Home() {
     </DynamicBackground>
   );
 }
+
+
+
 
 
 

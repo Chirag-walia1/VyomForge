@@ -7,6 +7,7 @@ import { ForecastDisaster, TrendChart } from "../components/RaincloudFeatures";
 import DynamicBackground from "../components/DynamicBackground";
 import HideOnScrollHeader from "../components/HideOnScrollHeader";
 import Link from "next/link";
+import { MapPin } from "lucide-react";
 
 const HydrologicalIntelligence = dynamic(() => import("../components/HydrologicalIntelligence"), { ssr: false });
 const RiskMap = dynamic(() => import("../components/RiskMap"), { ssr: false });
@@ -32,10 +33,7 @@ export default function LocalDashboard() {
 
   useEffect(() => {
     if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition((pos) => {
-        setUserLocation({lat: pos.coords.latitude, lon: pos.coords.longitude});
-        fetchSafePoints(pos.coords.latitude, pos.coords.longitude);
-      });
+      navigator.geolocation.getCurrentPosition((pos) => { setUserLocation({lat: pos.coords.latitude, lon: pos.coords.longitude}); fetchSafePoints(pos.coords.latitude, pos.coords.longitude); }, (err) => { console.warn("Geolocation failed", err); setUserLocation({lat: 32.219, lon: 76.3234}); fetchSafePoints(32.219, 76.3234); }, { timeout: 10000 });
     } else {
       // Fallback
       setUserLocation({lat: 32.219, lon: 76.3234});
@@ -98,7 +96,7 @@ export default function LocalDashboard() {
               </Link>
               <div className="flex items-center gap-3 mb-2">
                 <div className="h-3 w-3 rounded-full bg-emerald-500 animate-pulse shadow-[0_0_10px_rgba(16,185,129,0.7)]"></div>
-                <span className="text-xs font-bold tracking-[0.25em] text-emerald-400 uppercase">GPS Locked</span>
+                <MapPin size={14} className="text-emerald-400" /><span className="text-xs font-bold tracking-[0.25em] text-emerald-400 uppercase">GPS Locked</span>
               </div>
               <h1 className="text-4xl font-black tracking-tighter text-white drop-shadow-md">
                 HimAlert <span className="text-blue-400 font-light">Local</span>
@@ -168,4 +166,6 @@ export default function LocalDashboard() {
     </DynamicBackground>
   );
 }
+
+
 

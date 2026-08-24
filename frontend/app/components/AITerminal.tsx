@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useState, useEffect } from "react";
 import { Terminal, Cpu } from "lucide-react";
@@ -46,7 +46,7 @@ export default function AITerminal() {
       <div className="flex items-center justify-between mb-3 relative z-10">
         <div className="flex items-center gap-2">
           <Cpu size={16} className="text-blue-400" />
-          <span className="text-blue-400 text-xs font-bold tracking-widest uppercase">VyomForge Core</span>
+          <span className="text-blue-400 text-xs font-bold tracking-widest uppercase">AI Core</span>
         </div>
         <div className="flex gap-1.5">
           <div className="w-2.5 h-2.5 rounded-full bg-red-500/80 hover:bg-red-500 transition-colors"></div>
@@ -55,7 +55,7 @@ export default function AITerminal() {
         </div>
       </div>
       
-      <div className="font-mono text-sm min-h-[40px] flex items-start text-blue-100/90 relative z-10 leading-relaxed">
+      <div className="font-mono text-xs md:text-sm min-h-[40px] flex items-start text-blue-100/90 relative z-10 leading-relaxed">
         <Terminal size={14} className="mt-1 mr-2 text-blue-500 shrink-0" />
         <span className="flex-1">
           {text}
@@ -65,3 +65,5 @@ export default function AITerminal() {
     </div>
   );
 }
+
+

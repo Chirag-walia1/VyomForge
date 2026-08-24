@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import React from 'react';
 import { Line } from 'react-chartjs-2';
@@ -57,7 +57,7 @@ export function ForecastDisaster({ risk, loading }: { risk: any, loading: boolea
               <Waves size={20} className="text-blue-400" />
             </div>
           </div>
-          <h2 className="text-4xl font-black text-blue-400 tracking-tighter">{fFlood}<span className="text-xl font-medium text-blue-400/50">%</span></h2>
+          <h2 className="text-2xl xl:text-4xl font-black text-blue-400 tracking-tighter">{fFlood}<span className="text-xl font-medium text-blue-400/50">%</span></h2>
           <p className="text-xs text-blue-200/60 uppercase tracking-wider mt-2 font-semibold">Flash Flood</p>
         </div>
 
@@ -67,7 +67,7 @@ export function ForecastDisaster({ risk, loading }: { risk: any, loading: boolea
               <MountainSnow size={20} className="text-orange-400" />
             </div>
           </div>
-          <h2 className="text-4xl font-black text-orange-400 tracking-tighter">{fLandslide}<span className="text-xl font-medium text-orange-400/50">%</span></h2>
+          <h2 className="text-2xl xl:text-4xl font-black text-orange-400 tracking-tighter">{fLandslide}<span className="text-xl font-medium text-orange-400/50">%</span></h2>
           <p className="text-xs text-orange-200/60 uppercase tracking-wider mt-2 font-semibold">Landslide</p>
         </div>
 
@@ -77,7 +77,7 @@ export function ForecastDisaster({ risk, loading }: { risk: any, loading: boolea
               <CloudRain size={20} className="text-cyan-400" />
             </div>
           </div>
-          <h2 className="text-4xl font-black text-cyan-400 tracking-tighter">{fRain}<span className="text-xl font-medium text-cyan-400/50">%</span></h2>
+          <h2 className="text-2xl xl:text-4xl font-black text-cyan-400 tracking-tighter">{fRain}<span className="text-xl font-medium text-cyan-400/50">%</span></h2>
           <p className="text-xs text-cyan-200/60 uppercase tracking-wider mt-2 font-semibold">Extreme Rain</p>
         </div>
 
@@ -90,7 +90,7 @@ export function ForecastDisaster({ risk, loading }: { risk: any, loading: boolea
               <ShieldAlert size={20} className="text-red-400" />
             </div>
           </div>
-          <h2 className="text-3xl font-black text-red-400 tracking-tighter relative z-10">{fOverall}</h2>
+          <h2 className="text-xl xl:text-3xl font-black text-red-400 tracking-tighter relative z-10">{fOverall}</h2>
           <p className="text-xs text-red-200/80 uppercase tracking-wider mt-2 font-semibold relative z-10">Overall Threat</p>
         </div>
 
@@ -177,3 +177,4 @@ export function TrendChart({ weather }: { weather: any }) {
     </div>
   );
 }
+
