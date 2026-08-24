@@ -9,8 +9,8 @@ export default function AITerminal() {
   const messages = [
     "[SYSTEM INITIALIZED] Hydrological Risk Engine Online.",
     "[TELEMETRY] Establishing secure uplink with NWIC Government Sensors...",
-    "⚠️ [ALERT] High saturation detected. Flash flood probability 85%.",
-    "✅ [UPDATE] Weather API sync complete. Next 24h rainfall: 42mm.",
+    " [ALERT] High saturation detected. Flash flood probability 85%.",
+    " [UPDATE] Weather API sync complete. Next 24h rainfall: 42mm.",
     "? [AI ENGINE] Continuous risk evaluation running for Himachal Pradesh.",
   ];
 

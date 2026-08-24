@@ -529,7 +529,7 @@ export default function Home() {
   ========================================== */
 
   return (
-    <DynamicBackground condition={weather?.current?.cloud_cover > 50 ? "Cloudy" : weather?.current?.rain > 0 ? "Rain" : "Sunny"}>
+    <DynamicBackground condition={(weather as any)?.current?.cloud_cover > 50 ? "Cloudy" : (weather as any)?.current?.rain > 0 ? "Rain" : "Sunny"}>
   <main className="min-h-screen text-white font-sans selection:bg-cyan-500/30">
 
       {/* ======================================
@@ -1220,6 +1220,7 @@ export default function Home() {
 
     </main></DynamicBackground>);
 }
+
 
 
 

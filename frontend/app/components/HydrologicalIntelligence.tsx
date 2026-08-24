@@ -165,7 +165,7 @@ export default function HydrologicalIntelligence() {
         <div className="mt-6 flex flex-col gap-2 rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-xs md:flex-row md:items-center md:justify-between">
 
           <span className="text-slate-600">
-            🌊 River network monitoring active
+             River network monitoring active
           </span>
 
           <span className="text-cyan-400">
@@ -209,7 +209,7 @@ export default function HydrologicalIntelligence() {
               <div>
 
                 <p className="text-2xl font-bold text-white">
-                  🌊 {highestRiskRiver.name}
+                   {highestRiskRiver.name}
                 </p>
 
                 <p className="mt-1 text-sm text-white/70">
@@ -283,7 +283,7 @@ export default function HydrologicalIntelligence() {
                 </p>
 
                 <p className="mt-1 font-semibold text-orange-400">
-                  ↑ {highestRiskRiver.trend}
+                   {highestRiskRiver.trend}
                 </p>
 
               </div>
@@ -342,7 +342,7 @@ export default function HydrologicalIntelligence() {
             </div>
 
             <span className="rounded-full bg-orange-500/10 px-3 py-1 text-xs text-orange-400">
-              ↑ RISING
+               RISING
             </span>
 
           </div>
@@ -472,7 +472,7 @@ export default function HydrologicalIntelligence() {
                   <div>
 
                     <p className="text-lg font-bold text-white">
-                      🌊 {river.name}
+                       {river.name}
                     </p>
 
                     <p className="mt-1 text-xs text-white/70">
@@ -577,10 +577,10 @@ export default function HydrologicalIntelligence() {
                       }
                     >
                       {river.trend === "RISING"
-                        ? "↑ Rising"
+                        ? " Rising"
                         : river.trend === "FALLING"
-                        ? "↓ Falling"
-                        : "→ Stable"}
+                        ? " Falling"
+                        : " Stable"}
                     </span>
 
                   </div>
@@ -609,7 +609,7 @@ export default function HydrologicalIntelligence() {
           <div className="flex items-start gap-4">
 
             <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-cyan-500/10 text-xl">
-              🧠
+              
             </div>
 
             <div>

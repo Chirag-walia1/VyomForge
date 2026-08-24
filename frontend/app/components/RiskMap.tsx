@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import { useEffect, useState } from "react";
 
@@ -85,7 +85,7 @@ function ResetViewButton() {
         hover:bg-black/40 backdrop-blur-md border border-white/10 text-white
       "
     >
-      ⌖ Reset View
+       Reset View
     </button>
   );
 }
@@ -287,10 +287,10 @@ export default function RiskMap() {
 
   const tileAttribution =
     mapStyle === "satellite"
-      ? "Tiles © Esri"
+      ? "Tiles  Esri"
       : mapStyle === "terrain"
-      ? "© OpenTopoMap contributors"
-      : "© OpenStreetMap contributors";
+      ? " OpenTopoMap contributors"
+      : " OpenStreetMap contributors";
 
   /* ==========================================================
      SELECT LOCATION
@@ -526,7 +526,7 @@ export default function RiskMap() {
               text-lg
             "
           >
-            🗺️
+            
           </div>
 
           <div>
@@ -986,7 +986,7 @@ export default function RiskMap() {
                 hover:text-white
               "
             >
-              ×
+              
             </button>
 
           </div>
@@ -1097,7 +1097,7 @@ export default function RiskMap() {
 
             <div className="rounded-xl bg-slate-50 p-3">
               <p className="text-[9px] uppercase text-white/70">
-                🌊 Flood
+                 Flood
               </p>
 
               <p className="mt-1 text-lg font-bold text-orange-400">
@@ -1107,7 +1107,7 @@ export default function RiskMap() {
 
             <div className="rounded-xl bg-slate-50 p-3">
               <p className="text-[9px] uppercase text-white/70">
-                ⛰️ Landslide
+                 Landslide
               </p>
 
               <p className="mt-1 text-lg font-bold text-yellow-400">
@@ -1117,7 +1117,7 @@ export default function RiskMap() {
 
             <div className="rounded-xl bg-slate-50 p-3">
               <p className="text-[9px] uppercase text-white/70">
-                🌧️ Rain
+                 Rain
               </p>
 
               <p className="mt-1 text-lg font-bold text-red-400">
@@ -1161,7 +1161,7 @@ export default function RiskMap() {
 
               <div className="rounded-xl bg-slate-50 p-3">
                 <p className="text-[10px] text-white/70">
-                  🌧 Current Rain
+                   Current Rain
                 </p>
 
                 <p className="mt-1 text-sm font-bold">
@@ -1171,7 +1171,7 @@ export default function RiskMap() {
 
               <div className="rounded-xl bg-slate-50 p-3">
                 <p className="text-[10px] text-white/70">
-                  🌧 Next 24h
+                   Next 24h
                 </p>
 
                 <p className="mt-1 text-sm font-bold">
@@ -1181,7 +1181,7 @@ export default function RiskMap() {
 
               <div className="rounded-xl bg-slate-50 p-3">
                 <p className="text-[10px] text-white/70">
-                  ☔ Probability
+                   Probability
                 </p>
 
                 <p className="mt-1 text-sm font-bold">
@@ -1191,7 +1191,7 @@ export default function RiskMap() {
 
               <div className="rounded-xl bg-slate-50 p-3">
                 <p className="text-[10px] text-white/70">
-                  💧 Humidity
+                   Humidity
                 </p>
 
                 <p className="mt-1 text-sm font-bold">
@@ -1201,7 +1201,7 @@ export default function RiskMap() {
 
               <div className="rounded-xl bg-slate-50 p-3">
                 <p className="text-[10px] text-white/70">
-                  💨 Wind
+                   Wind
                 </p>
 
                 <p className="mt-1 text-sm font-bold">
@@ -1211,7 +1211,7 @@ export default function RiskMap() {
 
               <div className="rounded-xl bg-slate-50 p-3">
                 <p className="text-[10px] text-white/70">
-                  🌱 Soil
+                   Soil
                 </p>
 
                 <p className="mt-1 text-sm font-bold">
@@ -1238,7 +1238,7 @@ export default function RiskMap() {
             <div className="flex items-center justify-between">
 
               <h3 className="text-sm font-bold">
-                🏛 Government Rainfall
+                 Government Rainfall
               </h3>
 
               <span
@@ -1314,7 +1314,7 @@ export default function RiskMap() {
                   text-yellow-400
                 "
               >
-                ⚠️ Government rainfall data is stale.
+                 Government rainfall data is stale.
 
                 {selectedLocation.rainfall_age_hours !==
                   null &&
@@ -1385,7 +1385,7 @@ export default function RiskMap() {
             <div className="flex items-center justify-between">
 
               <h3 className="text-sm font-bold">
-                🌊 Water Level
+                 Water Level
               </h3>
 
               <span
