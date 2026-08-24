@@ -7,8 +7,8 @@ import { ForecastDisaster, TrendChart } from "./components/RaincloudFeatures";
 import DynamicBackground from "./components/DynamicBackground";
 import HideOnScrollHeader from "./components/HideOnScrollHeader";
 import Link from "next/link";
-import { MapPin } from "lucide-react";
-const AITerminal = dynamic(() => import("./components/AITerminal"), { ssr: false });
+import { MapPin, Search } from "lucide-react";
+
 
 import {
   LineChart,
@@ -176,8 +176,25 @@ export default function Home() {
   const [alertsLoading, setAlertsLoading] =
     useState(true);
 
-  const [apiOnline, setApiOnline] =
-    useState(false);
+  const [apiOnline, setApiOnline] = useState(false);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [searchResults, setSearchResults] = useState<any[]>([]);
+  const [globalLocation, setGlobalLocation] = useState({ name: "Dharamshala", lat: 32.2190, lon: 76.3234 });
+
+  useEffect(() => {
+    if (searchQuery.length > 2) {
+      const delayFn = setTimeout(async () => {
+        try {
+          const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL || "https://himalert.onrender.com"}/api/locations/search?query=${searchQuery}`);
+          const data = await res.json();
+          setSearchResults(data.results || []);
+        } catch (e) {}
+      }, 500);
+      return () => clearTimeout(delayFn);
+    } else {
+      setSearchResults([]);
+    }
+  }, [searchQuery]);
 
   /* ==========================================
      RISK API
@@ -227,7 +244,7 @@ export default function Home() {
     );
 
     
-  }, []);
+  }, [globalLocation]);
 
   /* ==========================================
      WEATHER API
@@ -275,7 +292,7 @@ export default function Home() {
     );
 
     
-  }, []);
+  }, [globalLocation]);
 
   /* ==========================================
      LOCATION RISK API
@@ -289,7 +306,7 @@ export default function Home() {
     
 
     
-  }, []);
+  }, [globalLocation]);
 
   /* ==========================================
      RISK HISTORY API
@@ -396,7 +413,7 @@ export default function Home() {
     );
 
     
-  }, []);
+  }, [globalLocation]);
 
   /* ==========================================
      RISK COLOR
@@ -499,32 +516,58 @@ export default function Home() {
         <div className="max-w-[90rem] mx-auto space-y-8">
           {/* PREMIUM HEADER */}
           <HideOnScrollHeader>
-          <header className="flex flex-col md:flex-row md:items-center justify-between gap-6 bg-black/40 backdrop-blur-xl border border-white/10 p-6 rounded-[2rem] shadow-2xl">
-            <div>
-              <div className="flex items-center gap-3 mb-2">
-                <div className="h-3 w-3 rounded-full bg-red-500 animate-pulse shadow-[0_0_10px_rgba(239,68,68,0.7)]"></div>
-                <MapPin size={14} className="text-red-400" /><span className="text-xs font-bold tracking-[0.25em] text-red-400 uppercase">Live Operations</span>
+          <header className="flex flex-col md:flex-row md:items-center justify-between gap-6 bg-black/40 backdrop-blur-xl border border-white/10 p-4 px-6 rounded-full shadow-2xl">
+            <div className="flex items-center gap-6">
+              <div>
+                <h1 className="text-2xl font-black tracking-tighter text-white drop-shadow-md">
+                  HimAlert <span className="text-blue-400 font-light">Global</span>
+                </h1>
               </div>
-              <h1 className="text-4xl font-black tracking-tighter text-white drop-shadow-md">
-                HimAlert <span className="text-blue-400 font-light">Global</span>
-              </h1>
-              <p className="mt-1 text-sm text-blue-300 uppercase tracking-widest font-semibold drop-shadow">
-                Advanced Disaster Intelligence
-              </p>
+              <div className="hidden md:flex items-center gap-2 bg-white/10 rounded-full px-3 py-1.5 border border-white/5">
+                <div className="h-2 w-2 rounded-full bg-red-500 animate-pulse shadow-[0_0_10px_rgba(239,68,68,0.7)]"></div>
+                <MapPin size={12} className="text-red-400" />
+                <span className="text-[10px] font-bold tracking-[0.2em] text-red-400 uppercase">Live Ops</span>
+              </div>
             </div>
             
-            <div className="flex flex-col gap-3 w-full md:w-auto">
+            <div className="flex flex-col md:flex-row items-center gap-4 w-full md:w-auto">
+              <div className="relative w-full md:w-64">
+                <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                  <Search size={16} className="text-white/40" />
+                </div>
+                <input 
+                  type="text" 
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  placeholder="Search city in HP..." 
+                  className="w-full bg-black/50 border border-white/20 text-white text-sm rounded-full pl-10 pr-4 py-2 focus:outline-none focus:border-blue-400 transition-colors"
+                />
+                {searchResults.length > 0 && (
+                  <div className="absolute top-full mt-2 w-full bg-black/80 backdrop-blur-xl border border-white/20 rounded-2xl overflow-hidden z-50">
+                    {searchResults.map((res: any, idx: number) => (
+                      <div 
+                        key={idx} 
+                        className="px-4 py-3 hover:bg-white/10 cursor-pointer text-sm"
+                        onClick={() => {
+                          setGlobalLocation({ name: res.name, lat: res.latitude, lon: res.longitude });
+                          setSearchQuery("");
+                          setSearchResults([]);
+                        }}
+                      >
+                        {res.name}
+                        <span className="text-white/40 text-xs ml-2">{res.admin1}</span>
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </div>
               <Link
                 href="/local"
-                className="group relative overflow-hidden rounded-full bg-white/10 hover:bg-white/20 border border-white/20 px-8 py-4 transition-all duration-300 flex items-center justify-center gap-2 shadow-lg"
+                className="group relative overflow-hidden rounded-full bg-blue-600/20 hover:bg-blue-600/40 border border-blue-500/30 px-6 py-2 transition-all duration-300 flex items-center justify-center gap-2 shadow-lg w-full md:w-auto"
               >
-                <div className="absolute inset-0 w-full h-full bg-gradient-to-r from-blue-500/20 to-purple-500/20 opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                <span className="relative z-10 text-sm font-bold tracking-wide text-white">My Exact Location</span>
-                <span className="relative z-10 text-white/50 group-hover:text-white group-hover:translate-x-1 transition-all">&rarr;</span>
+                <span className="relative z-10 text-xs font-bold tracking-wide text-blue-100">My Location</span>
+                <span className="relative z-10 text-blue-400 group-hover:translate-x-1 transition-all">&rarr;</span>
               </Link>
-              <div className="w-full md:w-[400px]">
-                 <AITerminal />
-              </div>
             </div>
           </header>
           </HideOnScrollHeader>
@@ -534,7 +577,7 @@ export default function Home() {
             
             {/* LEFT COLUMN: WEATHER & FORECAST */}
             <div className="xl:col-span-5 space-y-8 flex flex-col">
-              <BeautifulWeather weather={weather} weatherLoading={weatherLoading} locationName="Himachal Pradesh" />
+              <BeautifulWeather weather={weather} weatherLoading={weatherLoading} locationName={globalLocation.name} />
               <ForecastDisaster risk={risk} loading={loading} />
               <TrendChart weather={weather} />
               
@@ -594,6 +637,7 @@ export default function Home() {
                     <option value="Manali" className="bg-slate-900 text-white">Manali</option>
                     <option value="Mandi" className="bg-slate-900 text-white">Mandi</option>
                     <option value="Kullu" className="bg-slate-900 text-white">Kullu</option>
+                    <option value="Chamba" className="bg-slate-900 text-white">Chamba</option>
                   </select>
                 </div>
                 

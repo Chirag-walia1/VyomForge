@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import {
   Area,
@@ -22,7 +22,7 @@ type River = {
   forecast: number[];
 };
 
-const rivers: River[] = [
+const ALL_RIVERS: River[] = [
   {
     name: "Beas",
     basin: "Beas Basin",
@@ -43,613 +43,237 @@ const rivers: River[] = [
     trend: "RISING",
     rainfall: 11.2,
     saturation: 58,
-    forecast: [42, 44, 46, 51, 56],
+    forecast: [40, 42, 46, 52, 59],
   },
   {
     name: "Sutlej",
     basin: "Sutlej Basin",
-    risk: 39,
-    status: "LOW",
-    flow: 43,
-    trend: "STABLE",
-    rainfall: 8.7,
-    saturation: 49,
-    forecast: [39, 39, 40, 41, 43],
+    risk: 84,
+    status: "CRITICAL",
+    flow: 89,
+    trend: "RISING",
+    rainfall: 26.8,
+    saturation: 91,
+    forecast: [75, 80, 84, 91, 96],
   },
   {
     name: "Chenab",
     basin: "Chenab Basin",
-    risk: 57,
-    status: "MODERATE",
-    flow: 61,
-    trend: "RISING",
-    rainfall: 14.6,
-    saturation: 65,
-    forecast: [51, 53, 57, 61, 67],
+    risk: 32,
+    status: "LOW",
+    flow: 38,
+    trend: "STABLE",
+    rainfall: 4.1,
+    saturation: 41,
+    forecast: [34, 33, 32, 34, 31],
   },
+  {
+    name: "Parvati",
+    basin: "Beas Basin",
+    risk: 72,
+    status: "HIGH",
+    flow: 78,
+    trend: "RISING",
+    rainfall: 22.4,
+    saturation: 84,
+    forecast: [65, 68, 72, 79, 86],
+  }
 ];
 
-const forecastLabels = ["Now", "+6h", "+12h", "+24h", "+48h"];
-
-function getRiskClass(status: River["status"]) {
+function getRiskClass(status: string) {
   switch (status) {
-    case "CRITICAL":
+    case "LOW":
       return {
-        border: "border-red-500/40",
-        bg: "bg-red-500/10",
-        text: "text-red-400",
-        bar: "bg-red-500",
-      };
-
-    case "HIGH":
-      return {
-        border: "border-orange-500/40",
-        bg: "bg-orange-500/10",
-        text: "text-orange-400",
-        bar: "bg-orange-500",
-      };
-
-    case "MODERATE":
-      return {
-        border: "border-yellow-500/40",
-        bg: "bg-yellow-500/10",
-        text: "text-yellow-400",
-        bar: "bg-yellow-400",
-      };
-
-    default:
-      return {
-        border: "border-emerald-500/40",
         bg: "bg-emerald-500/10",
         text: "text-emerald-400",
-        bar: "bg-emerald-500",
+        border: "border-emerald-500/20",
+        bar: "bg-emerald-400",
+      };
+    case "MODERATE":
+      return {
+        bg: "bg-yellow-500/10",
+        text: "text-yellow-400",
+        border: "border-yellow-500/20",
+        bar: "bg-yellow-400",
+      };
+    case "HIGH":
+      return {
+        bg: "bg-orange-500/10",
+        text: "text-orange-400",
+        border: "border-orange-500/20",
+        bar: "bg-orange-400",
+      };
+    case "CRITICAL":
+      return {
+        bg: "bg-red-500/10",
+        text: "text-red-400",
+        border: "border-red-500/20",
+        bar: "bg-red-400",
+      };
+    default:
+      return {
+        bg: "bg-slate-500/10",
+        text: "text-slate-400",
+        border: "border-slate-500/20",
+        bar: "bg-slate-400",
       };
   }
 }
 
-export default function HydrologicalIntelligence() {
-  const highestRiskRiver = rivers.reduce((highest, river) =>
-    river.risk > highest.risk ? river : highest
-  );
+export default function HydrologicalIntelligence({ locationName }: { locationName?: string }) {
+  // Filter rivers based on locationName if provided
+  let displayRivers = ALL_RIVERS;
+  if (locationName) {
+    const loc = locationName.toLowerCase();
+    if (loc.includes("dharamshala")) {
+      displayRivers = []; // No major rivers
+    } else if (loc.includes("chamba")) {
+      displayRivers = ALL_RIVERS.filter(r => r.name === "Ravi");
+    } else if (loc.includes("kullu") || loc.includes("manali")) {
+      displayRivers = ALL_RIVERS.filter(r => r.name === "Beas" || r.name === "Parvati");
+    } else if (loc.includes("mandi") || loc.includes("kangra")) {
+      displayRivers = ALL_RIVERS.filter(r => r.name === "Beas");
+    } else if (loc.includes("shimla") || loc.includes("kinnaur") || loc.includes("spiti")) {
+      displayRivers = ALL_RIVERS.filter(r => r.name === "Sutlej");
+    } else if (loc.includes("lahaul")) {
+      displayRivers = ALL_RIVERS.filter(r => r.name === "Chenab");
+    }
+  }
 
-  const selectedRiver = highestRiskRiver;
+  if (displayRivers.length === 0) {
+    return (
+      <section className="mt-8 overflow-hidden bg-black/40 backdrop-blur-xl border border-white/10 rounded-[2.5rem] shadow-2xl p-8 flex items-center justify-center min-h-[300px]">
+        <div className="text-center">
+          <h2 className="text-2xl font-bold text-white tracking-tight mb-2">Hydrological Intelligence</h2>
+          <p className="text-white/50">No major river systems intersect exactly with {locationName || "this location"}.</p>
+        </div>
+      </section>
+    );
+  }
 
-  const chartData = forecastLabels.map((label, index) => ({
-    time: label,
-    risk: selectedRiver.forecast[index],
+  const selectedRiver = displayRivers[0];
+  const chartData = selectedRiver.forecast.map((val, idx) => ({
+    time: `T+${(idx + 1) * 3}h`,
+    risk: val,
   }));
-
   const selectedStyles = getRiskClass(selectedRiver.status);
 
   return (
-    <section className="mt-8 overflow-hidden rounded-3xl border border-white/10 bg-black/40 backdrop-blur-md border border-white/10 text-white shadow-md shadow-2xl">
-
-      {/* =====================================================
-          HEADER
-      ====================================================== */}
-
-      <div className="border-b border-white/10 p-6 md:p-8">
-
-        <div className="flex flex-col gap-4 md:flex-row md:items-start md:justify-between">
-
-          <div>
-
-            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-cyan-400">
-              Hydrological Intelligence
-            </p>
-
-            <h2 className="mt-2 text-2xl font-bold tracking-tight text-white md:text-3xl">
-              Live River Network & 48-Hour Flow Outlook
-            </h2>
-
-            <p className="mt-2 max-w-3xl text-sm leading-6 text-slate-600">
-              Monitor major Himalayan river systems, catchment conditions,
-              rainfall impact and short-term flood-risk trends.
-            </p>
-
-          </div>
-
-          <div className="flex w-fit items-center gap-2 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-4 py-2 text-xs font-semibold text-emerald-400">
-
-            <span className="h-2 w-2 animate-pulse rounded-full bg-emerald-400" />
-
-            GIS + FLOOD MODEL
-
-          </div>
-
-        </div>
-
-
-        {/* Status strip */}
-
-        <div className="mt-6 flex flex-col gap-2 rounded-xl border border-white/10 bg-slate-50 px-4 py-3 text-xs md:flex-row md:items-center md:justify-between">
-
-          <span className="text-slate-600">
-             River network monitoring active
-          </span>
-
-          <span className="text-cyan-400">
-            Forecast horizon: 48 hours
-          </span>
-
-        </div>
-
-      </div>
-
-
-      {/* =====================================================
-          CONTENT
-      ====================================================== */}
-
-      <div className="grid gap-6 p-6 md:p-8 lg:grid-cols-3">
-
-        {/* ===================================================
-            HIGHEST RISK
-        ==================================================== */}
-
-        <div className="rounded-2xl border border-white/10 bg-slate-50 p-5">
-
-          <div className="flex items-center justify-between">
-
-            <h3 className="font-semibold text-white">
-              Highest Model River Risk
-            </h3>
-
-            <span className="text-xs font-semibold text-cyan-400">
-              LIVE
+    <section className="mt-8 overflow-hidden bg-black/40 backdrop-blur-xl border border-white/10 rounded-[2.5rem] shadow-2xl">
+      <div className="grid grid-cols-1 md:grid-cols-3">
+        <div className="p-6 md:p-8 md:border-r border-white/10">
+          <div className="flex items-center gap-2 mb-2">
+            <div className="h-2 w-2 rounded-full bg-cyan-500 shadow-[0_0_8px_rgba(6,182,212,0.8)]"></div>
+            <span className="text-xs font-bold tracking-[0.2em] text-cyan-400 uppercase">
+              Hydro Engine
             </span>
-
           </div>
-
-
-          <div className="mt-6">
-
-            <div className="flex items-center justify-between">
-
-              <div>
-
-                <p className="text-2xl font-bold text-white">
-                   {highestRiskRiver.name}
-                </p>
-
-                <p className="mt-1 text-sm text-white/70">
-                  {highestRiskRiver.basin}
-                </p>
-
-              </div>
-
-              <div className="text-right">
-
-                <p className={`text-3xl font-bold ${selectedStyles.text}`}>
-                  {highestRiskRiver.risk}%
-                </p>
-
-                <p className={`text-xs font-semibold ${selectedStyles.text}`}>
-                  {highestRiskRiver.status}
-                </p>
-
-              </div>
-
+          <h2 className="text-2xl font-bold text-white tracking-tight">
+            River Network Status
+          </h2>
+          <p className="mt-2 text-sm leading-relaxed text-white/70">
+            Real-time multi-basin river flow analytics and catchment saturation levels.
+          </p>
+          <div className="mt-8">
+            <p className="text-xs font-semibold uppercase tracking-wider text-white/50 mb-3">
+              Highest Risk Basin
+            </p>
+            <div className="flex items-baseline gap-3">
+              <span className="text-5xl font-black tracking-tighter text-white">
+                {selectedRiver.name}
+              </span>
+              <span className={`text-lg font-bold ${selectedStyles.text}`}>
+                {selectedRiver.status}
+              </span>
             </div>
-
-
-            <div className="mt-6">
-
-              <div className="mb-2 flex justify-between text-xs">
-
-                <span className="text-white/70">
-                  Flood risk
+            <div className="mt-4 flex gap-4 text-sm font-medium">
+              <div className="flex flex-col">
+                <span className="text-white/50">Flow</span>
+                <span className="text-white">{selectedRiver.flow}%</span>
+              </div>
+              <div className="flex flex-col">
+                <span className="text-white/50">Saturation</span>
+                <span className="text-white">{selectedRiver.saturation}%</span>
+              </div>
+              <div className="flex flex-col">
+                <span className="text-white/50">Trend</span>
+                <span className={selectedRiver.trend === "RISING" ? "text-orange-400" : "text-emerald-400"}>
+                  {selectedRiver.trend}
                 </span>
-
-                <span className={selectedStyles.text}>
-                  {highestRiskRiver.risk}%
-                </span>
-
               </div>
-
-              <div className="h-3 overflow-hidden rounded-full bg-white/10">
-
-                <div
-                  className={`h-full rounded-full transition-all ${selectedStyles.bar}`}
-                  style={{
-                    width: `${highestRiskRiver.risk}%`,
-                  }}
-                />
-
-              </div>
-
             </div>
-
-
-            <div className="mt-6 grid grid-cols-2 gap-3">
-
-              <div className="rounded-xl bg-slate-50 p-3">
-
-                <p className="text-xs text-white/70">
-                  Flow
-                </p>
-
-                <p className="mt-1 font-semibold text-white">
-                  {highestRiskRiver.flow}%
-                </p>
-
-              </div>
-
-
-              <div className="rounded-xl bg-slate-50 p-3">
-
-                <p className="text-xs text-white/70">
-                  Trend
-                </p>
-
-                <p className="mt-1 font-semibold text-orange-400">
-                   {highestRiskRiver.trend}
-                </p>
-
-              </div>
-
-
-              <div className="rounded-xl bg-slate-50 p-3">
-
-                <p className="text-xs text-white/70">
-                  Rainfall
-                </p>
-
-                <p className="mt-1 font-semibold text-cyan-400">
-                  {highestRiskRiver.rainfall} mm
-                </p>
-
-              </div>
-
-
-              <div className="rounded-xl bg-slate-50 p-3">
-
-                <p className="text-xs text-white/70">
-                  Catchment
-                </p>
-
-                <p className="mt-1 font-semibold text-white">
-                  {highestRiskRiver.saturation}%
-                </p>
-
-              </div>
-
-            </div>
-
           </div>
-
         </div>
-
-
-        {/* ===================================================
-            48 HOUR CHART
-        ==================================================== */}
-
-        <div className="rounded-2xl border border-white/10 bg-slate-50 p-5 lg:col-span-2">
-
-          <div className="flex items-center justify-between">
-
-            <div>
-
-              <h3 className="font-semibold text-white">
-                48-Hour River Risk Outlook
-              </h3>
-
-              <p className="mt-1 text-xs text-white/70">
-                {selectedRiver.name} River model forecast
-              </p>
-
-            </div>
-
-            <span className="rounded-full bg-orange-500/10 px-3 py-1 text-xs text-orange-400">
-               RISING
+        <div className="col-span-2 p-6 md:p-8 bg-white/5">
+          <div className="flex items-center justify-between mb-4">
+            <h3 className="font-semibold text-white">Projected Risk Trajectory ({selectedRiver.name})</h3>
+            <span className="rounded bg-white/10 px-2 py-1 text-[10px] font-bold uppercase tracking-wider text-white/70">
+              Next 15 Hours
             </span>
-
           </div>
-
-
-          <div className="mt-5 h-[250px] w-full">
-
+          <div className="h-[200px] w-full">
             <ResponsiveContainer width="100%" height="100%">
-
-              <AreaChart data={chartData}>
-
+              <AreaChart data={chartData} margin={{ top: 10, right: 0, left: -25, bottom: 0 }}>
                 <defs>
-
-                  <linearGradient
-                    id="riverRiskGradient"
-                    x1="0"
-                    y1="0"
-                    x2="0"
-                    y2="1"
-                  >
-
-                    <stop
-                      offset="0%"
-                      stopColor="#06b6d4"
-                      stopOpacity={0.45}
-                    />
-
-                    <stop
-                      offset="100%"
-                      stopColor="#06b6d4"
-                      stopOpacity={0}
-                    />
-
+                  <linearGradient id="riverRiskGradient" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stopColor="#06b6d4" stopOpacity={0.45} />
+                    <stop offset="100%" stopColor="#06b6d4" stopOpacity={0} />
                   </linearGradient>
-
                 </defs>
-
-                <CartesianGrid
-                  strokeDasharray="3 3"
-                  stroke="#1e293b"
-                />
-
-                <XAxis
-                  dataKey="time"
-                  stroke="#64748b"
-                  tick={{ fontSize: 12 }}
-                />
-
-                <YAxis
-                  domain={[0, 100]}
-                  stroke="#64748b"
-                  tick={{ fontSize: 12 }}
-                  tickFormatter={(value) => `${value}%`}
-                />
-
+                <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.05)" />
+                <XAxis dataKey="time" stroke="rgba(255,255,255,0.4)" tick={{ fontSize: 10 }} />
+                <YAxis domain={[0, 100]} stroke="rgba(255,255,255,0.4)" tick={{ fontSize: 10 }} tickFormatter={(value) => `${value}%`} />
                 <Tooltip
-                  contentStyle={{
-                    backgroundColor: "#020617",
-                    border: "1px solid #334155",
-                    borderRadius: "12px",
-                    color: "#fff",
-                  }}
+                  contentStyle={{ backgroundColor: "rgba(0,0,0,0.8)", border: "1px solid rgba(255,255,255,0.2)", borderRadius: "12px", color: "#fff" }}
                   formatter={(value) => [`${value}%`, "Risk"]}
                 />
-
-                <Area
-                  type="monotone"
-                  dataKey="risk"
-                  stroke="#06b6d4"
-                  strokeWidth={3}
-                  fill="url(#riverRiskGradient)"
-                />
-
+                <Area type="monotone" dataKey="risk" stroke="#06b6d4" strokeWidth={3} fill="url(#riverRiskGradient)" />
               </AreaChart>
-
             </ResponsiveContainer>
-
           </div>
-
         </div>
-
       </div>
-
-
-      {/* =====================================================
-          RIVER CARDS
-      ====================================================== */}
-
       <div className="border-t border-white/10 p-6 md:p-8">
-
         <div className="mb-5 flex items-center justify-between">
-
           <div>
-
-            <h3 className="text-xl font-semibold text-white">
-              Major River Systems
-            </h3>
-
-            <p className="mt-1 text-sm text-white/70">
-              Current model assessment across monitored basins
-            </p>
-
+            <h3 className="text-xl font-semibold text-white">Major River Systems</h3>
+            <p className="mt-1 text-sm text-white/50">Current model assessment across monitored basins</p>
           </div>
-
-          <span className="hidden rounded-full bg-cyan-500/10 px-3 py-1 text-xs text-cyan-400 sm:block">
-            {rivers.length} RIVERS
-          </span>
-
         </div>
-
-
         <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
-
-          {rivers.map((river) => {
-
+          {displayRivers.map((river) => {
             const styles = getRiskClass(river.status);
-
             return (
-
-              <div
-                key={river.name}
-                className={`rounded-2xl border ${styles.border} bg-black/40 backdrop-blur-md border border-white/10 text-white shadow-sm p-5 transition hover:-translate-y-1 hover:bg-black/40 backdrop-blur-md border border-white/10 text-white shadow-sm`}
-              >
-
+              <div key={river.name} className={`rounded-2xl border ${styles.border} bg-black/40 backdrop-blur-md text-white p-5 transition hover:-translate-y-1 hover:bg-black/60 shadow-lg`}>
                 <div className="flex items-start justify-between">
-
                   <div>
-
-                    <p className="text-lg font-bold text-white">
-                       {river.name}
-                    </p>
-
-                    <p className="mt-1 text-xs text-white/70">
-                      {river.basin}
-                    </p>
-
+                    <p className="text-lg font-bold text-white">{river.name}</p>
+                    <p className="mt-1 text-[10px] uppercase tracking-widest font-bold text-white/50">{river.basin}</p>
                   </div>
-
                   <div className={`rounded-lg ${styles.bg} px-2 py-1`}>
-
-                    <span className={`text-sm font-bold ${styles.text}`}>
-                      {river.risk}%
-                    </span>
-
+                    <span className={`text-sm font-bold ${styles.text}`}>{river.risk}%</span>
                   </div>
-
                 </div>
-
-
-                <div className="mt-4">
-
-                  <div className="mb-2 flex justify-between text-xs">
-
-                    <span className="text-white/70">
-                      Risk
-                    </span>
-
-                    <span className={styles.text}>
-                      {river.status}
-                    </span>
-
+                <div className="mt-5">
+                  <div className="mb-2 flex justify-between text-xs font-semibold">
+                    <span className="text-white/50">Risk Status</span>
+                    <span className={styles.text}>{river.status}</span>
                   </div>
-
-                  <div className="h-2 overflow-hidden rounded-full bg-white/10">
-
-                    <div
-                      className={`h-full rounded-full ${styles.bar}`}
-                      style={{
-                        width: `${river.risk}%`,
-                      }}
-                    />
-
+                  <div className="h-1.5 overflow-hidden rounded-full bg-white/10">
+                    <div className={`h-full rounded-full ${styles.bar}`} style={{ width: `${river.risk}%` }} />
                   </div>
-
                 </div>
-
-
-                <div className="mt-4 space-y-2 text-xs">
-
-                  <div className="flex justify-between">
-
-                    <span className="text-white/70">
-                      Flow
-                    </span>
-
-                    <span className="text-white/90">
-                      {river.flow}%
-                    </span>
-
-                  </div>
-
-
-                  <div className="flex justify-between">
-
-                    <span className="text-white/70">
-                      Rainfall
-                    </span>
-
-                    <span className="text-cyan-400">
-                      {river.rainfall} mm
-                    </span>
-
-                  </div>
-
-
-                  <div className="flex justify-between">
-
-                    <span className="text-white/70">
-                      Catchment
-                    </span>
-
-                    <span className="text-white/90">
-                      {river.saturation}%
-                    </span>
-
-                  </div>
-
-
-                  <div className="flex justify-between">
-
-                    <span className="text-white/70">
-                      Trend
-                    </span>
-
-                    <span
-                      className={
-                        river.trend === "RISING"
-                          ? "text-orange-400"
-                          : river.trend === "FALLING"
-                          ? "text-emerald-400"
-                          : "text-white/90"
-                      }
-                    >
-                      {river.trend === "RISING"
-                        ? " Rising"
-                        : river.trend === "FALLING"
-                        ? " Falling"
-                        : " Stable"}
-                    </span>
-
-                  </div>
-
+                <div className="mt-5 space-y-2 text-xs font-medium">
+                  <div className="flex justify-between"><span className="text-white/50">Flow</span><span className="text-white">{river.flow}%</span></div>
+                  <div className="flex justify-between"><span className="text-white/50">Rainfall</span><span className="text-cyan-400">{river.rainfall} mm</span></div>
+                  <div className="flex justify-between"><span className="text-white/50">Catchment</span><span className="text-white">{river.saturation}%</span></div>
+                  <div className="flex justify-between"><span className="text-white/50">Trend</span><span className={river.trend === "RISING" ? "text-orange-400" : river.trend === "FALLING" ? "text-emerald-400" : "text-white"}>{river.trend}</span></div>
                 </div>
-
               </div>
-
             );
-
           })}
-
         </div>
-
       </div>
-
-
-      {/* =====================================================
-          AI INTERPRETATION
-      ====================================================== */}
-
-      <div className="border-t border-white/10 p-6 md:p-8">
-
-        <div className="rounded-2xl border border-cyan-500/20 bg-cyan-500/5 p-5">
-
-          <div className="flex items-start gap-4">
-
-            <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-cyan-500/10 text-xl">
-              
-            </div>
-
-            <div>
-
-              <p className="font-semibold text-cyan-400">
-                Hydrological Risk Assessment
-              </p>
-
-              <p className="mt-2 text-sm leading-6 text-white/90">
-
-                {selectedRiver.name} River is currently showing a{" "}
-                <strong className={selectedStyles.text}>
-                  {selectedRiver.status.toLowerCase()}
-                </strong>{" "}
-                risk signal. The model indicates a{" "}
-                <strong className="text-orange-400">
-                  {selectedRiver.trend.toLowerCase()}
-                </strong>{" "}
-                flow trend with increasing catchment pressure.
-
-              </p>
-
-              <p className="mt-3 text-xs leading-5 text-white/70">
-
-                 This initial dashboard layer uses demonstration
-                hydrological values. The next stage will connect
-                verified river-flow and hydrological forecast sources.
-
-              </p>
-
-            </div>
-
-          </div>
-
-        </div>
-
-      </div>
-
     </section>
   );
 }
-
-

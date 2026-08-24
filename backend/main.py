@@ -1,4 +1,4 @@
-from fastapi import FastAPI
+﻿from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 from services.weather import get_weather
@@ -57,6 +57,23 @@ LOCATIONS = {
     },
 }
 
+
+import requests
+
+# ============================================================
+# SEARCH LOCATIONS
+# ============================================================
+@app.get("/api/locations/search")
+def search_locations(query: str):
+    try:
+        res = requests.get(f"https://geocoding-api.open-meteo.com/v1/search?name={query}&count=5&language=en&format=json")
+        data = res.json()
+        results = data.get("results", [])
+        # Filter for India/Himachal Pradesh if possible, or just return top results
+        # To be safe and broad, we return the top 5 matches
+        return {"results": [{"name": r.get("name"), "admin1": r.get("admin1"), "country": r.get("country"), "latitude": r.get("latitude"), "longitude": r.get("longitude")} for r in results]}
+    except Exception as e:
+        return {"results": []}
 
 # ============================================================
 # ROOT
@@ -497,6 +514,7 @@ def get_alerts():
 @app.get("/api/safe-points")
 def safe_points(lat: float, lon: float):
     return {"safe_points": get_safe_points(lat, lon)}
+
 
 
 

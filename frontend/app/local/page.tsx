@@ -10,11 +10,28 @@ import Link from "next/link";
 import { MapPin } from "lucide-react";
 
 const HydrologicalIntelligence = dynamic(() => import("../components/HydrologicalIntelligence"), { ssr: false });
+const SafeZoneMap = dynamic(() => import("../components/SafeZoneMap"), { ssr: false });
 const RiskMap = dynamic(() => import("../components/RiskMap"), { ssr: false });
-const AITerminal = dynamic(() => import("../components/AITerminal"), { ssr: false });
 
 export default function LocalDashboard() {
   const [userLocation, setUserLocation] = useState<{lat: number, lon: number} | null>(null);
+
+  const [cityName, setCityName] = useState("My Location");
+
+  const reverseGeocode = async (lat: number, lon: number) => {
+    try {
+      const res = await fetch(`https://nominatim.openstreetmap.org/reverse?lat=${lat}&lon=${lon}&format=json`);
+      const data = await res.json();
+      if (data.address && data.address.city) {
+        setCityName(data.address.city);
+      } else if (data.address && data.address.town) {
+        setCityName(data.address.town);
+      } else if (data.address && data.address.village) {
+        setCityName(data.address.village);
+      }
+    } catch(e) {}
+  };
+
   const [safePoints, setSafePoints] = useState<any[]>([]);
   
   const [weather, setWeather] = useState<any>(null);
@@ -33,10 +50,10 @@ export default function LocalDashboard() {
 
   useEffect(() => {
     if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition((pos) => { setUserLocation({lat: pos.coords.latitude, lon: pos.coords.longitude}); fetchSafePoints(pos.coords.latitude, pos.coords.longitude); }, (err) => { console.warn("Geolocation failed", err); setUserLocation({lat: 32.219, lon: 76.3234}); fetchSafePoints(32.219, 76.3234); }, { timeout: 10000 });
+      navigator.geolocation.getCurrentPosition((pos) => { setUserLocation({lat: pos.coords.latitude, lon: pos.coords.longitude}); reverseGeocode(pos.coords.latitude, pos.coords.longitude); fetchSafePoints(pos.coords.latitude, pos.coords.longitude); }, (err) => { console.warn("Geolocation failed", err); setUserLocation({lat: 32.219, lon: 76.3234}); reverseGeocode(32.219, 76.3234); fetchSafePoints(32.219, 76.3234); }, { timeout: 10000 });
     } else {
       // Fallback
-      setUserLocation({lat: 32.219, lon: 76.3234});
+      setUserLocation({lat: 32.219, lon: 76.3234}); reverseGeocode(32.219, 76.3234);
     }
   }, []);
 
@@ -89,25 +106,27 @@ export default function LocalDashboard() {
         <div className="max-w-[90rem] mx-auto space-y-8">
           {/* PREMIUM HEADER */}
           <HideOnScrollHeader>
-          <header className="flex flex-col md:flex-row md:items-center justify-between gap-6 bg-black/40 backdrop-blur-xl border border-white/10 p-6 rounded-[2rem] shadow-2xl">
-            <div>
-              <Link href="/" className="group text-white/50 hover:text-white transition-colors text-sm font-semibold tracking-wider uppercase flex items-center gap-2 mb-3 inline-block">
-                <span className="group-hover:-translate-x-1 transition-transform">&larr;</span> Back to Global View
-              </Link>
-              <div className="flex items-center gap-3 mb-2">
-                <div className="h-3 w-3 rounded-full bg-emerald-500 animate-pulse shadow-[0_0_10px_rgba(16,185,129,0.7)]"></div>
-                <MapPin size={14} className="text-emerald-400" /><span className="text-xs font-bold tracking-[0.25em] text-emerald-400 uppercase">GPS Locked</span>
+          <header className="flex flex-col md:flex-row md:items-center justify-between gap-6 bg-black/40 backdrop-blur-xl border border-white/10 p-4 px-6 rounded-full shadow-2xl">
+            <div className="flex items-center gap-6">
+              <div>
+                <h1 className="text-2xl font-black tracking-tighter text-white drop-shadow-md">
+                  HimAlert <span className="text-blue-400 font-light">Local</span>
+                </h1>
               </div>
-              <h1 className="text-4xl font-black tracking-tighter text-white drop-shadow-md">
-                HimAlert <span className="text-blue-400 font-light">Local</span>
-              </h1>
-              <p className="mt-1 text-sm text-blue-300 uppercase tracking-widest font-semibold drop-shadow">
-                Personalized Threat Intelligence
-              </p>
+              <div className="hidden md:flex items-center gap-2 bg-white/10 rounded-full px-3 py-1.5 border border-white/5">
+                <div className="h-2 w-2 rounded-full bg-emerald-500 animate-pulse shadow-[0_0_10px_rgba(16,185,129,0.7)]"></div>
+                <MapPin size={12} className="text-emerald-400" />
+                <span className="text-[10px] font-bold tracking-[0.2em] text-emerald-400 uppercase">Live Ops</span>
+              </div>
             </div>
             
-            <div className="w-full md:w-[450px]">
-               <AITerminal />
+            <div className="flex flex-col md:flex-row items-center gap-4 w-full md:w-auto">
+              <Link
+                href="/"
+                className="group relative overflow-hidden rounded-full bg-blue-600/20 hover:bg-blue-600/40 border border-blue-500/30 px-6 py-2 transition-all duration-300 flex items-center justify-center gap-2 shadow-lg w-full md:w-auto"
+              >
+                <span className="relative z-10 text-xs font-bold tracking-wide text-blue-100">&larr; Back to Global View</span>
+              </Link>
             </div>
           </header>
           </HideOnScrollHeader>
@@ -126,38 +145,27 @@ export default function LocalDashboard() {
             <div className="xl:col-span-7 space-y-8">
               
               {/* SAFE ZONES */}
-              <section className="bg-gradient-to-b from-blue-950/60 to-black/60 backdrop-blur-xl border border-blue-500/30 rounded-[2.5rem] p-8 shadow-2xl flex flex-col">
+              <section className="bg-gradient-to-b from-blue-950/60 to-black/60 backdrop-blur-xl border border-blue-500/30 rounded-[2.5rem] p-8 shadow-2xl flex flex-col h-full min-h-[500px]">
                 <div className="flex items-center justify-between mb-6">
                   <div>
                     <h2 className="text-2xl font-bold text-white tracking-tight">Real-Time Safe Zones</h2>
-                    <p className="text-blue-200/60 text-sm mt-1 uppercase tracking-wider font-semibold">3km Radius • OpenStreetMap Live Sync</p>
+                    <p className="text-blue-200/60 text-sm mt-1 uppercase tracking-wider font-semibold">3km Radius OpenStreetMap Live Sync</p>
                   </div>
-                  <div className="text-4xl">🛡️</div>
                 </div>
                 
-                {!userLocation ? (
-                  <div className="h-[200px] flex items-center justify-center font-medium text-blue-200/50 animate-pulse">
-                    Acquiring GPS coordinates...
-                  </div>
-                ) : safePoints.length === 0 ? (
-                  <div className="h-[200px] flex flex-col items-center justify-center font-medium text-blue-200/50">
-                    <p>No verified emergency safe points found nearby.</p>
-                    <p className="text-xs mt-2 opacity-50">Expanding search radius...</p>
-                  </div>
-                ) : (
-                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                    {safePoints.map((sp, i) => (
-                      <div key={i} className="bg-blue-900/20 border border-blue-500/20 hover:border-blue-400/40 hover:bg-blue-800/30 transition-all p-5 rounded-2xl flex flex-col justify-center">
-                        <div className="font-bold text-blue-100 text-lg mb-1">{sp.name}</div>
-                        <div className="text-blue-300/60 text-xs font-bold uppercase tracking-widest">{sp.type}</div>
-                      </div>
-                    ))}
-                  </div>
-                )}
+                <div className="flex-1 w-full rounded-2xl overflow-hidden border border-white/10 relative">
+                  {!userLocation ? (
+                    <div className="h-full w-full flex items-center justify-center font-medium text-blue-200/50 animate-pulse bg-black/40">
+                      Acquiring GPS coordinates...
+                    </div>
+                  ) : (
+                    <SafeZoneMap userLocation={userLocation} safePoints={safePoints} />
+                  )}
+                </div>
               </section>
 
               {/* HYDROLOGICAL */}
-              <HydrologicalIntelligence />
+              <HydrologicalIntelligence locationName={cityName} />
 
             </div>
           </div>
