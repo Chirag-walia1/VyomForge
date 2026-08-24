@@ -1,4 +1,5 @@
-﻿"use client";
+﻿import { useState, useEffect } from "react";
+"use client";
 
 import {
   Area,
@@ -121,6 +122,23 @@ function getRiskClass(status: string) {
 }
 
 export default function HydrologicalIntelligence({ locationName }: { locationName?: string }) {
+  const [liveRiverData, setLiveRiverData] = useState<any>(null);
+
+  useEffect(() => {
+    const fetchRiverData = async () => {
+      try {
+        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL || "https://himalert.onrender.com"}/api/water-levels`);
+        if (res.ok) {
+          const data = await res.json();
+          setLiveRiverData(data.locations);
+        }
+      } catch (e) {}
+    };
+    fetchRiverData();
+    const interval = setInterval(fetchRiverData, 5 * 60 * 1000);
+    return () => clearInterval(interval);
+  }, []);
+
   // Filter rivers based on locationName if provided
   let displayRivers = ALL_RIVERS;
   if (locationName) {
@@ -156,11 +174,26 @@ export default function HydrologicalIntelligence({ locationName }: { locationNam
   }
 
   const selectedRiver = displayRivers[0];
+  let liveFlow = selectedRiver.flow;
+  let liveTrend = selectedRiver.trend;
+  let liveStatus = selectedRiver.status;
+
+  if (liveRiverData) {
+    if (selectedRiver.name === "Beas" && liveRiverData["Mandi"]) {
+      liveFlow = Math.min(100, Math.max(10, Math.round(liveRiverData["Mandi"].water_level / 5)));
+      liveTrend = liveRiverData["Mandi"].water_level > 200 ? "RISING" : "STABLE";
+      liveStatus = liveFlow > 80 ? "CRITICAL" : (liveFlow > 50 ? "HIGH" : "MODERATE");
+    } else if (selectedRiver.name === "Ravi" && liveRiverData["Kangra"]) {
+      liveFlow = Math.min(100, Math.max(10, Math.round(liveRiverData["Kangra"].water_level * 5)));
+      liveTrend = liveRiverData["Kangra"].water_level > 50 ? "RISING" : "STABLE";
+      liveStatus = liveFlow > 80 ? "CRITICAL" : (liveFlow > 50 ? "HIGH" : "MODERATE");
+    }
+  }
   const chartData = selectedRiver.forecast.map((val, idx) => ({
     time: `T+${(idx + 1) * 3}h`,
     risk: val,
   }));
-  const selectedStyles = getRiskClass(selectedRiver.status);
+  const selectedStyles = getRiskClass(liveStatus);
 
   return (
     <section className="mt-8 overflow-hidden bg-black/40 backdrop-blur-xl border border-white/10 rounded-[2.5rem] shadow-2xl">
@@ -187,13 +220,13 @@ export default function HydrologicalIntelligence({ locationName }: { locationNam
                 {selectedRiver.name}
               </span>
               <span className={`text-lg font-bold ${selectedStyles.text}`}>
-                {selectedRiver.status}
+                {liveStatus}
               </span>
             </div>
             <div className="mt-4 flex gap-4 text-sm font-medium">
               <div className="flex flex-col">
                 <span className="text-white/50">Flow</span>
-                <span className="text-white">{selectedRiver.flow}%</span>
+                <span className="text-white">{liveFlow}%</span>
               </div>
               <div className="flex flex-col">
                 <span className="text-white/50">Saturation</span>
@@ -281,6 +314,8 @@ export default function HydrologicalIntelligence({ locationName }: { locationNam
     </section>
   );
 }
+
+
 
 
 
