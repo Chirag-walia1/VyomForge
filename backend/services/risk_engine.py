@@ -338,6 +338,10 @@ def calculate_risk(
         "extreme_rainfall": extreme_rainfall,
 
         "overall": overall,
+        "flash_flood_24h": round(clamp(flash_flood * (1 + (rainfall_24h / 100)))),
+        "landslide_24h": round(clamp(landslide * (1 + (rainfall_24h / 100)))),
+        "extreme_rainfall_24h": round(clamp(extreme_rainfall * (1 + (rainfall_24h / 100)))),
+        "overall_24h": "CRITICAL" if round(clamp(flash_flood * (1 + (rainfall_24h / 100)))) >= 75 else ("HIGH" if round(clamp(flash_flood * (1 + (rainfall_24h / 100)))) >= 60 else "MODERATE"),
 
         "inputs": {
 
@@ -396,3 +400,4 @@ def calculate_risk(
             ),
         },
     }
+

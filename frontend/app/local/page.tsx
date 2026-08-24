@@ -165,7 +165,7 @@ export default function LocalDashboard() {
               </section>
 
               {/* HYDROLOGICAL */}
-              <HydrologicalIntelligence locationName={cityName} />
+              <HydrologicalIntelligence locationName={cityName} weather={weather} />
 
             </div>
           </div>
@@ -174,6 +174,7 @@ export default function LocalDashboard() {
     </DynamicBackground>
   );
 }
+
 
 
 

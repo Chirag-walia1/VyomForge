@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 import React, { useEffect } from "react";
 import { MapContainer, TileLayer, CircleMarker, Popup, useMap, Marker } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
@@ -58,6 +58,25 @@ export default function SafeZoneMap({ userLocation, safePoints }: { userLocation
           </Marker>
         ))}
       </MapContainer>
+      <div
+        className="
+          absolute
+          bottom-4
+          left-4
+          z-[1000]
+          rounded-xl
+          bg-black/60 backdrop-blur-xl border border-white/10
+          p-3
+          text-white
+          shadow-2xl
+          flex flex-col gap-2
+          text-xs font-medium tracking-wide
+        "
+      >
+        <div className="flex items-center gap-2"><div className="w-3 h-3 rounded-full bg-blue-500 shadow-[0_0_8px_rgba(59,130,246,0.8)]"></div> You Are Here</div>
+        <div className="flex items-center gap-2"><div className="w-3 h-4 rounded-t-full bg-blue-100 shadow-[0_0_8px_rgba(255,255,255,0.8)] border border-blue-500"></div> Safe Shelter</div>
+      </div>
     </div>
   );
 }
+

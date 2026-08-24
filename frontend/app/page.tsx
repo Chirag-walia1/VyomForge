@@ -600,7 +600,7 @@ export default function Home() {
               </section>
 
               {/* HYDROLOGICAL */}
-              <HydrologicalIntelligence />
+              <HydrologicalIntelligence weather={weather} />
 
               {/* RISK TREND HISTORY */}
               <section className="bg-black/40 backdrop-blur-xl border border-white/10 rounded-[2.5rem] p-8 shadow-2xl">
@@ -647,6 +647,7 @@ export default function Home() {
     </DynamicBackground>
   );
 }
+
 
 
 

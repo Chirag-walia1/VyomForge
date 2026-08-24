@@ -492,6 +492,31 @@ export default function RiskMap() {
         </div>
 
       </MapContainer>
+      {/* ======================================================
+          MAP LEGEND
+      ====================================================== */}
+      <div
+        className="
+          absolute
+          bottom-8
+          left-4
+          z-[1000]
+          rounded-2xl
+          bg-black/60 backdrop-blur-xl border border-white/10
+          p-4
+          text-white
+          shadow-2xl
+          flex flex-col gap-2
+          text-xs font-medium tracking-wide
+        "
+      >
+        <div className="text-white/50 uppercase tracking-widest text-[10px] mb-1 font-bold">Risk Levels</div>
+        <div className="flex items-center gap-2"><div className="w-3 h-3 rounded-full bg-red-500 shadow-[0_0_8px_rgba(239,68,68,0.8)]"></div> Critical (75%+)</div>
+        <div className="flex items-center gap-2"><div className="w-3 h-3 rounded-full bg-orange-500 shadow-[0_0_8px_rgba(249,115,22,0.8)]"></div> High (60%+)</div>
+        <div className="flex items-center gap-2"><div className="w-3 h-3 rounded-full bg-yellow-500 shadow-[0_0_8px_rgba(234,179,8,0.8)]"></div> Moderate (40%+)</div>
+        <div className="flex items-center gap-2"><div className="w-3 h-3 rounded-full bg-green-500 shadow-[0_0_8px_rgba(34,197,94,0.8)]"></div> Low / Safe</div>
+      </div>
+
 
       {/* ======================================================
           TOP LEFT BRAND
@@ -1466,5 +1491,6 @@ export default function RiskMap() {
     </div>
   );
 }
+
 
 

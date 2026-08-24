@@ -121,7 +121,7 @@ function getRiskClass(status: string) {
   }
 }
 
-export default function HydrologicalIntelligence({ locationName }: { locationName?: string }) {
+export default function HydrologicalIntelligence({ locationName, weather }: { locationName?: string, weather?: any }) {
   const [liveRiverData, setLiveRiverData] = useState<any>(null);
 
   useEffect(() => {
@@ -230,7 +230,7 @@ export default function HydrologicalIntelligence({ locationName }: { locationNam
               </div>
               <div className="flex flex-col">
                 <span className="text-white/50">Saturation</span>
-                <span className="text-white">{selectedRiver.saturation}%</span>
+                <span className="text-white">{liveSaturation}%</span>
               </div>
               <div className="flex flex-col">
                 <span className="text-white/50">Trend</span>
@@ -314,6 +314,7 @@ export default function HydrologicalIntelligence({ locationName }: { locationNam
     </section>
   );
 }
+
 
 
 
