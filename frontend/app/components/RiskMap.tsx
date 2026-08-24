@@ -82,15 +82,15 @@ function ResetViewButton() {
       onClick={resetMap}
       className="
         rounded-xl
-        border border-white/10
-        bg-slate-950/90
+        border border-slate-200
+        bg-white/90 shadow-sm
         px-3 py-2
         text-xs font-semibold
-        text-white
+        text-slate-900
         shadow-xl
         backdrop-blur-xl
         transition
-        hover:bg-slate-800
+        hover:bg-white
       "
     >
       ⌖ Reset View
@@ -329,7 +329,7 @@ export default function RiskMap() {
         min-w-0
         overflow-hidden
         rounded-2xl
-        bg-slate-950
+        bg-white
       "
     >
 
@@ -512,10 +512,10 @@ export default function RiskMap() {
           top-4
           z-[1000]
           rounded-2xl
-          border border-white/10
-          bg-slate-950/90
+          border border-slate-200
+          bg-white/90 shadow-sm
           px-4 py-3
-          text-white
+          text-slate-900
           shadow-2xl
           backdrop-blur-xl
         "
@@ -551,7 +551,7 @@ export default function RiskMap() {
               className="
                 mt-0.5
                 text-[10px]
-                text-slate-400
+                text-slate-500
               "
             >
               Live multi-hazard intelligence
@@ -577,7 +577,7 @@ export default function RiskMap() {
           gap-2
           rounded-full
           border border-emerald-400/20
-          bg-slate-950/85
+          bg-white/85 shadow-sm
           px-3 py-2
           text-[10px]
           font-semibold
@@ -612,8 +612,8 @@ export default function RiskMap() {
           top-4
           z-[1000]
           rounded-2xl
-          border border-white/10
-          bg-slate-950/90
+          border border-slate-200
+          bg-white/90 shadow-sm
           p-2
           shadow-2xl
           backdrop-blur-xl
@@ -650,7 +650,7 @@ export default function RiskMap() {
               ${
                 mapStyle === "street"
                   ? "bg-cyan-400 text-slate-950"
-                  : "bg-slate-800 text-slate-300 hover:bg-slate-700"
+                  : "bg-white text-slate-700 hover:bg-slate-100"
               }
             `}
           >
@@ -670,7 +670,7 @@ export default function RiskMap() {
               ${
                 mapStyle === "terrain"
                   ? "bg-cyan-400 text-slate-950"
-                  : "bg-slate-800 text-slate-300 hover:bg-slate-700"
+                  : "bg-white text-slate-700 hover:bg-slate-100"
               }
             `}
           >
@@ -690,7 +690,7 @@ export default function RiskMap() {
               ${
                 mapStyle === "satellite"
                   ? "bg-cyan-400 text-slate-950"
-                  : "bg-slate-800 text-slate-300 hover:bg-slate-700"
+                  : "bg-white text-slate-700 hover:bg-slate-100"
               }
             `}
           >
@@ -712,10 +712,10 @@ export default function RiskMap() {
           left-4
           z-[1000]
           rounded-2xl
-          border border-white/10
-          bg-slate-950/90
+          border border-slate-200
+          bg-white/90 shadow-sm
           p-3
-          text-white
+          text-slate-900
           shadow-2xl
           backdrop-blur-xl
         "
@@ -747,7 +747,7 @@ export default function RiskMap() {
               items-center
               gap-2
               text-xs
-              text-slate-300
+              text-slate-700
             "
           >
 
@@ -759,7 +759,7 @@ export default function RiskMap() {
                 ${
                   showRiskZones
                     ? "border-red-300 bg-red-500"
-                    : "border-slate-600 bg-slate-800"
+                    : "border-slate-300 bg-white"
                 }
               `}
             />
@@ -779,7 +779,7 @@ export default function RiskMap() {
               items-center
               gap-2
               text-xs
-              text-slate-300
+              text-slate-700
             "
           >
 
@@ -791,7 +791,7 @@ export default function RiskMap() {
                 ${
                   showBoundary
                     ? "border-cyan-200 bg-cyan-400"
-                    : "border-slate-600 bg-slate-800"
+                    : "border-slate-300 bg-white"
                 }
               `}
             />
@@ -816,11 +816,11 @@ export default function RiskMap() {
           z-[1000]
           hidden
           rounded-2xl
-          border border-white/10
-          bg-slate-950/90
+          border border-slate-200
+          bg-white/90 shadow-sm
           px-4 py-3
           text-xs
-          text-white
+          text-slate-900
           shadow-2xl
           backdrop-blur-xl
           md:block
@@ -880,11 +880,11 @@ export default function RiskMap() {
             -translate-x-1/2
             -translate-y-1/2
             rounded-2xl
-            border border-white/10
-            bg-slate-950/90
+            border border-slate-200
+            bg-white/90 shadow-sm
             px-5 py-4
             text-sm
-            text-white
+            text-slate-900
             shadow-2xl
             backdrop-blur-xl
           "
@@ -923,10 +923,10 @@ export default function RiskMap() {
             w-[min(370px,calc(100%-32px))]
             overflow-y-auto
             rounded-2xl
-            border border-white/10
-            bg-slate-950/95
+            border border-slate-200
+            bg-white/95 shadow-sm
             p-4
-            text-white
+            text-slate-900
             shadow-2xl
             backdrop-blur-2xl
           "
@@ -970,7 +970,7 @@ export default function RiskMap() {
                 className="
                   mt-1
                   text-xs
-                  text-slate-400
+                  text-slate-500
                 "
               >
                 Live multi-hazard assessment
@@ -986,12 +986,12 @@ export default function RiskMap() {
                 items-center
                 justify-center
                 rounded-xl
-                bg-slate-800
+                bg-white
                 text-xl
-                text-slate-300
+                text-slate-700
                 transition
-                hover:bg-slate-700
-                hover:text-white
+                hover:bg-slate-100
+                hover:text-slate-900
               "
             >
               ×
@@ -1039,7 +1039,7 @@ export default function RiskMap() {
                         text-[9px]
                         uppercase
                         tracking-widest
-                        text-slate-400
+                        text-slate-500
                       "
                     >
                       Overall Threat
@@ -1103,7 +1103,7 @@ export default function RiskMap() {
             "
           >
 
-            <div className="rounded-xl bg-slate-900 p-3">
+            <div className="rounded-xl bg-slate-50 p-3">
               <p className="text-[9px] uppercase text-slate-500">
                 🌊 Flood
               </p>
@@ -1113,7 +1113,7 @@ export default function RiskMap() {
               </p>
             </div>
 
-            <div className="rounded-xl bg-slate-900 p-3">
+            <div className="rounded-xl bg-slate-50 p-3">
               <p className="text-[9px] uppercase text-slate-500">
                 ⛰️ Landslide
               </p>
@@ -1123,7 +1123,7 @@ export default function RiskMap() {
               </p>
             </div>
 
-            <div className="rounded-xl bg-slate-900 p-3">
+            <div className="rounded-xl bg-slate-50 p-3">
               <p className="text-[9px] uppercase text-slate-500">
                 🌧️ Rain
               </p>
@@ -1167,7 +1167,7 @@ export default function RiskMap() {
               "
             >
 
-              <div className="rounded-xl bg-slate-900 p-3">
+              <div className="rounded-xl bg-slate-50 p-3">
                 <p className="text-[10px] text-slate-500">
                   🌧 Current Rain
                 </p>
@@ -1177,7 +1177,7 @@ export default function RiskMap() {
                 </p>
               </div>
 
-              <div className="rounded-xl bg-slate-900 p-3">
+              <div className="rounded-xl bg-slate-50 p-3">
                 <p className="text-[10px] text-slate-500">
                   🌧 Next 24h
                 </p>
@@ -1187,7 +1187,7 @@ export default function RiskMap() {
                 </p>
               </div>
 
-              <div className="rounded-xl bg-slate-900 p-3">
+              <div className="rounded-xl bg-slate-50 p-3">
                 <p className="text-[10px] text-slate-500">
                   ☔ Probability
                 </p>
@@ -1197,7 +1197,7 @@ export default function RiskMap() {
                 </p>
               </div>
 
-              <div className="rounded-xl bg-slate-900 p-3">
+              <div className="rounded-xl bg-slate-50 p-3">
                 <p className="text-[10px] text-slate-500">
                   💧 Humidity
                 </p>
@@ -1207,7 +1207,7 @@ export default function RiskMap() {
                 </p>
               </div>
 
-              <div className="rounded-xl bg-slate-900 p-3">
+              <div className="rounded-xl bg-slate-50 p-3">
                 <p className="text-[10px] text-slate-500">
                   💨 Wind
                 </p>
@@ -1217,7 +1217,7 @@ export default function RiskMap() {
                 </p>
               </div>
 
-              <div className="rounded-xl bg-slate-900 p-3">
+              <div className="rounded-xl bg-slate-50 p-3">
                 <p className="text-[10px] text-slate-500">
                   🌱 Soil
                 </p>
@@ -1237,8 +1237,8 @@ export default function RiskMap() {
             className="
               mt-5
               rounded-2xl
-              border border-slate-800
-              bg-slate-900
+              border border-slate-200
+              bg-slate-50
               p-4
             "
           >
@@ -1296,7 +1296,7 @@ export default function RiskMap() {
                   <p className="text-right text-[10px] text-slate-500">
                     Data age
                     <br />
-                    <span className="text-slate-300">
+                    <span className="text-slate-700">
                       {selectedLocation.rainfall_age_hours.toFixed(
                         1
                       )}{" "}
@@ -1346,7 +1346,7 @@ export default function RiskMap() {
                   Station
                 </span>
 
-                <span className="text-right text-slate-300">
+                <span className="text-right text-slate-700">
                   {selectedLocation.rainfall_station ??
                     "N/A"}
                 </span>
@@ -1357,7 +1357,7 @@ export default function RiskMap() {
                   Updated
                 </span>
 
-                <span className="text-right text-slate-300">
+                <span className="text-right text-slate-700">
                   {selectedLocation.rainfall_updated ??
                     "N/A"}
                 </span>
@@ -1368,7 +1368,7 @@ export default function RiskMap() {
                   Source
                 </span>
 
-                <span className="max-w-[190px] text-right text-slate-300">
+                <span className="max-w-[190px] text-right text-slate-700">
                   {selectedLocation.rainfall_source ??
                     "NWIC / Himachal Pradesh Government"}
                 </span>
@@ -1384,8 +1384,8 @@ export default function RiskMap() {
             className="
               mt-4
               rounded-2xl
-              border border-slate-800
-              bg-slate-900
+              border border-slate-200
+              bg-slate-50
               p-4
             "
           >
@@ -1399,10 +1399,10 @@ export default function RiskMap() {
               <span
                 className="
                   rounded-full
-                  bg-slate-800
+                  bg-white
                   px-2 py-1
                   text-[9px]
-                  text-slate-400
+                  text-slate-500
                 "
               >
                 {selectedLocation.water_status ??
@@ -1438,7 +1438,7 @@ export default function RiskMap() {
             className="
               mt-4
               rounded-xl
-              bg-slate-900
+              bg-slate-50
               p-3
               text-[10px]
               text-slate-500
@@ -1450,7 +1450,7 @@ export default function RiskMap() {
                 Latitude
               </span>
 
-              <span className="text-slate-300">
+              <span className="text-slate-700">
                 {selectedLocation.latitude.toFixed(
                   4
                 )}
@@ -1462,7 +1462,7 @@ export default function RiskMap() {
                 Longitude
               </span>
 
-              <span className="text-slate-300">
+              <span className="text-slate-700">
                 {selectedLocation.longitude.toFixed(
                   4
                 )}

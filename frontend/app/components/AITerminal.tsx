@@ -39,19 +39,20 @@ export default function AITerminal() {
   }, [messageIndex]);
 
   return (
-    <div className="w-full bg-black/60 backdrop-blur-md border border-cyan-500/30 rounded-xl p-4 font-mono text-sm shadow-[0_0_15px_rgba(6,182,212,0.2)]">
+    <div className="w-full bg-white border border-blue-100 rounded-xl p-4 shadow-sm text-sm">
       <div className="flex items-center gap-2 mb-2">
         <div className="w-3 h-3 rounded-full bg-red-500 animate-pulse"></div>
         <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
         <div className="w-3 h-3 rounded-full bg-green-500"></div>
-        <span className="text-cyan-400 font-bold ml-2">VYOMFORGE // AI PREDICTIVE INSIGHTS</span>
+        <span className="text-blue-700 font-bold ml-2">Live AI Assistant</span>
       </div>
-      <div className="text-emerald-400 min-h-[40px] flex items-center">
+      <div className="text-slate-700 min-h-[40px] flex items-center">
         <span className="mr-2">&gt;</span>
         <span>{text}</span>
-        {isTyping && <span className="w-2 h-4 bg-emerald-400 ml-1 animate-pulse"></span>}
+        {isTyping && <span className="w-2 h-4 bg-blue-500 ml-1 animate-pulse"></span>}
       </div>
     </div>
   );
 }
+
 
