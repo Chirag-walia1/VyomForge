@@ -149,8 +149,7 @@ export default function Home() {
   const [weather, setWeather] =
     useState<WeatherData | null>(null);
 
-  const [locations, setLocations] =
-    useState<LocationRisk[]>([]);
+  
 
   const [riskHistory, setRiskHistory] =
     useState<RiskHistory[]>([]);
@@ -167,8 +166,7 @@ export default function Home() {
   const [weatherLoading, setWeatherLoading] =
     useState(true);
 
-  const [locationsLoading, setLocationsLoading] =
-    useState(true);
+  
 
   const [historyLoading, setHistoryLoading] =
     useState(true);
@@ -226,7 +224,7 @@ export default function Home() {
       5 * 60 * 1000
     );
 
-    return () => clearInterval(interval);
+    
   }, []);
 
   /* ==========================================
@@ -274,7 +272,7 @@ export default function Home() {
       5 * 60 * 1000
     );
 
-    return () => clearInterval(interval);
+    
   }, []);
 
   /* ==========================================
@@ -282,49 +280,13 @@ export default function Home() {
   ========================================== */
 
   useEffect(() => {
-    const fetchLocations = async () => {
-      try {
-        setLocationsLoading(true);
+    
 
-        const response = await fetch(
-          `${process.env.NEXT_PUBLIC_API_URL || "https://himalert.onrender.com"}/api/locations-risk`,
-          {
-            cache: "no-store",
-          }
-        );
+    
 
-        if (!response.ok) {
-          throw new Error(
-            "Location Risk API failed"
-          );
-        }
+    
 
-        const data =
-          await response.json();
-
-        setLocations(
-          data.locations || []
-        );
-      } catch (error) {
-        console.error(
-          "Location Risk API Error:",
-          error
-        );
-
-        setLocations([]);
-      } finally {
-        setLocationsLoading(false);
-      }
-    };
-
-    fetchLocations();
-
-    const interval = setInterval(
-      fetchLocations,
-      5 * 60 * 1000
-    );
-
-    return () => clearInterval(interval);
+    
   }, []);
 
   /* ==========================================
@@ -376,7 +338,7 @@ export default function Home() {
       5 * 60 * 1000
     );
 
-    return () => clearInterval(interval);
+    
   }, [historyLocation]);
 
   /* ==========================================
@@ -431,7 +393,7 @@ export default function Home() {
       2 * 60 * 1000
     );
 
-    return () => clearInterval(interval);
+    
   }, []);
 
   /* ==========================================
@@ -530,705 +492,130 @@ export default function Home() {
 
   return (
     <DynamicBackground condition={(weather as any)?.current?.cloud_cover > 50 ? "Cloudy" : (weather as any)?.current?.rain > 0 ? "Rain" : "Sunny"}>
-  <main className="min-h-screen text-white font-sans selection:bg-cyan-500/30">
-
-      {/* ======================================
-          HEADER
-      ====================================== */}
-
-      <header className="border-b border-slate-200 bg-black/40 backdrop-blur-md border-white/10 text-white/80 backdrop-blur-md ">
-        <div className="mx-auto flex max-w-7xl flex-col md:flex-row items-start md:items-center justify-between px-6 py-4 gap-4">
-          <div>
-            <h1 className="text-3xl font-extrabold text-white tracking-tight">
-              HimAlert
-            </h1>
-            <p className="mt-1 text-xs text-blue-600 uppercase tracking-widest font-semibold">
-              VyomForge Hydrological Intelligence Network
-            </p>
-          </div>
-          <Link href="/local" className="mb-4 w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded-xl shadow-md transition-all flex justify-center items-center gap-2"> Go to My Exact Live Location Dashboard</Link>
-          
-          <div className="w-full md:w-[500px]">
-            <Link href="/local" className="mb-4 w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded-xl shadow-md transition-all flex justify-center items-center gap-2"> Go to My Exact Live Location Dashboard</Link>
-            <AITerminal />
-
-          </div>
-        </div>
-      </header>
-
-      {/* ======================================
-          MAIN
-      ====================================== */}
-
-      <div className="mx-auto max-w-7xl px-6 py-8">
-
-        {/* ====================================
-            HEADING
-        ==================================== */}
-
-        <section className="mb-8">
-
-          <p className="mb-2 text-sm font-medium text-blue-600">
-            REAL-TIME DISASTER INTELLIGENCE
-          </p>
-
-          <h2 className="text-4xl font-bold tracking-tight">
-            Himachal Pradesh Risk Monitor
-          </h2>
-
-          <p className="mt-3 max-w-2xl text-white/70">
-            AI-powered prediction of flash floods,
-            landslides and extreme rainfall using
-            weather, terrain, soil and hydrological
-            data.
-          </p>
-
-        </section>
-
-        {/* ====================================
-            RISK CARDS
-        ==================================== */}
-
-        <section className="grid gap-5 md:grid-cols-4">
-
-          <div className="rounded-2xl border border-slate-200 bg-black/40 backdrop-blur-md border-white/10 text-white shadow-sm p-6">
-            <p className="text-sm text-white/70">
-              Flash Flood Risk
-            </p>
-
-            <p className="mt-3 text-4xl font-bold text-orange-400">
-              {loading
-                ? "..."
-                : `${risk.flash_flood}%`}
-            </p>
-
-            <p className="mt-2 text-sm text-white/70">
-              Live weather assessment
-            </p>
-          </div>
-
-          <div className="rounded-2xl border border-slate-200 bg-black/40 backdrop-blur-md border-white/10 text-white shadow-sm p-6">
-            <p className="text-sm text-white/70">
-              Landslide Risk
-            </p>
-
-            <p className="mt-3 text-4xl font-bold text-yellow-400">
-              {loading
-                ? "..."
-                : `${risk.landslide}%`}
-            </p>
-
-            <p className="mt-2 text-sm text-white/70">
-              Live weather assessment
-            </p>
-          </div>
-
-          <div className="rounded-2xl border border-slate-200 bg-black/40 backdrop-blur-md border-white/10 text-white shadow-sm p-6">
-            <p className="text-sm text-white/70">
-              Extreme Rainfall
-            </p>
-
-            <p className="mt-3 text-4xl font-bold text-red-400">
-              {loading
-                ? "..."
-                : `${risk.extreme_rainfall}%`}
-            </p>
-
-            <p className="mt-2 text-sm text-white/70">
-              Live weather assessment
-            </p>
-          </div>
-
-          <div className="rounded-2xl border border-slate-200 bg-black/40 backdrop-blur-md border-white/10 text-white shadow-sm p-6">
-            <p className="text-sm text-white/70">
-              Overall Threat
-            </p>
-
-            <p className="mt-3 text-4xl font-bold text-red-500">
-              {loading
-                ? "..."
-                : risk.overall}
-            </p>
-
-            <p className="mt-2 text-sm text-white/70">
-              Based on current weather inputs
-            </p>
-          </div>
-
-        </section>
-
-        {/* ====================================
-            LIVE ALERTS
-        ==================================== */}
-
-        <section className="mt-8">
-
-          <div className="mb-4 flex items-center justify-between">
-
-            <div>
-              <h3 className="text-xl font-semibold">
-                 Live Disaster Alerts
-              </h3>
-
-              <p className="text-sm text-white/70">
-                Automatically generated from current risk conditions
-              </p>
-            </div>
-
-            <div
-              className={`rounded-full px-3 py-1 text-xs ${alerts.length > 0
-                  ? "bg-red-500/10 text-red-400"
-                  : "bg-emerald-500/10 text-emerald-400"
-                }`}
-            >
-              {alerts.length > 0
-                ? `${alerts.length} ACTIVE`
-                : "NO ACTIVE ALERTS"}
-            </div>
-
-          </div>
-
-          {alertsLoading ? (
-
-            <div className="rounded-2xl border border-slate-200 bg-black/40 backdrop-blur-md border-white/10 text-white shadow-sm p-8 text-center text-white/70">
-              Loading live alerts...
-            </div>
-
-          ) : alerts.length === 0 ? (
-
-            <div className="rounded-2xl border border-emerald-500/20 bg-emerald-500/5 p-8 text-center">
-
-              <div className="text-4xl">
-                
-              </div>
-
-              <h4 className="mt-3 text-lg font-semibold text-emerald-400">
-                No Active Disaster Alerts
-              </h4>
-
-              <p className="mt-2 text-sm text-white/70">
-                Current monitored conditions are below
-                alert thresholds.
-              </p>
-
-            </div>
-
-          ) : (
-
-            <div className="space-y-4">
-
-              {alerts.map(
-                (alert, index) => {
-
-                  const style =
-                    getAlertStyle(
-                      alert.severity
-                    );
-
-                  return (
-                    <div
-                      key={`${alert.type}-${alert.location}-${index}`}
-                      className={`rounded-2xl border p-5 ${style.border}`}
-                    >
-
-                      <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
-
-                        <div className="flex gap-4">
-
-                          <div className="text-2xl">
-                            {style.icon}
-                          </div>
-
-                          <div>
-
-                            <div className="flex flex-wrap items-center gap-2">
-
-                              <h4 className="font-semibold">
-                                {alert.title}
-                              </h4>
-
-                              <span
-                                className={`rounded-full px-2.5 py-1 text-xs font-medium ${style.badge}`}
-                              >
-                                {alert.severity}
-                              </span>
-
-                            </div>
-
-                            <p className="mt-2 text-sm text-slate-700">
-                              {alert.message}
-                            </p>
-
-                            <div className="mt-3 flex flex-wrap gap-4 text-xs text-white/70">
-
-                              <span>
-                                 {alert.location}
-                              </span>
-
-                              <span>
-                                {" "}
-                                {alert.type.replace(
-                                  /_/g,
-                                  " "
-                                )}
-                              </span>
-
-                              <span>
-                                {" "}
-                                {new Date(
-                                  alert.timestamp
-                                ).toLocaleTimeString(
-                                  "en-IN",
-                                  {
-                                    hour: "2-digit",
-                                    minute: "2-digit",
-                                  }
-                                )}
-                              </span>
-
-                            </div>
-
-                          </div>
-
-                        </div>
-
-                        <div className="shrink-0">
-
-                          <p className="text-right text-xs text-white/70">
-                            Risk
-                          </p>
-
-                          <p
-                            className={`text-right text-3xl font-bold ${alert.risk >= 75
-                                ? "text-red-400"
-                                : "text-orange-400"
-                              }`}
-                          >
-                            {Math.round(
-                              alert.risk
-                            )}%
-                          </p>
-
-                        </div>
-
-                      </div>
-
-                    </div>
-                  );
-                }
-              )}
-
-            </div>
-          )}
-
-        </section>
-
+      <main className="min-h-screen text-white font-sans selection:bg-cyan-500/30 pb-20 pt-8 px-4 sm:px-8">
         
-        {/* ====================================
-            WEATHER & TRENDS
-        ==================================== */}
-        <div className="max-w-4xl mx-auto">
-          <BeautifulWeather weather={weather} weatherLoading={weatherLoading} locationName="Himachal Pradesh (Regional Avg)" />
-          <ForecastDisaster risk={risk} loading={loading} />
-          <TrendChart weather={weather} />
-        </div>
-{/* ====================================
-            RISK TREND
-        ==================================== */}
-
-        <section className="mt-8">
-
-          <div className="mb-4 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-
+        <div className="max-w-[90rem] mx-auto space-y-8">
+          {/* PREMIUM HEADER */}
+          <header className="flex flex-col md:flex-row md:items-center justify-between gap-6 bg-black/40 backdrop-blur-xl border border-white/10 p-6 rounded-[2rem] shadow-2xl">
             <div>
-              <h3 className="text-xl font-semibold">
-                 Risk Trend
-              </h3>
-
-              <p className="text-sm text-white/70">
-                Historical disaster-risk progression
+              <div className="flex items-center gap-3 mb-2">
+                <div className="h-3 w-3 rounded-full bg-red-500 animate-pulse shadow-[0_0_10px_rgba(239,68,68,0.7)]"></div>
+                <span className="text-xs font-bold tracking-[0.25em] text-red-400 uppercase">Live Operations</span>
+              </div>
+              <h1 className="text-4xl font-black tracking-tighter text-white drop-shadow-md">
+                HimAlert <span className="text-blue-400 font-light">Global</span>
+              </h1>
+              <p className="mt-1 text-sm text-blue-300 uppercase tracking-widest font-semibold drop-shadow">
+                VyomForge Disaster Intelligence
               </p>
             </div>
-
-            <select
-              value={historyLocation}
-              onChange={(event) =>
-                setHistoryLocation(
-                  event.target.value
-                )
-              }
-              className="rounded-xl border border-slate-300 bg-black/40 backdrop-blur-md border-white/10 text-white shadow-sm px-4 py-2 text-sm text-white outline-none focus:border-cyan-500"
-            >
-              <option value="Dharamshala">
-                Dharamshala
-              </option>
-
-              <option value="Kangra">
-                Kangra
-              </option>
-
-              <option value="Mandi">
-                Mandi
-              </option>
-            </select>
-
-          </div>
-
-          <div className="rounded-2xl border border-slate-200 bg-black/40 backdrop-blur-md border-white/10 text-white shadow-sm p-6">
-
-            {historyLoading ? (
-
-              <div className="flex h-[350px] items-center justify-center text-white/70">
-                Loading risk history...
-              </div>
-
-            ) : riskHistory.length === 0 ? (
-
-              <div className="flex h-[350px] items-center justify-center text-white/70">
-                No historical risk data available yet.
-              </div>
-
-            ) : (
-
-              <ResponsiveContainer
-                width="100%"
-                height={350}
+            
+            <div className="flex flex-col gap-3 w-full md:w-auto">
+              <Link
+                href="/local"
+                className="group relative overflow-hidden rounded-full bg-white/10 hover:bg-white/20 border border-white/20 px-8 py-4 transition-all duration-300 flex items-center justify-center gap-2 shadow-lg"
               >
-
-                <LineChart
-                  data={riskHistory}
-                  margin={{
-                    top: 10,
-                    right: 20,
-                    left: 0,
-                    bottom: 10,
-                  }}
-                >
-
-                      <CartesianGrid
-                        strokeDasharray="3 3"
-                        stroke="#334155"
-                      />
-
-                      <XAxis
-                        dataKey="timestamp"
-                        stroke="#94a3b8"
-                        tickFormatter={(value) =>
-                          new Date(
-                            value
-                          ).toLocaleTimeString(
-                            "en-IN",
-                            {
-                              hour: "2-digit",
-                              minute: "2-digit",
-                            }
-                          )
-                        }
-                      />
-
-                      <YAxis
-                        domain={[0, 100]}
-                        stroke="#94a3b8"
-                        tickFormatter={(value) =>
-                          `${value}%`
-                        }
-                      />
-
-                      <Tooltip
-                        contentStyle={{
-                          backgroundColor:
-                            "#0f172a",
-                          border:
-                            "1px solid #334155",
-                          borderRadius:
-                            "12px",
-                          color: "#fff",
-                        }}
-                        labelFormatter={(value) =>
-                          new Date(
-                            String(value)
-                          ).toLocaleString(
-                            "en-IN"
-                          )
-                        }
-                      />
-
-                      <Legend />
-
-                      <Line
-                        type="monotone"
-                        dataKey="flash_flood"
-                        name="Flash Flood"
-                        stroke="#fb923c"
-                        strokeWidth={3}
-                        dot={{ r: 4 }}
-                        activeDot={{ r: 6 }}
-                      />
-
-                      <Line
-                        type="monotone"
-                        dataKey="landslide"
-                        name="Landslide"
-                        stroke="#facc15"
-                        strokeWidth={3}
-                        dot={{ r: 4 }}
-                        activeDot={{ r: 6 }}
-                      />
-
-                      <Line
-                        type="monotone"
-                        dataKey="extreme_rainfall"
-                        name="Extreme Rainfall"
-                        stroke="#f87171"
-                        strokeWidth={3}
-                        dot={{ r: 4 }}
-                        activeDot={{ r: 6 }}
-                      />
-
-                </LineChart>
-
-              </ResponsiveContainer>
-
-            )}
-
-          </div>
-
-        </section>
-
-        {/* ====================================
-            HYDROLOGICAL INTELLIGENCE
-        ==================================== */}
-
-        <section className="mt-8">
-          
-      <HydrologicalIntelligence />
-
-      
-
-        </section>
-
-        {/* ====================================
-            MAP + DANGER ZONES
-        ==================================== */}
-
-        <section
-          className="mt-8 grid items-start gap-6 lg:grid-cols-[minmax(0,2fr)_minmax(340px,1fr)]"
-        >
-
-          {/* RISK MAP */}
-          <div
-            className="min-w-0 self-start overflow-hidden rounded-2xl border border-slate-200 bg-black/40 backdrop-blur-md border-white/10 text-white shadow-sm"
-          >
-            <RiskMap />
-          </div>
-
-          {/* DANGER ZONES */}
-          <aside
-            className="min-w-0 self-start overflow-hidden rounded-2xl border border-slate-200 bg-black/40 backdrop-blur-md border-white/10 text-white shadow-sm lg:h-[560px]"
-          >
-
-            <div className="flex items-center justify-between border-b border-slate-200 px-5 py-5">
-              <div>
-                <h3 className="text-xl font-semibold">
-                  Danger Zones
-                </h3>
-                <p className="mt-1 text-xs text-white/70">
-                  Live location-wise disaster risk
-                </p>
+                <div className="absolute inset-0 w-full h-full bg-gradient-to-r from-blue-500/20 to-purple-500/20 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                <span className="relative z-10 text-sm font-bold tracking-wide text-white">My Exact Location</span>
+                <span className="relative z-10 text-white/50 group-hover:text-white group-hover:translate-x-1 transition-all">&rarr;</span>
+              </Link>
+              <div className="w-full md:w-[400px]">
+                 <AITerminal />
               </div>
-
-              <span className="flex items-center gap-1.5 rounded-full bg-red-500/10 px-3 py-1 text-xs font-semibold text-red-400">
-                <span className="h-2 w-2 animate-pulse rounded-full bg-red-500" />
-                LIVE
-              </span>
             </div>
+          </header>
 
-            <div className="p-4 lg:h-[471px] lg:overflow-y-auto">
-              <div className="space-y-4">
-
-                {locationsLoading ? (
-                  <div className="flex min-h-[260px] flex-col items-center justify-center rounded-xl border border-slate-200 bg-slate-100 p-5 text-center">
-                    <div className="mb-4 h-8 w-8 animate-spin rounded-full border-2 border-slate-300 border-t-cyan-400" />
-                    <p className="text-sm font-medium text-slate-700">
-                      Loading location risks...
-                    </p>
-                    <p className="mt-1 text-xs text-slate-600">
-                      Fetching live disaster intelligence
-                    </p>
-                  </div>
-                ) : locations.length === 0 ? (
-                  <div className="rounded-xl border border-yellow-500/20 bg-yellow-500/5 p-4 text-sm text-yellow-400">
-                     Location risk data unavailable.
-                    <p className="mt-1 text-xs text-yellow-500/70">
-                      Check that the HimAlert backend is running.
-                    </p>
-                  </div>
+          {/* MAIN GRID */}
+          <div className="grid grid-cols-1 xl:grid-cols-12 gap-8">
+            
+            {/* LEFT COLUMN: WEATHER & FORECAST */}
+            <div className="xl:col-span-5 space-y-8 flex flex-col">
+              <BeautifulWeather weather={weather} weatherLoading={weatherLoading} locationName="Himachal Pradesh" />
+              <ForecastDisaster risk={risk} loading={loading} />
+              <TrendChart weather={weather} />
+              
+              {/* ALERTS (Glass) */}
+              <section className="bg-gradient-to-b from-red-950/60 to-black/60 backdrop-blur-xl border border-red-500/30 rounded-[2rem] p-8 shadow-2xl flex-1">
+                <h2 className="text-2xl font-bold text-red-100 flex items-center gap-2 mb-6">
+                  <span className="text-red-500 animate-pulse">⚠</span> Active Emergency Alerts
+                </h2>
+                {alerts.length === 0 ? (
+                  <p className="text-red-200/60 font-medium">All clear. No active alerts reported.</p>
                 ) : (
-                  locations.map((location) => {
-                    const riskValue = Math.max(
-                      location.flash_flood,
-                      location.landslide,
-                      location.extreme_rainfall
-                    );
-
-                    const riskColor =
-                      riskValue >= 75
-                        ? "text-red-400"
-                        : riskValue >= 60
-                          ? "text-orange-400"
-                          : riskValue >= 40
-                            ? "text-yellow-400"
-                            : "text-emerald-400";
-
-                    const riskBg =
-                      riskValue >= 75
-                        ? "bg-red-500/10"
-                        : riskValue >= 60
-                          ? "bg-orange-500/10"
-                          : riskValue >= 40
-                            ? "bg-yellow-500/10"
-                            : "bg-emerald-500/10";
-
-                    return (
-                      <div
-                        key={location.name}
-                        className={`rounded-xl border p-4 transition hover:bg-slate-800/40 ${getRiskBorder(
-                          location.overall
-                        )}`}
-                      >
-                        <div className="flex items-center justify-between gap-3">
-                          <div>
-                            <p className="font-semibold text-white">
-                              {location.name}
-                            </p>
-                            <p className={`mt-1 text-xs font-semibold ${riskColor}`}>
-                              {location.overall} RISK
-                            </p>
-                          </div>
-
-                          <div className={`rounded-xl px-3 py-2 text-center ${riskBg}`}>
-                            <p className={`text-2xl font-bold ${riskColor}`}>
-                              {riskValue}%
-                            </p>
-                            <p className="text-[10px] text-white/70">
-                              OVERALL
-                            </p>
-                          </div>
+                  <div className="grid grid-cols-1 gap-4">
+                    {alerts.map((alert, index) => (
+                      <div key={index} className="rounded-2xl border border-red-500/20 bg-red-900/20 p-5 backdrop-blur-md">
+                        <div className="flex justify-between items-start mb-2">
+                          <span className="text-xs font-black uppercase tracking-wider text-red-400 bg-red-500/10 px-2 py-1 rounded">{alert.type}</span>
+                          <span className="text-xs text-red-200/60 font-mono">{alert.timestamp}</span>
                         </div>
-
-                        <div className="mt-4 grid grid-cols-3 gap-2">
-                          <div className="rounded-lg bg-slate-100 p-2">
-                            <p className="text-[10px] text-white/70"> FLOOD</p>
-                            <p className="mt-1 font-semibold text-white">
-                              {location.flash_flood}%
-                            </p>
-                          </div>
-                          <div className="rounded-lg bg-slate-100 p-2">
-                            <p className="text-[10px] text-white/70"> LANDSLIDE</p>
-                            <p className="mt-1 font-semibold text-white">
-                              {location.landslide}%
-                            </p>
-                          </div>
-                          <div className="rounded-lg bg-slate-100 p-2">
-                            <p className="text-[10px] text-white/70"> RAIN</p>
-                            <p className="mt-1 font-semibold text-white">
-                              {location.extreme_rainfall}%
-                            </p>
-                          </div>
-                        </div>
-
-                        <div className="mt-4 space-y-2 border-t border-slate-200 pt-3">
-                          <p className="text-xs font-semibold text-white/70">
-                            LIVE TELEMETRY
-                          </p>
-
-                          <div className="grid grid-cols-2 gap-x-4 gap-y-2 text-xs">
-                            <div>
-                              <span className="text-white/70"> Gov Rain</span>
-                              <p className="font-medium text-slate-700">
-                                {location.government_rainfall ?? "N/A"} mm
-                              </p>
-                            </div>
-                            <div>
-                              <span className="text-white/70"> Probability</span>
-                              <p className="font-medium text-slate-700">
-                                {location.inputs?.rain_probability ?? 0}%
-                              </p>
-                            </div>
-                            <div>
-                              <span className="text-white/70"> Humidity</span>
-                              <p className="font-medium text-slate-700">
-                                {location.inputs?.humidity ?? 0}%
-                              </p>
-                            </div>
-                            <div>
-                              <span className="text-white/70"> Soil</span>
-                              <p className="font-medium text-slate-700">
-                                {location.inputs?.soil_moisture ?? 0}
-                              </p>
-                            </div>
-                          </div>
-
-                          {location.rainfall_status === "STALE" && (
-                            <div className="mt-3 rounded-lg border border-yellow-500/20 bg-yellow-500/5 px-3 py-2">
-                              <p className="text-xs font-semibold text-yellow-400">
-                                 Government rainfall data is stale
-                              </p>
-                              <p className="mt-1 text-[11px] text-yellow-500/70">
-                                {location.rainfall_age_hours != null
-                                  ? `${location.rainfall_age_hours} hours old`
-                                  : "Older than freshness limit"}
-                              </p>
-                            </div>
-                          )}
-
-                          {location.rainfall_status === "AVAILABLE" && (
-                            <div className="mt-3 text-xs font-medium text-emerald-400">
-                               Government rainfall data available
-                            </div>
-                          )}
-
-                          <div className="mt-3 text-[11px] text-white/70">
-                             Station: <span className="text-white/70">{location.rainfall_station ?? "N/A"}</span>
-                          </div>
-                          <div className="text-[11px] text-white/70">
-                             Updated: <span className="text-white/70">{location.rainfall_updated ?? "N/A"}</span>
-                          </div>
-                        </div>
+                        <h3 className="font-bold text-lg text-white mb-1">{alert.location}</h3>
+                        <p className="text-red-100/80 text-sm">{alert.message}</p>
                       </div>
-                    );
-                  })
+                    ))}
+                  </div>
                 )}
-
-              </div>
+              </section>
             </div>
-          </aside>
 
-        </section>
+            {/* RIGHT COLUMN: MAPS & HISTORY */}
+            <div className="xl:col-span-7 space-y-8">
+              
+              {/* GIS MAP */}
+              <section className="bg-black/40 backdrop-blur-xl border border-white/10 rounded-[2.5rem] p-8 shadow-2xl flex flex-col">
+                <h2 className="text-2xl font-bold text-white mb-2 tracking-tight">Live Threat Map</h2>
+                <p className="text-white/50 text-sm mb-6 uppercase tracking-wider font-semibold">Multispectral Risk Visualization</p>
+                <div className="w-full rounded-2xl overflow-hidden border border-white/10 relative">
+                  <RiskMap />
+                </div>
+              </section>
 
-        {/* ====================================
-            FOOTER
-        ==================================== */}
+              {/* HYDROLOGICAL */}
+              <HydrologicalIntelligence />
 
-        <footer className="mt-10 border-t border-slate-200 py-6 text-center text-sm text-white/70">
+              {/* RISK TREND HISTORY */}
+              <section className="bg-black/40 backdrop-blur-xl border border-white/10 rounded-[2.5rem] p-8 shadow-2xl">
+                <div className="flex justify-between items-center mb-6">
+                  <div>
+                    <h2 className="text-2xl font-bold text-white tracking-tight">Risk Trend History</h2>
+                    <p className="text-white/50 text-sm mt-1 uppercase tracking-wider font-semibold">24-Hour Threat Trajectory</p>
+                  </div>
+                  <select
+                    className="bg-white/10 border border-white/20 text-white text-sm font-semibold rounded-full px-5 py-2 outline-none focus:border-blue-400 backdrop-blur-md cursor-pointer hover:bg-white/20 transition-colors"
+                    value={historyLocation}
+                    onChange={(e) => setHistoryLocation(e.target.value)}
+                  >
+                    <option value="Dharamshala" className="bg-slate-900 text-white">Dharamshala</option>
+                    <option value="Shimla" className="bg-slate-900 text-white">Shimla</option>
+                    <option value="Manali" className="bg-slate-900 text-white">Manali</option>
+                    <option value="Mandi" className="bg-slate-900 text-white">Mandi</option>
+                    <option value="Kullu" className="bg-slate-900 text-white">Kullu</option>
+                  </select>
+                </div>
+                
+                {riskHistory.length === 0 ? (
+                   <div className="h-[300px] flex items-center justify-center text-white/40 font-medium">Gathering historical data...</div>
+                ) : (
+                   <div className="h-[300px] w-full mt-4">
+                     <LineChart data={riskHistory} margin={{ top: 10, right: 10, left: -20, bottom: 0 }} width={800} height={300} style={{ width: '100%', height: '100%' }}>
+                        <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.05)" />
+                        <XAxis dataKey="timestamp" stroke="rgba(255,255,255,0.4)" tickFormatter={(value) => new Date(value).toLocaleTimeString("en-IN", { hour: "2-digit", minute: "2-digit" })} />
+                        <YAxis stroke="rgba(255,255,255,0.4)" domain={[0, 100]} />
+                        <Tooltip contentStyle={{ backgroundColor: 'rgba(0,0,0,0.8)', border: '1px solid rgba(255,255,255,0.2)', borderRadius: '16px', color: 'white', backdropFilter: 'blur(10px)' }} />
+                        <Line type="monotone" dataKey="overall" stroke="#ef4444" strokeWidth={3} dot={false} />
+                        <Line type="monotone" dataKey="flash_flood" stroke="#3b82f6" strokeWidth={2} dot={false} />
+                        <Line type="monotone" dataKey="landslide" stroke="#f97316" strokeWidth={2} dot={false} />
+                     </LineChart>
+                   </div>
+                )}
+              </section>
 
-          HimAlert  AI-powered Himalayan Disaster Intelligence
-
-        </footer>
-
-      </div>
-
-    </main></DynamicBackground>);
+            </div>
+          </div>
+        </div>
+      </main>
+    </DynamicBackground>
+  );
 }
-
-
-
-
-
-
-
-
-
-
 
 
