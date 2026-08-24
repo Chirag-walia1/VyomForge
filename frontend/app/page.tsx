@@ -204,7 +204,7 @@ export default function Home() {
     const fetchRisk = async () => {
       try {
         const response = await fetch(
-          `${process.env.NEXT_PUBLIC_API_URL || "https://himalert.onrender.com"}/api/risk?lat=${globalLocation.lat}&lon=${globalLocation.lon}`,
+          `${process.env.NEXT_PUBLIC_API_URL || "https://himalert.onrender.com"}/api/risk?lat=${globalLocation.lat}&lon=${globalLocation.lon}`, {
             cache: "no-store",
           }
         );
@@ -251,7 +251,7 @@ export default function Home() {
         setWeatherLoading(true);
 
         const response = await fetch(
-          `${process.env.NEXT_PUBLIC_API_URL || "https://himalert.onrender.com"}/api/weather?lat=${globalLocation.lat}&lon=${globalLocation.lon}`,
+          `${process.env.NEXT_PUBLIC_API_URL || "https://himalert.onrender.com"}/api/weather?lat=${globalLocation.lat}&lon=${globalLocation.lon}`, {
             cache: "no-store",
           }
         );
@@ -647,6 +647,7 @@ export default function Home() {
     </DynamicBackground>
   );
 }
+
 
 
 
