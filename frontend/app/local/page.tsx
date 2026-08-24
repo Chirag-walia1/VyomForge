@@ -859,7 +859,7 @@ export default function Home() {
                   </p>
 
                   <p className="mt-3 text-3xl font-bold">
-                    {weather.current.temperature}°C
+                    {weather.current.temperature}C
                   </p>
 
                   <p className="mt-2 text-sm text-slate-500">
@@ -1459,7 +1459,7 @@ export default function Home() {
 
         <footer className="mt-10 border-t border-slate-200 py-6 text-center text-sm text-slate-500">
 
-          HimAlert : My Location • AI-powered Himalayan Disaster Intelligence
+          HimAlert : My Location  AI-powered Himalayan Disaster Intelligence
 
         </footer>
 
