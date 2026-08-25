@@ -1,6 +1,6 @@
-﻿/* eslint-disable */
-import { useState, useEffect } from "react";
 "use client";
+/* eslint-disable */
+import { useState, useEffect } from "react";
 
 import {
   Area,
@@ -341,6 +341,7 @@ export default function HydrologicalIntelligence({ locationName, weather }: { lo
     </section>
   );
 }
+
 
 
 
