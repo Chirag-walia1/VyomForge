@@ -1,5 +1,6 @@
-﻿/* eslint-disable */
-"use client";
+﻿"use client";
+/* eslint-disable */
+
 import React, { useEffect } from "react";
 import { MapContainer, TileLayer, CircleMarker, Popup, useMap, Marker } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
@@ -25,8 +26,8 @@ export default function SafeZoneMap({ userLocation, safePoints }: { userLocation
   if (!userLocation) return null;
 
   return (
-    <div className="w-full h-full rounded-2xl overflow-hidden relative flex flex-col pb-2" style={{ minHeight: "100%" }}>
-      <div className="flex-1 min-h-[400px] relative w-full"><MapContainer 
+    <div className="w-full h-full rounded-2xl overflow-hidden relative" style={{ minHeight: "100%" }}>
+      <MapContainer 
         center={[userLocation.lat, userLocation.lon]} 
         zoom={14} 
         style={{ height: '100%', width: '100%', minHeight: "100%" }}
@@ -58,16 +59,19 @@ export default function SafeZoneMap({ userLocation, safePoints }: { userLocation
             </Popup>
           </Marker>
         ))}
-      </MapContainer></div>
+      </MapContainer>
       <div
         className="
-          relative w-full mx-auto mb-2 mt-4 z-[1000]
+          absolute
+          bottom-4
+          left-4
+          z-[1000]
           rounded-xl
           bg-black/60 backdrop-blur-xl border border-white/10
           p-3
           text-white
           shadow-2xl
-          flex flex-row justify-center gap-6
+          flex flex-col gap-2
           text-xs font-medium tracking-wide
         "
       >
@@ -77,5 +81,6 @@ export default function SafeZoneMap({ userLocation, safePoints }: { userLocation
     </div>
   );
 }
+
 
 

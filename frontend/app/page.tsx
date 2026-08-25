@@ -1,5 +1,5 @@
-﻿/* eslint-disable */
 "use client";
+/* eslint-disable */
 
 import { useEffect, useState } from "react";
 import dynamic from "next/dynamic";
@@ -648,6 +648,7 @@ export default function Home() {
     </DynamicBackground>
   );
 }
+
 
 
 
