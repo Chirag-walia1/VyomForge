@@ -643,13 +643,13 @@ export default function Home() {
 
             </div>
           </div>
-        </div>
-      </main>
-    </DynamicBackground>
-  );
+        </div>  );
 }
 
 
+
+      </main>
+    </DynamicBackgroun
 
 
 
