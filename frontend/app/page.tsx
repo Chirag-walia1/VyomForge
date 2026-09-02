@@ -3,39 +3,34 @@
 
 import { useEffect, useState } from "react";
 import dynamic from "next/dynamic";
+import Link from "next/link";
+import { MapPin, Search, AlertTriangle, ShieldCheck, Waves, ArrowRight } from "lucide-react";
+
+// Components from ./components/
 import BeautifulWeather from "./components/BeautifulWeather";
 import { ForecastDisaster, TrendChart } from "./components/RaincloudFeatures";
 import DynamicBackground from "./components/DynamicBackground";
-import HideOnScrollHeader from "./components/HideOnScrollHeader";
-import Link from "next/link";
-import { MapPin, Search } from "lucide-react";
+import AuthorityHeader from "./components/AuthorityHeader";
+import ThreatKPIBar from "./components/ThreatKPIBar";
+import DistrictRiskMatrix from "./components/DistrictRiskMatrix";
+import SitRepModal from "./components/SitRepModal";
 
-
-import {
-  LineChart,
-  Line,
-  XAxis,
-  YAxis,
-  CartesianGrid,
-  Tooltip,
-  Legend,
-  ResponsiveContainer,
-} from "recharts";
-
+// Dynamic map & hydrological components (avoid SSR Leaflet issues)
 const RiskMap = dynamic(() => import("./components/RiskMap"), {
   ssr: false,
   loading: () => (
-    <div className="flex h-[500px] items-center justify-center bg-black/40 backdrop-blur-md border-white/10 text-white shadow-sm text-white/70">
-      Loading Himachal Risk Map...
+    <div className="flex h-[450px] items-center justify-center bg-slate-950/80 border border-slate-800 text-slate-400 rounded-xl">
+      <span className="flex items-center gap-2">
+        <span className="animate-spin h-4 w-4 border-2 border-cyan-400 border-t-transparent rounded-full"></span>
+        Loading Himachal Risk Map & GIS Layers...
+      </span>
     </div>
   ),
 });
 
 const HydrologicalIntelligence = dynamic(
   () => import("./components/HydrologicalIntelligence"),
-  {
-    ssr: false,
-  }
+  { ssr: false }
 );
 
 /* ============================================
@@ -63,7 +58,6 @@ type WeatherData = {
     latitude: number;
     longitude: number;
   };
-
   current: {
     temperature: number;
     humidity: number;
@@ -71,60 +65,15 @@ type WeatherData = {
     rain: number;
     showers: number;
     wind_speed: number;
+    cloud_cover?: number;
   };
-
   forecast: {
     rainfall_next_24h: number;
     max_hourly_rain: number;
     max_rain_probability: number;
     hours: WeatherHour[];
   };
-
   source: string;
-};
-
-type LocationRisk = {
-  name: string;
-  latitude: number;
-  longitude: number;
-
-  flash_flood: number;
-  landslide: number;
-  extreme_rainfall: number;
-  overall: string;
-
-  // Government rainfall telemetry
-  government_rainfall?: number | null;
-  rainfall_station?: string | null;
-  rainfall_status?: string | null;
-  rainfall_updated?: string | null;
-  rainfall_source?: string | null;
-  rainfall_age_hours?: number | null;
-
-  // Water-level data
-  water_level?: number | null;
-  water_status?: string | null;
-
-  inputs: {
-    current_rain: number;
-    government_rainfall?: number | null;
-    rainfall_next_24h: number;
-    rain_probability: number;
-    humidity: number;
-    wind_speed: number;
-    soil_moisture: number;
-    water_level?: number | null;
-    water_status?: string;
-  };
-};
-
-type RiskHistory = {
-  timestamp: string;
-  location: string;
-  flash_flood: number;
-  landslide: number;
-  extreme_rainfall: number;
-  overall: string;
 };
 
 type Alert = {
@@ -138,7 +87,7 @@ type Alert = {
 };
 
 /* ============================================
-   HOME
+   HOME PAGE COMPONENT
 ============================================ */
 
 export default function Home() {
@@ -149,438 +98,242 @@ export default function Home() {
     overall: "LOADING",
   });
 
-  const [weather, setWeather] =
-    useState<WeatherData | null>(null);
-
-  
-
-  const [riskHistory, setRiskHistory] =
-    useState<RiskHistory[]>([]);
-
-  const [historyLocation, setHistoryLocation] =
-    useState("Dharamshala");
-
-  const [alerts, setAlerts] =
-    useState<Alert[]>([]);
-
-  const [loading, setLoading] =
-    useState(true);
-
-  const [weatherLoading, setWeatherLoading] =
-    useState(true);
-
-  
-
-  const [historyLoading, setHistoryLoading] =
-    useState(true);
-
-  const [alertsLoading, setAlertsLoading] =
-    useState(true);
-
-  const [apiOnline, setApiOnline] = useState(false);
+  const [weather, setWeather] = useState<WeatherData | null>(null);
+  const [alerts, setAlerts] = useState<Alert[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [weatherLoading, setWeatherLoading] = useState(true);
+  const [alertsLoading, setAlertsLoading] = useState(true);
   const [searchQuery, setSearchQuery] = useState("");
   const [searchResults, setSearchResults] = useState<any[]>([]);
-  const [globalLocation, setGlobalLocation] = useState({ name: "Dharamshala", lat: 32.2190, lon: 76.3234 });
+  const [isSitRepOpen, setIsSitRepOpen] = useState(false);
+  const [globalLocation, setGlobalLocation] = useState({
+    name: "Dharamshala",
+    lat: 32.219,
+    lon: 76.3234,
+  });
 
+  // Search autocomplete
   useEffect(() => {
     if (searchQuery.length > 2) {
       const delayFn = setTimeout(async () => {
         try {
-          const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL || "https://himalert.onrender.com"}/api/locations/search?query=${searchQuery}`);
+          const res = await fetch(
+            `${process.env.NEXT_PUBLIC_API_URL || "https://himalert.onrender.com"}/api/locations/search?query=${searchQuery}`
+          );
           const data = await res.json();
           setSearchResults(data.results || []);
         } catch (e) {}
-      }, 500);
+      }, 400);
       return () => clearTimeout(delayFn);
     } else {
       setSearchResults([]);
     }
   }, [searchQuery]);
 
-  /* ==========================================
-     RISK API
-  ========================================== */
-
+  // Fetch Risk Telemetry
   useEffect(() => {
     const fetchRisk = async () => {
       try {
         const response = await fetch(
-          `${process.env.NEXT_PUBLIC_API_URL || "https://himalert.onrender.com"}/api/risk?lat=${globalLocation.lat}&lon=${globalLocation.lon}`, {
-            cache: "no-store",
-          }
+          `${process.env.NEXT_PUBLIC_API_URL || "https://himalert.onrender.com"}/api/risk?lat=${globalLocation.lat}&lon=${globalLocation.lon}`,
+          { cache: "no-store" }
         );
-
-        if (!response.ok) {
-          throw new Error("Risk API failed");
+        if (response.ok) {
+          const data = await response.json();
+          setRisk({
+            flash_flood: Number(data.flash_flood) || 0,
+            landslide: Number(data.landslide) || 0,
+            extreme_rainfall: Number(data.extreme_rainfall) || 0,
+            overall: data.overall || "LOW",
+          });
         }
-
-        const data = await response.json();
-
-        setRisk({
-          flash_flood: Number(data.flash_flood),
-          landslide: Number(data.landslide),
-          extreme_rainfall: Number(data.extreme_rainfall),
-          overall: data.overall,
-        });
-
-        setApiOnline(true);
       } catch (error) {
-        console.error(
-          "Risk API Error:",
-          error
-        );
-
-        setApiOnline(false);
+        console.error("Risk API Error:", error);
       } finally {
         setLoading(false);
       }
     };
 
     fetchRisk();
-
     const interval = setInterval(fetchRisk, 5 * 60 * 1000);
     return () => clearInterval(interval);
   }, [globalLocation]);
 
-  /* ==========================================
-     WEATHER API
-  ========================================== */
-
+  // Fetch Weather Forecast
   useEffect(() => {
     const fetchWeather = async () => {
       try {
         setWeatherLoading(true);
-
         const response = await fetch(
-          `${process.env.NEXT_PUBLIC_API_URL || "https://himalert.onrender.com"}/api/weather?lat=${globalLocation.lat}&lon=${globalLocation.lon}`, {
-            cache: "no-store",
-          }
+          `${process.env.NEXT_PUBLIC_API_URL || "https://himalert.onrender.com"}/api/weather?lat=${globalLocation.lat}&lon=${globalLocation.lon}`,
+          { cache: "no-store" }
         );
-
-        if (!response.ok) {
-          throw new Error(
-            "Weather API failed"
-          );
+        if (response.ok) {
+          const data = await response.json();
+          setWeather(data);
         }
-
-        const data =
-          await response.json();
-
-        setWeather(data);
       } catch (error) {
-        console.error(
-          "Weather API Error:",
-          error
-        );
-
-        setWeather(null);
+        console.error("Weather API Error:", error);
       } finally {
         setWeatherLoading(false);
       }
     };
 
     fetchWeather();
-
     const interval = setInterval(fetchWeather, 5 * 60 * 1000);
     return () => clearInterval(interval);
   }, [globalLocation]);
 
-  /* ==========================================
-     LOCATION RISK API
-  ========================================== */
-
-  useEffect(() => {
-    
-
-    
-
-    
-
-    
-  }, [globalLocation]);
-
-  /* ==========================================
-     RISK HISTORY API
-  ========================================== */
-
-  useEffect(() => {
-    const fetchRiskHistory = async () => {
-      try {
-        setHistoryLoading(true);
-
-        const response = await fetch(
-          `https://himalert.onrender.com/api/risk-history?location=${encodeURIComponent(
-            historyLocation
-          )}`,
-          {
-            cache: "no-store",
-          }
-        );
-
-        if (!response.ok) {
-          throw new Error(
-            "Risk History API failed"
-          );
-        }
-
-        const data =
-          await response.json();
-
-        setRiskHistory(
-          data.history || []
-        );
-      } catch (error) {
-        console.error(
-          "Risk History Error:",
-          error
-        );
-
-        setRiskHistory([]);
-      } finally {
-        setHistoryLoading(false);
-      }
-    };
-
-    fetchRiskHistory();
-
-    const interval = setInterval(fetchRiskHistory, 5 * 60 * 1000);
-    return () => clearInterval(interval);
-  }, [historyLocation]);
-
-  /* ==========================================
-     ALERT API
-  ========================================== */
-
+  // Fetch Emergency Alerts
   useEffect(() => {
     const fetchAlerts = async () => {
       try {
         setAlertsLoading(true);
-
         const response = await fetch(
           `${process.env.NEXT_PUBLIC_API_URL || "https://himalert.onrender.com"}/api/alerts`,
-          {
-            cache: "no-store",
-          }
+          { cache: "no-store" }
         );
-
-        if (!response.ok) {
-          throw new Error(
-            "Alerts API failed"
-          );
+        if (response.ok) {
+          const data = await response.json();
+          setAlerts(data.alerts || []);
         }
-
-        const data =
-          await response.json();
-
-        console.log(
-          "Alerts API Response:",
-          data
-        );
-
-        setAlerts(
-          data.alerts || []
-        );
       } catch (error) {
-        console.error(
-          "Alerts API Error:",
-          error
-        );
-
-        setAlerts([]);
+        console.error("Alerts API Error:", error);
       } finally {
         setAlertsLoading(false);
       }
     };
 
     fetchAlerts();
-
     const interval = setInterval(fetchAlerts, 2 * 60 * 1000);
     return () => clearInterval(interval);
   }, [globalLocation]);
 
-  /* ==========================================
-     RISK COLOR
-  ========================================== */
-
-  const getRiskColor = (
-    value: number
-  ) => {
-    if (value >= 75) {
-      return "text-red-400";
-    }
-
-    if (value >= 60) {
-      return "text-orange-400";
-    }
-
-    if (value >= 40) {
-      return "text-yellow-400";
-    }
-
-    return "text-emerald-400";
-  };
-
-  /* ==========================================
-     RISK BORDER
-  ========================================== */
-
-  const getRiskBorder = (
-    overall: string
-  ) => {
-    if (overall === "CRITICAL") {
-      return "border-red-500/40 bg-red-500/10";
-    }
-
-    if (overall === "HIGH") {
-      return "border-orange-500/30 bg-orange-500/5";
-    }
-
-    if (overall === "MODERATE") {
-      return "border-yellow-500/20 bg-yellow-500/5";
-    }
-
-    return "border-emerald-500/20 bg-emerald-500/5";
-  };
-
-  /* ==========================================
-     ALERT STYLING
-  ========================================== */
-
-  const getAlertStyle = (
-    severity: string
-  ) => {
-    if (severity === "CRITICAL") {
-      return {
-        border:
-          "border-red-500/40 bg-red-500/10",
-        badge:
-          "bg-red-500/20 text-red-300",
-        icon: "",
-      };
-    }
-
-    if (severity === "HIGH") {
-      return {
-        border:
-          "border-orange-500/30 bg-orange-500/5",
-        badge:
-          "bg-orange-500/20 text-orange-300",
-        icon: "",
-      };
-    }
-
-    if (severity === "MODERATE") {
-      return {
-        border:
-          "border-yellow-500/30 bg-yellow-500/5",
-        badge:
-          "bg-yellow-500/20 text-yellow-300",
-        icon: "",
-      };
-    }
-
-    return {
-      border:
-        "border-emerald-500/20 bg-emerald-500/5",
-      badge:
-        "bg-emerald-500/20 text-emerald-300",
-      icon: "",
-    };
-  };
-
-  /* ==========================================
-     RENDER
-  ========================================== */
-
   return (
-    <DynamicBackground condition={(weather as any)?.current?.cloud_cover > 50 ? "Cloudy" : (weather as any)?.current?.rain > 0 ? "Rain" : "Sunny"}>
-      <main className="min-h-screen text-white font-sans selection:bg-cyan-500/30 pb-20 pt-8 px-4 sm:px-8">
-        
-        <div className="max-w-[90rem] mx-auto space-y-8">
-          {/* PREMIUM HEADER */}
-          <HideOnScrollHeader>
-          <header className="flex flex-col md:flex-row md:items-center justify-between gap-6 bg-black/40 backdrop-blur-xl border border-white/10 p-6 rounded-[2rem] shadow-2xl">
-            <div className="flex items-center gap-6">
-              <div>
-                <h1 className="text-2xl font-black tracking-tighter text-white drop-shadow-md">
-                  HimAlert <span className="text-blue-400 font-light">Global</span>
-                </h1>
+    <DynamicBackground
+      condition={
+        (weather as any)?.current?.rain > 0
+          ? "Rain"
+          : (weather as any)?.current?.cloud_cover > 50
+          ? "Cloudy"
+          : "Sunny"
+      }
+    >
+      <main className="min-h-screen text-slate-100 font-sans selection:bg-cyan-500/30 pb-20">
+        {/* 1. Official SDMA Authority Header */}
+        <AuthorityHeader onOpenSitRep={() => setIsSitRepOpen(true)} />
+
+        <div className="max-w-[90rem] mx-auto px-4 sm:px-8 py-6 space-y-6">
+          {/* Location Quick Search & Coordinates Bar */}
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-4 bg-slate-900/80 backdrop-blur-md border border-slate-800 p-4 rounded-2xl">
+            <div className="flex items-center gap-3 w-full sm:w-auto">
+              <div className="p-2 rounded-xl bg-cyan-950/80 border border-cyan-800/60 text-cyan-400">
+                <MapPin className="w-5 h-5" />
               </div>
-              <div className="hidden md:flex items-center gap-2 bg-white/10 rounded-full px-3 py-1.5 border border-white/5">
-                <div className="h-2 w-2 rounded-full bg-red-500 animate-pulse shadow-[0_0_10px_rgba(239,68,68,0.7)]"></div>
-                <MapPin size={12} className="text-red-400" />
-                <span className="text-[10px] font-bold tracking-[0.2em] text-red-400 uppercase">Live Ops</span>
+              <div>
+                <span className="text-[11px] font-mono text-slate-400 uppercase tracking-wider block">
+                  Active Monitoring Sector
+                </span>
+                <span className="text-base font-bold text-white">
+                  {globalLocation.name}, Himachal Pradesh
+                </span>
+                <span className="text-xs font-mono text-slate-400 ml-2">
+                  ({globalLocation.lat.toFixed(3)}°N, {globalLocation.lon.toFixed(3)}°E)
+                </span>
               </div>
             </div>
-            
-            <div className="flex flex-col md:flex-row items-center gap-4 w-full md:w-auto">
-              <div className="relative w-full md:w-64">
-                <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                  <Search size={16} className="text-white/40" />
+
+            <div className="flex items-center gap-3 w-full sm:w-auto">
+              {/* City Autocomplete */}
+              <div className="relative w-full sm:w-72">
+                <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-500">
+                  <Search className="w-4 h-4" />
                 </div>
-                <input 
-                  type="text" 
+                <input
+                  type="text"
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  placeholder="Search city in HP..." 
-                  className="w-full bg-black/50 border border-white/20 text-white text-sm rounded-full pl-10 pr-4 py-2 focus:outline-none focus:border-blue-400 transition-colors"
+                  placeholder="Search HP District / City..."
+                  className="w-full bg-slate-950/90 border border-slate-800 text-white text-xs rounded-xl pl-9 pr-4 py-2.5 focus:outline-none focus:border-cyan-500 transition-colors"
                 />
                 {searchResults.length > 0 && (
-                  <div className="absolute top-full mt-2 w-full bg-black/80 backdrop-blur-xl border border-white/20 rounded-2xl overflow-hidden z-50">
+                  <div className="absolute top-full mt-2 w-full bg-slate-950 border border-slate-800 rounded-xl overflow-hidden shadow-2xl z-50">
                     {searchResults.map((res: any, idx: number) => (
-                      <div 
-                        key={idx} 
-                        className="px-4 py-3 hover:bg-white/10 cursor-pointer text-sm"
+                      <div
+                        key={idx}
+                        className="px-4 py-2.5 hover:bg-slate-800/80 cursor-pointer text-xs flex justify-between"
                         onClick={() => {
-                          setGlobalLocation({ name: res.name, lat: res.latitude, lon: res.longitude });
+                          setGlobalLocation({
+                            name: res.name,
+                            lat: res.latitude,
+                            lon: res.longitude,
+                          });
                           setSearchQuery("");
                           setSearchResults([]);
                         }}
                       >
-                        {res.name}
-                        <span className="text-white/40 text-xs ml-2">{res.admin1}</span>
+                        <span className="font-semibold text-white">{res.name}</span>
+                        <span className="text-slate-400">{res.admin1}</span>
                       </div>
                     ))}
                   </div>
                 )}
               </div>
+
               <Link
                 href="/local"
-                className="group relative overflow-hidden rounded-full bg-blue-600/20 hover:bg-blue-600/40 border border-blue-500/30 px-6 py-2 transition-all duration-300 flex items-center justify-center gap-2 shadow-lg w-full md:w-auto"
+                className="flex items-center gap-1.5 px-4 py-2.5 bg-cyan-600/20 hover:bg-cyan-600/30 text-cyan-300 border border-cyan-500/40 text-xs font-bold rounded-xl transition-all shrink-0"
               >
-                <span className="relative z-10 text-xs font-bold tracking-wide text-blue-100">My Location</span>
-                <span className="relative z-10 text-blue-400 group-hover:translate-x-1 transition-all">&rarr;</span>
+                <span>My GPS</span>
+                <ArrowRight className="w-3.5 h-3.5" />
               </Link>
             </div>
-          </header>
-          </HideOnScrollHeader>
+          </div>
 
-          {/* MAIN GRID */}
-          <div className="grid grid-cols-1 xl:grid-cols-12 gap-8">
-            
-            {/* LEFT COLUMN: WEATHER & FORECAST */}
-            <div className="xl:col-span-5 space-y-8 flex flex-col">
-              <BeautifulWeather weather={weather} weatherLoading={weatherLoading} locationName={globalLocation.name} />
+          {/* 2. Top-level Threat KPI Metrics */}
+          <ThreatKPIBar />
+
+          {/* 3. Main Multi-Column Intelligence Grid */}
+          <div className="grid grid-cols-1 xl:grid-cols-12 gap-6">
+            {/* Left Column: Weather & Forecast Features */}
+            <div className="xl:col-span-5 space-y-6 flex flex-col">
+              <BeautifulWeather
+                weather={weather}
+                weatherLoading={weatherLoading}
+                locationName={globalLocation.name}
+              />
               <ForecastDisaster risk={risk} loading={loading} />
               <TrendChart weather={weather} />
-              
-              {/* ALERTS (Glass) */}
-              <section className="bg-gradient-to-b from-red-950/60 to-black/60 backdrop-blur-xl border border-red-500/30 rounded-[2.5rem] p-8 shadow-2xl flex-1">
-                <h2 className="text-2xl font-bold text-red-100 flex items-center gap-2 mb-6">
-                  <span className="text-red-500 animate-pulse">⚠</span> Active Emergency Alerts
-                </h2>
+
+              {/* Active Emergency Alerts Box */}
+              <section className="bg-gradient-to-b from-rose-950/40 to-slate-950/80 backdrop-blur-md border border-rose-800/40 rounded-2xl p-5 shadow-xl">
+                <h3 className="text-sm font-bold text-rose-300 flex items-center gap-2 mb-3">
+                  <AlertTriangle className="w-4 h-4 text-rose-500 animate-pulse" />
+                  Active Emergency Alerts
+                </h3>
                 {alerts.length === 0 ? (
-                  <p className="text-red-200/60 font-medium">All clear. No active alerts reported.</p>
+                  <p className="text-xs text-slate-400">
+                    All clear for monitored sectors. No active severe alerts triggered.
+                  </p>
                 ) : (
-                  <div className="grid grid-cols-1 gap-4">
+                  <div className="space-y-2.5">
                     {alerts.map((alert, index) => (
-                      <div key={index} className="rounded-2xl border border-red-500/20 bg-red-900/20 p-5 backdrop-blur-md">
-                        <div className="flex justify-between items-start mb-2">
-                          <span className="text-xs font-black uppercase tracking-wider text-red-400 bg-red-500/10 px-2 py-1 rounded">{alert.type}</span>
-                          <span className="text-xs text-red-200/60 font-mono">{alert.timestamp}</span>
+                      <div
+                        key={index}
+                        className="rounded-xl border border-rose-500/30 bg-rose-950/30 p-3.5 text-xs space-y-1"
+                      >
+                        <div className="flex justify-between items-center">
+                          <span className="font-bold text-rose-300 uppercase tracking-wider text-[10px] px-2 py-0.5 rounded bg-rose-900/60 border border-rose-700/50">
+                            {alert.type}
+                          </span>
+                          <span className="text-slate-400 font-mono text-[10px]">
+                            {alert.timestamp}
+                          </span>
                         </div>
-                        <h3 className="font-bold text-lg text-white mb-1">{alert.location}</h3>
-                        <p className="text-red-100/80 text-sm">{alert.message}</p>
+                        <h4 className="font-bold text-white text-xs pt-1">{alert.location}</h4>
+                        <p className="text-slate-300 text-[11px] leading-relaxed">
+                          {alert.message}
+                        </p>
                       </div>
                     ))}
                   </div>
@@ -588,76 +341,39 @@ export default function Home() {
               </section>
             </div>
 
-            {/* RIGHT COLUMN: MAPS & HISTORY */}
-            <div className="xl:col-span-7 space-y-8">
-              
-              {/* GIS MAP */}
-              <section className="bg-black/40 backdrop-blur-xl border border-white/10 rounded-[2.5rem] p-8 shadow-2xl flex flex-col">
-                <h2 className="text-2xl font-bold text-white mb-2 tracking-tight">Live Threat Map</h2>
-                <p className="text-white/50 text-sm mb-6 uppercase tracking-wider font-semibold">Multispectral Risk Visualization</p>
-                <div className="w-full rounded-2xl overflow-hidden border border-white/10 relative">
+            {/* Right Column: GIS Risk Map & Hydrological Intelligence */}
+            <div className="xl:col-span-7 space-y-6">
+              {/* GIS Multispectral Map */}
+              <section className="bg-slate-900/80 backdrop-blur-md border border-slate-800 rounded-2xl p-5 shadow-xl">
+                <div className="flex items-center justify-between mb-3">
+                  <div>
+                    <h3 className="text-sm font-bold text-white flex items-center gap-2">
+                      <ShieldCheck className="w-4 h-4 text-cyan-400" />
+                      Multispectral Threat & Terrain GIS
+                    </h3>
+                    <p className="text-xs text-slate-400">
+                      Live sensor overlays: landslide hazard index, precipitation radar & river corridors.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="w-full rounded-xl overflow-hidden border border-slate-800 bg-slate-950">
                   <RiskMap />
                 </div>
               </section>
 
-              {/* HYDROLOGICAL */}
+              {/* Hydrological River Intel */}
               <HydrologicalIntelligence weather={weather} />
-
-              {/* RISK TREND HISTORY */}
-              <section className="bg-black/40 backdrop-blur-xl border border-white/10 rounded-[2.5rem] p-8 shadow-2xl">
-                <div className="flex justify-between items-center mb-6">
-                  <div>
-                    <h2 className="text-2xl font-bold text-white tracking-tight">Risk Trend History</h2>
-                    <p className="text-white/50 text-sm mt-1 uppercase tracking-wider font-semibold">24-Hour Threat Trajectory</p>
-                  </div>
-                  <select
-                    className="bg-white/10 border border-white/20 text-white text-sm font-semibold rounded-full px-5 py-2 outline-none focus:border-blue-400 backdrop-blur-md cursor-pointer hover:bg-white/20 transition-colors"
-                    value={historyLocation}
-                    onChange={(e) => setHistoryLocation(e.target.value)}
-                  >
-                    <option value="Dharamshala" className="bg-slate-900 text-white">Dharamshala</option>
-                    <option value="Shimla" className="bg-slate-900 text-white">Shimla</option>
-                    <option value="Manali" className="bg-slate-900 text-white">Manali</option>
-                    <option value="Mandi" className="bg-slate-900 text-white">Mandi</option>
-                    <option value="Kullu" className="bg-slate-900 text-white">Kullu</option>
-                    <option value="Chamba" className="bg-slate-900 text-white">Chamba</option>
-                  </select>
-                </div>
-                
-                {riskHistory.length === 0 ? (
-                   <div className="h-[300px] flex items-center justify-center text-white/40 font-medium">Gathering historical data...</div>
-                ) : (
-                   <div className="h-[300px] w-full mt-4">
-                     <LineChart data={riskHistory} margin={{ top: 10, right: 10, left: -20, bottom: 0 }} width={800} height={300} style={{ width: '100%', height: '100%' }}>
-                        <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.05)" />
-                        <XAxis dataKey="timestamp" stroke="rgba(255,255,255,0.4)" tickFormatter={(value) => new Date(value).toLocaleTimeString("en-IN", { hour: "2-digit", minute: "2-digit" })} />
-                        <YAxis stroke="rgba(255,255,255,0.4)" domain={[0, 100]} />
-                        <Tooltip contentStyle={{ backgroundColor: 'rgba(0,0,0,0.8)', border: '1px solid rgba(255,255,255,0.2)', borderRadius: '16px', color: 'white', backdropFilter: 'blur(10px)' }} />
-                        <Line type="monotone" dataKey="overall" stroke="#ef4444" strokeWidth={3} dot={false} />
-                        <Line type="monotone" dataKey="flash_flood" stroke="#3b82f6" strokeWidth={2} dot={false} />
-                        <Line type="monotone" dataKey="landslide" stroke="#f97316" strokeWidth={2} dot={false} />
-                     </LineChart>
-                   </div>
-                )}
-              </section>
-
             </div>
           </div>
-        </div>  );
-}
 
+          {/* 4. Full District Vulnerability Matrix */}
+          <DistrictRiskMatrix />
+        </div>
 
-
+        {/* 5. Situation Report (SitRep) Modal */}
+        <SitRepModal isOpen={isSitRepOpen} onClose={() => setIsSitRepOpen(false)} />
       </main>
-    </DynamicBackgroun
-
-
-
-
-
-
-
-
-
-
-
+    </DynamicBackground>
+  );
+}
