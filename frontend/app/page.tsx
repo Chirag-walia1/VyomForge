@@ -1,36 +1,31 @@
 "use client";
-/* eslint-disable */
 
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import dynamic from "next/dynamic";
 import Link from "next/link";
-import { MapPin, ArrowLeft, ShieldCheck, Navigation } from "lucide-react";
+import { ArrowLeft, Navigation } from "lucide-react";
 
-// Components with correct relative path (../components/)
-import BeautifulWeather from "../components/BeautifulWeather";
-import { ForecastDisaster, TrendChart } from "../components/RaincloudFeatures";
-import DynamicBackground from "../components/DynamicBackground";
-import AuthorityHeader from "../components/AuthorityHeader";
-import SitRepModal from "../components/SitRepModal";
+import BeautifulWeather from "@/components/BeautifulWeather";
+import { ForecastDisaster, TrendChart } from "@/components/RaincloudFeatures";
+import DynamicBackground from "@/components/DynamicBackground";
+import AuthorityHeader from "@/components/AuthorityHeader";
+import SitRepModal from "@/components/SitRepModal";
+
+const SafeZoneMap = dynamic(() => import("@/components/SafeZoneMap"), {
+  ssr: false,
+  loading: () => (
+    <div className="flex h-[450px] items-center justify-center bg-slate-950/80 border border-slate-800 text-slate-400 rounded-xl">
+      <span className="flex items-center gap-2">
+        <span className="animate-spin h-4 w-4 border-2 border-cyan-400 border-t-transparent rounded-full"></span>
+        Acquiring GPS coordinates & loading Safe Zones...
+      </span>
+    </div>
+  ),
+});
 
 const HydrologicalIntelligence = dynamic(
-  () => import("../components/HydrologicalIntelligence"),
+  () => import("@/components/HydrologicalIntelligence"),
   { ssr: false }
-);
-
-const SafeZoneMap = dynamic(
-  () => import("../components/SafeZoneMap"),
-  {
-    ssr: false,
-    loading: () => (
-      <div className="flex h-[450px] items-center justify-center bg-slate-950/80 border border-slate-800 text-slate-400 rounded-xl">
-        <span className="flex items-center gap-2">
-          <span className="animate-spin h-4 w-4 border-2 border-cyan-400 border-t-transparent rounded-full"></span>
-          Acquiring GPS coordinates & loading Safe Zones...
-        </span>
-      </div>
-    ),
-  }
 );
 
 export default function LocalDashboard() {
@@ -156,11 +151,9 @@ export default function LocalDashboard() {
   return (
     <DynamicBackground condition={condition}>
       <main className="min-h-screen text-slate-100 font-sans selection:bg-cyan-500/30 pb-20">
-        {/* SDMA Authority Header */}
         <AuthorityHeader onOpenSitRep={() => setIsSitRepOpen(true)} />
 
         <div className="max-w-[90rem] mx-auto px-4 sm:px-8 py-6 space-y-6">
-          {/* Top GPS Status Banner */}
           <div className="flex flex-col sm:flex-row items-center justify-between gap-4 bg-slate-900/80 backdrop-blur-md border border-slate-800 p-4 rounded-2xl">
             <div className="flex items-center gap-3">
               <div className="p-2 rounded-xl bg-emerald-950/80 border border-emerald-800/60 text-emerald-400">
@@ -170,9 +163,7 @@ export default function LocalDashboard() {
                 <span className="text-[11px] font-mono text-slate-400 uppercase tracking-wider block">
                   Live GPS Field Operations
                 </span>
-                <span className="text-base font-bold text-white">
-                  {cityName}
-                </span>
+                <span className="text-base font-bold text-white">{cityName}</span>
                 {userLocation && (
                   <span className="text-xs font-mono text-slate-400 ml-2">
                     ({userLocation.lat.toFixed(4)}°N, {userLocation.lon.toFixed(4)}°E)
@@ -190,9 +181,7 @@ export default function LocalDashboard() {
             </Link>
           </div>
 
-          {/* Main Grid */}
           <div className="grid grid-cols-1 xl:grid-cols-12 gap-6">
-            {/* Left Column: Weather & Threat Predictions */}
             <div className="xl:col-span-5 space-y-6 flex flex-col">
               <BeautifulWeather
                 weather={weather}
@@ -203,14 +192,11 @@ export default function LocalDashboard() {
               <TrendChart weather={weather} />
             </div>
 
-            {/* Right Column: Safe Zones Map & Hydrological Intel */}
             <div className="xl:col-span-7 space-y-6">
-              {/* Real-time Safe Zones Section */}
               <section className="bg-slate-900/80 backdrop-blur-md border border-slate-800 rounded-2xl p-5 shadow-xl">
                 <div className="flex items-center justify-between mb-3">
                   <div>
                     <h3 className="text-sm font-bold text-white flex items-center gap-2">
-                      <ShieldCheck className="w-4 h-4 text-emerald-400" />
                       Live Safe Zones & Relief Shelter Network
                     </h3>
                     <p className="text-xs text-slate-400">
@@ -233,13 +219,11 @@ export default function LocalDashboard() {
                 </div>
               </section>
 
-              {/* River Catchment Intel */}
               <HydrologicalIntelligence locationName={cityName} weather={weather} />
             </div>
           </div>
         </div>
 
-        {/* SitRep Modal */}
         <SitRepModal isOpen={isSitRepOpen} onClose={() => setIsSitRepOpen(false)} />
       </main>
     </DynamicBackground>
