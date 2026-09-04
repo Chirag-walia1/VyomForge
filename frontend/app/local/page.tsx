@@ -7,16 +7,16 @@ import Link from "next/link";
 import { MapPin, Search, AlertTriangle, ShieldCheck, Waves, ArrowRight } from "lucide-react";
 
 // Components
-import BeautifulWeather from "./components/BeautifulWeather";
-import { ForecastDisaster, TrendChart } from "./components/RaincloudFeatures";
-import DynamicBackground from "./components/DynamicBackground";
-import AuthorityHeader from "./components/AuthorityHeader";
-import ThreatKPIBar from "./components/ThreatKPIBar";
-import DistrictRiskMatrix from "./components/DistrictRiskMatrix";
-import SitRepModal from "./components/SitRepModal";
+import BeautifulWeather from "../components/BeautifulWeather";
+import { ForecastDisaster, TrendChart } from "../components/RaincloudFeatures";
+import DynamicBackground from "../components/DynamicBackground";
+import AuthorityHeader from "../components/AuthorityHeader";
+import ThreatKPIBar from "../components/ThreatKPIBar";
+import DistrictRiskMatrix from "../components/DistrictRiskMatrix";
+import SitRepModal from "../components/SitRepModal";
 
 // Dynamic map & hydrological components (avoid SSR Leaflet issues)
-const RiskMap = dynamic(() => import("./components/RiskMap"), {
+const RiskMap = dynamic(() => import("../components/RiskMap"), {
   ssr: false,
   loading: () => (
     <div className="flex h-[450px] items-center justify-center bg-slate-950/80 border border-slate-800 text-slate-400 rounded-xl">
@@ -29,9 +29,10 @@ const RiskMap = dynamic(() => import("./components/RiskMap"), {
 });
 
 const HydrologicalIntelligence = dynamic(
-  () => import("./components/HydrologicalIntelligence"),
+  () => import("../components/HydrologicalIntelligence"),
   { ssr: false }
 );
+
 
 /* ============================================
    TYPES
