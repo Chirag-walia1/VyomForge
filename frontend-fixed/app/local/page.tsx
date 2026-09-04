@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 /* eslint-disable */
 
 import { useEffect, useState } from "react";
@@ -32,7 +32,6 @@ const HydrologicalIntelligence = dynamic(
   () => import("../components/HydrologicalIntelligence"),
   { ssr: false }
 );
-
 
 /* ============================================
    TYPES
